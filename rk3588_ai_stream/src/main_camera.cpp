@@ -10,6 +10,7 @@
 
 #include <opencv2/opencv.hpp>
 
+//BGR2RGB的颜色
 static const unsigned char colors[19][3] = {
     {54, 67, 244},
     {99, 30, 233},
@@ -31,7 +32,7 @@ static const unsigned char colors[19][3] = {
     {158, 158, 158},
     {139, 125, 96}
 };
-
+//判断摄像头参数是数字还是路劲
 static bool is_number_string(const char *s)
 {
     if (s == NULL || *s == '\0')
@@ -49,7 +50,7 @@ static bool is_number_string(const char *s)
 
     return true;
 }
-
+//检测结果绘图逻辑
 static void draw_detections(cv::Mat &frame,
                             const object_detect_result_list &od_results,
                             int frame_count)
@@ -143,7 +144,7 @@ static void draw_detections(cv::Mat &frame,
 
 int main(int argc, char **argv)
 {
-    if (argc != 4 && argc != 5)
+    if (argc != 4 && argc != 5) //如果用户输入不是四个或者五个参数就提示正确参数类型
     {
         printf("Usage: %s <model_path> <camera_index_or_device_path> <output_video> [max_frames]\n", argv[0]);
         printf("Example 1: %s models/yolo11.rknn 11 output/camera_result.mp4 300\n", argv[0]);
@@ -168,15 +169,15 @@ int main(int argc, char **argv)
     const int output_width = 1280;
     const int output_height = 720;
     const double output_fps = 25.0;
-
+    //打印参数信息
     printf("model path   : %s\n", model_path);
     printf("camera source: %s\n", camera_source);
     printf("output video : %s\n", output_video_path);
     printf("max frames   : %d\n", max_frames);
     printf("force output : %dx%d %.2f fps\n", output_width, output_height, output_fps);
-
+    //创建视频捕获对象
     cv::VideoCapture cap;
-
+    //判断摄像头是数字还是路劲
     if (is_number_string(camera_source))
     {
         int camera_index = atoi(camera_source);
@@ -219,14 +220,14 @@ int main(int argc, char **argv)
         cap.release();
         return -1;
     }
-
-    int ret = 0;
+    //初始化AI模型
+    int ret = 0;//创建结构体，保存AI上下文环境
 
     rknn_app_context_t rknn_app_ctx;
     memset(&rknn_app_ctx, 0, sizeof(rknn_app_ctx));
-
+    //初始化后处理模块
     init_post_process();
-
+    //加载模型文件到NPU
     ret = init_yolo11_model(model_path, &rknn_app_ctx);
     if (ret != 0)
     {
@@ -256,10 +257,10 @@ int main(int argc, char **argv)
             printf("empty frame, skip.\n");
             continue;
         }
-
+        //cpu进行预处理缩放和颜色格式转换等
         cv::resize(raw_frame, frame_720p, cv::Size(output_width, output_height));
         cv::cvtColor(frame_720p, rgb_image, cv::COLOR_BGR2RGB);
-
+        //构建模型输入数据结构
         image_buffer_t src_image;
         memset(&src_image, 0, sizeof(src_image));
 
@@ -280,7 +281,7 @@ int main(int argc, char **argv)
         }
 
         draw_detections(frame_720p, od_results, frame_count);
-
+        //画好的框写道最终的mp4文件中
         writer.write(frame_720p);
 
         frame_count++;

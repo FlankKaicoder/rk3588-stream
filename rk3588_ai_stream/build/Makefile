@@ -111,15 +111,16 @@ install/fast: preinstall/fast
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
 
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
 
-.PHONY : list_install_components/fast
+.PHONY : edit_cache/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -132,16 +133,15 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
 
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
 
-.PHONY : edit_cache/fast
+.PHONY : list_install_components/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -176,6 +176,45 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named image_detect
+
+# Build rule for target.
+image_detect: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 image_detect
+.PHONY : image_detect
+
+# fast build rule for target.
+image_detect/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/build
+.PHONY : image_detect/fast
+
+#=============================================================================
+# Target rules for targets named camera_profile
+
+# Build rule for target.
+camera_profile: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 camera_profile
+.PHONY : camera_profile
+
+# fast build rule for target.
+camera_profile/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/build
+.PHONY : camera_profile/fast
+
+#=============================================================================
+# Target rules for targets named camera_profile_nowrite
+
+# Build rule for target.
+camera_profile_nowrite: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 camera_profile_nowrite
+.PHONY : camera_profile_nowrite
+
+# fast build rule for target.
+camera_profile_nowrite/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_nowrite.dir/build.make CMakeFiles/camera_profile_nowrite.dir/build
+.PHONY : camera_profile_nowrite/fast
+
+#=============================================================================
 # Target rules for targets named camera_detect
 
 # Build rule for target.
@@ -187,6 +226,45 @@ camera_detect: cmake_check_build_system
 camera_detect/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_detect.dir/build.make CMakeFiles/camera_detect.dir/build
 .PHONY : camera_detect/fast
+
+#=============================================================================
+# Target rules for targets named v4l2_capture_profile
+
+# Build rule for target.
+v4l2_capture_profile: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 v4l2_capture_profile
+.PHONY : v4l2_capture_profile
+
+# fast build rule for target.
+v4l2_capture_profile/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_capture_profile.dir/build.make CMakeFiles/v4l2_capture_profile.dir/build
+.PHONY : v4l2_capture_profile/fast
+
+#=============================================================================
+# Target rules for targets named rga_nv12_to_rgb
+
+# Build rule for target.
+rga_nv12_to_rgb: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 rga_nv12_to_rgb
+.PHONY : rga_nv12_to_rgb
+
+# fast build rule for target.
+rga_nv12_to_rgb/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rga_nv12_to_rgb.dir/build.make CMakeFiles/rga_nv12_to_rgb.dir/build
+.PHONY : rga_nv12_to_rgb/fast
+
+#=============================================================================
+# Target rules for targets named camera_capture_profile
+
+# Build rule for target.
+camera_capture_profile: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 camera_capture_profile
+.PHONY : camera_capture_profile
+
+# fast build rule for target.
+camera_capture_profile/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_capture_profile.dir/build.make CMakeFiles/camera_capture_profile.dir/build
+.PHONY : camera_capture_profile/fast
 
 #=============================================================================
 # Target rules for targets named video_detect
@@ -202,17 +280,30 @@ video_detect/fast:
 .PHONY : video_detect/fast
 
 #=============================================================================
-# Target rules for targets named image_detect
+# Target rules for targets named camera_profile_setcap
 
 # Build rule for target.
-image_detect: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 image_detect
-.PHONY : image_detect
+camera_profile_setcap: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 camera_profile_setcap
+.PHONY : camera_profile_setcap
 
 # fast build rule for target.
-image_detect/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/build
-.PHONY : image_detect/fast
+camera_profile_setcap/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap.dir/build.make CMakeFiles/camera_profile_setcap.dir/build
+.PHONY : camera_profile_setcap/fast
+
+#=============================================================================
+# Target rules for targets named camera_profile_setcap_nowrite
+
+# Build rule for target.
+camera_profile_setcap_nowrite: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 camera_profile_setcap_nowrite
+.PHONY : camera_profile_setcap_nowrite
+
+# fast build rule for target.
+camera_profile_setcap_nowrite/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap_nowrite.dir/build.make CMakeFiles/camera_profile_setcap_nowrite.dir/build
+.PHONY : camera_profile_setcap_nowrite/fast
 
 #=============================================================================
 # Target rules for targets named audioutils
@@ -272,9 +363,13 @@ home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.o: home/cat/lu
 
 # target to build an object file
 home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_nowrite.dir/build.make CMakeFiles/camera_profile_nowrite.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_detect.dir/build.make CMakeFiles/camera_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/video_detect.dir/build.make CMakeFiles/video_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap.dir/build.make CMakeFiles/camera_profile_setcap.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap_nowrite.dir/build.make CMakeFiles/camera_profile_setcap_nowrite.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
 .PHONY : home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
 
 home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.i: home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
@@ -283,9 +378,13 @@ home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.i: home/cat/lu
 
 # target to preprocess a source file
 home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_nowrite.dir/build.make CMakeFiles/camera_profile_nowrite.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_detect.dir/build.make CMakeFiles/camera_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/video_detect.dir/build.make CMakeFiles/video_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap.dir/build.make CMakeFiles/camera_profile_setcap.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap_nowrite.dir/build.make CMakeFiles/camera_profile_setcap_nowrite.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
 .PHONY : home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
 
 home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.s: home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
@@ -294,9 +393,13 @@ home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.s: home/cat/lu
 
 # target to generate assembly for a file
 home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_nowrite.dir/build.make CMakeFiles/camera_profile_nowrite.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_detect.dir/build.make CMakeFiles/camera_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/video_detect.dir/build.make CMakeFiles/video_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap.dir/build.make CMakeFiles/camera_profile_setcap.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap_nowrite.dir/build.make CMakeFiles/camera_profile_setcap_nowrite.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
 .PHONY : home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
 
 src/main_camera.o: src/main_camera.cpp.o
@@ -326,6 +429,141 @@ src/main_camera.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_detect.dir/build.make CMakeFiles/camera_detect.dir/src/main_camera.cpp.s
 .PHONY : src/main_camera.cpp.s
 
+src/main_camera_capture_profile.o: src/main_camera_capture_profile.cpp.o
+
+.PHONY : src/main_camera_capture_profile.o
+
+# target to build an object file
+src/main_camera_capture_profile.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_capture_profile.dir/build.make CMakeFiles/camera_capture_profile.dir/src/main_camera_capture_profile.cpp.o
+.PHONY : src/main_camera_capture_profile.cpp.o
+
+src/main_camera_capture_profile.i: src/main_camera_capture_profile.cpp.i
+
+.PHONY : src/main_camera_capture_profile.i
+
+# target to preprocess a source file
+src/main_camera_capture_profile.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_capture_profile.dir/build.make CMakeFiles/camera_capture_profile.dir/src/main_camera_capture_profile.cpp.i
+.PHONY : src/main_camera_capture_profile.cpp.i
+
+src/main_camera_capture_profile.s: src/main_camera_capture_profile.cpp.s
+
+.PHONY : src/main_camera_capture_profile.s
+
+# target to generate assembly for a file
+src/main_camera_capture_profile.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_capture_profile.dir/build.make CMakeFiles/camera_capture_profile.dir/src/main_camera_capture_profile.cpp.s
+.PHONY : src/main_camera_capture_profile.cpp.s
+
+src/main_camera_profile.o: src/main_camera_profile.cpp.o
+
+.PHONY : src/main_camera_profile.o
+
+# target to build an object file
+src/main_camera_profile.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/src/main_camera_profile.cpp.o
+.PHONY : src/main_camera_profile.cpp.o
+
+src/main_camera_profile.i: src/main_camera_profile.cpp.i
+
+.PHONY : src/main_camera_profile.i
+
+# target to preprocess a source file
+src/main_camera_profile.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/src/main_camera_profile.cpp.i
+.PHONY : src/main_camera_profile.cpp.i
+
+src/main_camera_profile.s: src/main_camera_profile.cpp.s
+
+.PHONY : src/main_camera_profile.s
+
+# target to generate assembly for a file
+src/main_camera_profile.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/src/main_camera_profile.cpp.s
+.PHONY : src/main_camera_profile.cpp.s
+
+src/main_camera_profile_nowrite.o: src/main_camera_profile_nowrite.cpp.o
+
+.PHONY : src/main_camera_profile_nowrite.o
+
+# target to build an object file
+src/main_camera_profile_nowrite.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_nowrite.dir/build.make CMakeFiles/camera_profile_nowrite.dir/src/main_camera_profile_nowrite.cpp.o
+.PHONY : src/main_camera_profile_nowrite.cpp.o
+
+src/main_camera_profile_nowrite.i: src/main_camera_profile_nowrite.cpp.i
+
+.PHONY : src/main_camera_profile_nowrite.i
+
+# target to preprocess a source file
+src/main_camera_profile_nowrite.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_nowrite.dir/build.make CMakeFiles/camera_profile_nowrite.dir/src/main_camera_profile_nowrite.cpp.i
+.PHONY : src/main_camera_profile_nowrite.cpp.i
+
+src/main_camera_profile_nowrite.s: src/main_camera_profile_nowrite.cpp.s
+
+.PHONY : src/main_camera_profile_nowrite.s
+
+# target to generate assembly for a file
+src/main_camera_profile_nowrite.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_nowrite.dir/build.make CMakeFiles/camera_profile_nowrite.dir/src/main_camera_profile_nowrite.cpp.s
+.PHONY : src/main_camera_profile_nowrite.cpp.s
+
+src/main_camera_profile_setcap.o: src/main_camera_profile_setcap.cpp.o
+
+.PHONY : src/main_camera_profile_setcap.o
+
+# target to build an object file
+src/main_camera_profile_setcap.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap.dir/build.make CMakeFiles/camera_profile_setcap.dir/src/main_camera_profile_setcap.cpp.o
+.PHONY : src/main_camera_profile_setcap.cpp.o
+
+src/main_camera_profile_setcap.i: src/main_camera_profile_setcap.cpp.i
+
+.PHONY : src/main_camera_profile_setcap.i
+
+# target to preprocess a source file
+src/main_camera_profile_setcap.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap.dir/build.make CMakeFiles/camera_profile_setcap.dir/src/main_camera_profile_setcap.cpp.i
+.PHONY : src/main_camera_profile_setcap.cpp.i
+
+src/main_camera_profile_setcap.s: src/main_camera_profile_setcap.cpp.s
+
+.PHONY : src/main_camera_profile_setcap.s
+
+# target to generate assembly for a file
+src/main_camera_profile_setcap.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap.dir/build.make CMakeFiles/camera_profile_setcap.dir/src/main_camera_profile_setcap.cpp.s
+.PHONY : src/main_camera_profile_setcap.cpp.s
+
+src/main_camera_profile_setcap_nowrite.o: src/main_camera_profile_setcap_nowrite.cpp.o
+
+.PHONY : src/main_camera_profile_setcap_nowrite.o
+
+# target to build an object file
+src/main_camera_profile_setcap_nowrite.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap_nowrite.dir/build.make CMakeFiles/camera_profile_setcap_nowrite.dir/src/main_camera_profile_setcap_nowrite.cpp.o
+.PHONY : src/main_camera_profile_setcap_nowrite.cpp.o
+
+src/main_camera_profile_setcap_nowrite.i: src/main_camera_profile_setcap_nowrite.cpp.i
+
+.PHONY : src/main_camera_profile_setcap_nowrite.i
+
+# target to preprocess a source file
+src/main_camera_profile_setcap_nowrite.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap_nowrite.dir/build.make CMakeFiles/camera_profile_setcap_nowrite.dir/src/main_camera_profile_setcap_nowrite.cpp.i
+.PHONY : src/main_camera_profile_setcap_nowrite.cpp.i
+
+src/main_camera_profile_setcap_nowrite.s: src/main_camera_profile_setcap_nowrite.cpp.s
+
+.PHONY : src/main_camera_profile_setcap_nowrite.s
+
+# target to generate assembly for a file
+src/main_camera_profile_setcap_nowrite.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap_nowrite.dir/build.make CMakeFiles/camera_profile_setcap_nowrite.dir/src/main_camera_profile_setcap_nowrite.cpp.s
+.PHONY : src/main_camera_profile_setcap_nowrite.cpp.s
+
 src/main_image.o: src/main_image.cpp.o
 
 .PHONY : src/main_image.o
@@ -352,6 +590,60 @@ src/main_image.s: src/main_image.cpp.s
 src/main_image.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/src/main_image.cpp.s
 .PHONY : src/main_image.cpp.s
+
+src/main_rga_nv12_to_rgb.o: src/main_rga_nv12_to_rgb.cpp.o
+
+.PHONY : src/main_rga_nv12_to_rgb.o
+
+# target to build an object file
+src/main_rga_nv12_to_rgb.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rga_nv12_to_rgb.dir/build.make CMakeFiles/rga_nv12_to_rgb.dir/src/main_rga_nv12_to_rgb.cpp.o
+.PHONY : src/main_rga_nv12_to_rgb.cpp.o
+
+src/main_rga_nv12_to_rgb.i: src/main_rga_nv12_to_rgb.cpp.i
+
+.PHONY : src/main_rga_nv12_to_rgb.i
+
+# target to preprocess a source file
+src/main_rga_nv12_to_rgb.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rga_nv12_to_rgb.dir/build.make CMakeFiles/rga_nv12_to_rgb.dir/src/main_rga_nv12_to_rgb.cpp.i
+.PHONY : src/main_rga_nv12_to_rgb.cpp.i
+
+src/main_rga_nv12_to_rgb.s: src/main_rga_nv12_to_rgb.cpp.s
+
+.PHONY : src/main_rga_nv12_to_rgb.s
+
+# target to generate assembly for a file
+src/main_rga_nv12_to_rgb.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rga_nv12_to_rgb.dir/build.make CMakeFiles/rga_nv12_to_rgb.dir/src/main_rga_nv12_to_rgb.cpp.s
+.PHONY : src/main_rga_nv12_to_rgb.cpp.s
+
+src/main_v4l2_capture_profile.o: src/main_v4l2_capture_profile.cpp.o
+
+.PHONY : src/main_v4l2_capture_profile.o
+
+# target to build an object file
+src/main_v4l2_capture_profile.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_capture_profile.dir/build.make CMakeFiles/v4l2_capture_profile.dir/src/main_v4l2_capture_profile.cpp.o
+.PHONY : src/main_v4l2_capture_profile.cpp.o
+
+src/main_v4l2_capture_profile.i: src/main_v4l2_capture_profile.cpp.i
+
+.PHONY : src/main_v4l2_capture_profile.i
+
+# target to preprocess a source file
+src/main_v4l2_capture_profile.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_capture_profile.dir/build.make CMakeFiles/v4l2_capture_profile.dir/src/main_v4l2_capture_profile.cpp.i
+.PHONY : src/main_v4l2_capture_profile.cpp.i
+
+src/main_v4l2_capture_profile.s: src/main_v4l2_capture_profile.cpp.s
+
+.PHONY : src/main_v4l2_capture_profile.s
+
+# target to generate assembly for a file
+src/main_v4l2_capture_profile.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_capture_profile.dir/build.make CMakeFiles/v4l2_capture_profile.dir/src/main_v4l2_capture_profile.cpp.s
+.PHONY : src/main_v4l2_capture_profile.cpp.s
 
 src/main_video.o: src/main_video.cpp.o
 
@@ -386,9 +678,13 @@ third_party/lubancat_yolo11_ref/postprocess.o: third_party/lubancat_yolo11_ref/p
 
 # target to build an object file
 third_party/lubancat_yolo11_ref/postprocess.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_nowrite.dir/build.make CMakeFiles/camera_profile_nowrite.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_detect.dir/build.make CMakeFiles/camera_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/video_detect.dir/build.make CMakeFiles/video_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap.dir/build.make CMakeFiles/camera_profile_setcap.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap_nowrite.dir/build.make CMakeFiles/camera_profile_setcap_nowrite.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
 .PHONY : third_party/lubancat_yolo11_ref/postprocess.cc.o
 
 third_party/lubancat_yolo11_ref/postprocess.i: third_party/lubancat_yolo11_ref/postprocess.cc.i
@@ -397,9 +693,13 @@ third_party/lubancat_yolo11_ref/postprocess.i: third_party/lubancat_yolo11_ref/p
 
 # target to preprocess a source file
 third_party/lubancat_yolo11_ref/postprocess.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_nowrite.dir/build.make CMakeFiles/camera_profile_nowrite.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_detect.dir/build.make CMakeFiles/camera_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/video_detect.dir/build.make CMakeFiles/video_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap.dir/build.make CMakeFiles/camera_profile_setcap.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap_nowrite.dir/build.make CMakeFiles/camera_profile_setcap_nowrite.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
 .PHONY : third_party/lubancat_yolo11_ref/postprocess.cc.i
 
 third_party/lubancat_yolo11_ref/postprocess.s: third_party/lubancat_yolo11_ref/postprocess.cc.s
@@ -408,9 +708,13 @@ third_party/lubancat_yolo11_ref/postprocess.s: third_party/lubancat_yolo11_ref/p
 
 # target to generate assembly for a file
 third_party/lubancat_yolo11_ref/postprocess.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_nowrite.dir/build.make CMakeFiles/camera_profile_nowrite.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_detect.dir/build.make CMakeFiles/camera_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/video_detect.dir/build.make CMakeFiles/video_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap.dir/build.make CMakeFiles/camera_profile_setcap.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap_nowrite.dir/build.make CMakeFiles/camera_profile_setcap_nowrite.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
 .PHONY : third_party/lubancat_yolo11_ref/postprocess.cc.s
 
 # Help Target
@@ -426,11 +730,18 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... audioutils"
+	@echo "... camera_capture_profile"
 	@echo "... camera_detect"
+	@echo "... camera_profile"
+	@echo "... camera_profile_nowrite"
+	@echo "... camera_profile_setcap"
+	@echo "... camera_profile_setcap_nowrite"
 	@echo "... fileutils"
 	@echo "... image_detect"
 	@echo "... imagedrawing"
 	@echo "... imageutils"
+	@echo "... rga_nv12_to_rgb"
+	@echo "... v4l2_capture_profile"
 	@echo "... video_detect"
 	@echo "... home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.o"
 	@echo "... home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.i"
@@ -438,9 +749,30 @@ help:
 	@echo "... src/main_camera.o"
 	@echo "... src/main_camera.i"
 	@echo "... src/main_camera.s"
+	@echo "... src/main_camera_capture_profile.o"
+	@echo "... src/main_camera_capture_profile.i"
+	@echo "... src/main_camera_capture_profile.s"
+	@echo "... src/main_camera_profile.o"
+	@echo "... src/main_camera_profile.i"
+	@echo "... src/main_camera_profile.s"
+	@echo "... src/main_camera_profile_nowrite.o"
+	@echo "... src/main_camera_profile_nowrite.i"
+	@echo "... src/main_camera_profile_nowrite.s"
+	@echo "... src/main_camera_profile_setcap.o"
+	@echo "... src/main_camera_profile_setcap.i"
+	@echo "... src/main_camera_profile_setcap.s"
+	@echo "... src/main_camera_profile_setcap_nowrite.o"
+	@echo "... src/main_camera_profile_setcap_nowrite.i"
+	@echo "... src/main_camera_profile_setcap_nowrite.s"
 	@echo "... src/main_image.o"
 	@echo "... src/main_image.i"
 	@echo "... src/main_image.s"
+	@echo "... src/main_rga_nv12_to_rgb.o"
+	@echo "... src/main_rga_nv12_to_rgb.i"
+	@echo "... src/main_rga_nv12_to_rgb.s"
+	@echo "... src/main_v4l2_capture_profile.o"
+	@echo "... src/main_v4l2_capture_profile.i"
+	@echo "... src/main_v4l2_capture_profile.s"
 	@echo "... src/main_video.o"
 	@echo "... src/main_video.i"
 	@echo "... src/main_video.s"

@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/v4l2_capture_profile.dir/src/main_v4l2_capture_profile.cpp.o -o v4l2_capture_profile  -lpthread 
