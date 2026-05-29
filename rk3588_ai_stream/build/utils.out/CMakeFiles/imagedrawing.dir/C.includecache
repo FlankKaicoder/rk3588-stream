@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/cat/lubancat_ai_manual_code/example/utils/common.h
+
+/home/cat/lubancat_ai_manual_code/example/utils/font.h
+
+/home/cat/lubancat_ai_manual_code/example/utils/image_drawing.c
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+ctype.h
+-
+image_drawing.h
+/home/cat/lubancat_ai_manual_code/example/utils/image_drawing.h
+font.h
+/home/cat/lubancat_ai_manual_code/example/utils/font.h
+
+/home/cat/lubancat_ai_manual_code/example/utils/image_drawing.h
+common.h
+/home/cat/lubancat_ai_manual_code/example/utils/common.h
+

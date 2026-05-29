@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/../../3rdparty/allocator/dma -I/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/../../utils -I/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/../../utils/image_utils -I/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/../../3rdparty/rga/include -I/home/cat/lubancat_ai_manual_code/example/utils -I/home/cat/lubancat_ai_manual_code/example/3rdparty/stb_image -I/home/cat/lubancat_ai_manual_code/example/3rdparty/librga/include -I/home/cat/lubancat_ai_manual_code/example/3rdparty/jpeg_turbo/include -isystem /usr/include/opencv4
 
-CXX_FLAGS = -pthread -std=gnu++11
+CXX_FLAGS = -pthread -std=gnu++17
 

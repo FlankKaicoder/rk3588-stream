@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 
 project(rk3588_ai_stream)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(TARGET_SOC "rk3588" CACHE STRING "Target SoC")
@@ -248,4 +248,75 @@ target_link_libraries(rga_nv12_to_rgb
     ${OpenCV_LIBS}
     dl
     pthread
+)
+# ===== 05 / 06 V4L2 + RGA + RKNN experiments =====
+
+find_path(RGA_INCLUDE_DIR
+    NAMES im2d.hpp
+    PATHS
+        /usr/include/rga
+        /usr/local/include/rga
+        /usr/include
+        /usr/local/include
+)
+
+find_library(RGA_LIBRARY
+    NAMES rga
+    PATHS
+        /usr/lib
+        /usr/lib/aarch64-linux-gnu
+        /usr/local/lib
+)
+
+if(NOT RGA_LIBRARY)
+    set(RGA_LIBRARY rga)
+endif()
+
+message(STATUS "RGA_INCLUDE_DIR = ${RGA_INCLUDE_DIR}")
+message(STATUS "RGA_LIBRARY     = ${RGA_LIBRARY}")
+
+add_executable(v4l2_rga_realtime_preprocess
+    src/main_v4l2_rga_realtime_preprocess.cpp
+)
+
+target_include_directories(v4l2_rga_realtime_preprocess PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${RGA_INCLUDE_DIR}
+)
+
+target_link_libraries(v4l2_rga_realtime_preprocess
+    ${RGA_LIBRARY}
+    pthread
+)
+
+add_executable(v4l2_rga_rknn_detect
+    src/main_v4l2_rga_rknn_detect.cpp
+    third_party/lubancat_yolo11_ref/postprocess.cc
+    ${RKNPU_YOLO11_SRC}
+)
+
+target_include_directories(v4l2_rga_rknn_detect PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/third_party/lubancat_yolo11_ref
+    ${LUBANCAT_YOLO11_CPP}
+    ${LIBRKNNRT_INCLUDES}
+    ${RGA_INCLUDE_DIR}
+)
+
+target_link_libraries(v4l2_rga_rknn_detect
+    imageutils
+    fileutils
+    imagedrawing
+    ${RGA_LIBRARY}
+    ${LIBRKNNRT}
+    dl
+    pthread
+)
+
+set_target_properties(v4l2_rga_realtime_preprocess PROPERTIES
+    BUILD_RPATH "$ORIGIN/lib;$ORIGIN/../lib"
+)
+
+set_target_properties(v4l2_rga_rknn_detect PROPERTIES
+    BUILD_RPATH "$ORIGIN/lib;$ORIGIN/../lib"
 )

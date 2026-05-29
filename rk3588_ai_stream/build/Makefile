@@ -87,18 +87,6 @@ install/strip/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
@@ -111,16 +99,27 @@ install/fast: preinstall/fast
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
 
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
 
-.PHONY : edit_cache/fast
+.PHONY : list_install_components/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -133,15 +132,16 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
 
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
 
-.PHONY : list_install_components/fast
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -187,6 +187,19 @@ image_detect: cmake_check_build_system
 image_detect/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/build
 .PHONY : image_detect/fast
+
+#=============================================================================
+# Target rules for targets named v4l2_rga_rknn_detect
+
+# Build rule for target.
+v4l2_rga_rknn_detect: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 v4l2_rga_rknn_detect
+.PHONY : v4l2_rga_rknn_detect
+
+# fast build rule for target.
+v4l2_rga_rknn_detect/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/build
+.PHONY : v4l2_rga_rknn_detect/fast
 
 #=============================================================================
 # Target rules for targets named camera_profile
@@ -306,6 +319,19 @@ camera_profile_setcap_nowrite/fast:
 .PHONY : camera_profile_setcap_nowrite/fast
 
 #=============================================================================
+# Target rules for targets named v4l2_rga_realtime_preprocess
+
+# Build rule for target.
+v4l2_rga_realtime_preprocess: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 v4l2_rga_realtime_preprocess
+.PHONY : v4l2_rga_realtime_preprocess
+
+# fast build rule for target.
+v4l2_rga_realtime_preprocess/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_realtime_preprocess.dir/build.make CMakeFiles/v4l2_rga_realtime_preprocess.dir/build
+.PHONY : v4l2_rga_realtime_preprocess/fast
+
+#=============================================================================
 # Target rules for targets named audioutils
 
 # Build rule for target.
@@ -364,6 +390,7 @@ home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.o: home/cat/lu
 # target to build an object file
 home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_nowrite.dir/build.make CMakeFiles/camera_profile_nowrite.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_detect.dir/build.make CMakeFiles/camera_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
@@ -379,6 +406,7 @@ home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.i: home/cat/lu
 # target to preprocess a source file
 home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_nowrite.dir/build.make CMakeFiles/camera_profile_nowrite.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_detect.dir/build.make CMakeFiles/camera_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
@@ -394,6 +422,7 @@ home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.s: home/cat/lu
 # target to generate assembly for a file
 home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_nowrite.dir/build.make CMakeFiles/camera_profile_nowrite.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_detect.dir/build.make CMakeFiles/camera_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
@@ -645,6 +674,60 @@ src/main_v4l2_capture_profile.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_capture_profile.dir/build.make CMakeFiles/v4l2_capture_profile.dir/src/main_v4l2_capture_profile.cpp.s
 .PHONY : src/main_v4l2_capture_profile.cpp.s
 
+src/main_v4l2_rga_realtime_preprocess.o: src/main_v4l2_rga_realtime_preprocess.cpp.o
+
+.PHONY : src/main_v4l2_rga_realtime_preprocess.o
+
+# target to build an object file
+src/main_v4l2_rga_realtime_preprocess.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_realtime_preprocess.dir/build.make CMakeFiles/v4l2_rga_realtime_preprocess.dir/src/main_v4l2_rga_realtime_preprocess.cpp.o
+.PHONY : src/main_v4l2_rga_realtime_preprocess.cpp.o
+
+src/main_v4l2_rga_realtime_preprocess.i: src/main_v4l2_rga_realtime_preprocess.cpp.i
+
+.PHONY : src/main_v4l2_rga_realtime_preprocess.i
+
+# target to preprocess a source file
+src/main_v4l2_rga_realtime_preprocess.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_realtime_preprocess.dir/build.make CMakeFiles/v4l2_rga_realtime_preprocess.dir/src/main_v4l2_rga_realtime_preprocess.cpp.i
+.PHONY : src/main_v4l2_rga_realtime_preprocess.cpp.i
+
+src/main_v4l2_rga_realtime_preprocess.s: src/main_v4l2_rga_realtime_preprocess.cpp.s
+
+.PHONY : src/main_v4l2_rga_realtime_preprocess.s
+
+# target to generate assembly for a file
+src/main_v4l2_rga_realtime_preprocess.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_realtime_preprocess.dir/build.make CMakeFiles/v4l2_rga_realtime_preprocess.dir/src/main_v4l2_rga_realtime_preprocess.cpp.s
+.PHONY : src/main_v4l2_rga_realtime_preprocess.cpp.s
+
+src/main_v4l2_rga_rknn_detect.o: src/main_v4l2_rga_rknn_detect.cpp.o
+
+.PHONY : src/main_v4l2_rga_rknn_detect.o
+
+# target to build an object file
+src/main_v4l2_rga_rknn_detect.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/src/main_v4l2_rga_rknn_detect.cpp.o
+.PHONY : src/main_v4l2_rga_rknn_detect.cpp.o
+
+src/main_v4l2_rga_rknn_detect.i: src/main_v4l2_rga_rknn_detect.cpp.i
+
+.PHONY : src/main_v4l2_rga_rknn_detect.i
+
+# target to preprocess a source file
+src/main_v4l2_rga_rknn_detect.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/src/main_v4l2_rga_rknn_detect.cpp.i
+.PHONY : src/main_v4l2_rga_rknn_detect.cpp.i
+
+src/main_v4l2_rga_rknn_detect.s: src/main_v4l2_rga_rknn_detect.cpp.s
+
+.PHONY : src/main_v4l2_rga_rknn_detect.s
+
+# target to generate assembly for a file
+src/main_v4l2_rga_rknn_detect.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/src/main_v4l2_rga_rknn_detect.cpp.s
+.PHONY : src/main_v4l2_rga_rknn_detect.cpp.s
+
 src/main_video.o: src/main_video.cpp.o
 
 .PHONY : src/main_video.o
@@ -679,6 +762,7 @@ third_party/lubancat_yolo11_ref/postprocess.o: third_party/lubancat_yolo11_ref/p
 # target to build an object file
 third_party/lubancat_yolo11_ref/postprocess.cc.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_nowrite.dir/build.make CMakeFiles/camera_profile_nowrite.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_detect.dir/build.make CMakeFiles/camera_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
@@ -694,6 +778,7 @@ third_party/lubancat_yolo11_ref/postprocess.i: third_party/lubancat_yolo11_ref/p
 # target to preprocess a source file
 third_party/lubancat_yolo11_ref/postprocess.cc.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_nowrite.dir/build.make CMakeFiles/camera_profile_nowrite.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_detect.dir/build.make CMakeFiles/camera_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
@@ -709,6 +794,7 @@ third_party/lubancat_yolo11_ref/postprocess.s: third_party/lubancat_yolo11_ref/p
 # target to generate assembly for a file
 third_party/lubancat_yolo11_ref/postprocess.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_nowrite.dir/build.make CMakeFiles/camera_profile_nowrite.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_detect.dir/build.make CMakeFiles/camera_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
@@ -742,6 +828,8 @@ help:
 	@echo "... imageutils"
 	@echo "... rga_nv12_to_rgb"
 	@echo "... v4l2_capture_profile"
+	@echo "... v4l2_rga_realtime_preprocess"
+	@echo "... v4l2_rga_rknn_detect"
 	@echo "... video_detect"
 	@echo "... home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.o"
 	@echo "... home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.i"
@@ -773,6 +861,12 @@ help:
 	@echo "... src/main_v4l2_capture_profile.o"
 	@echo "... src/main_v4l2_capture_profile.i"
 	@echo "... src/main_v4l2_capture_profile.s"
+	@echo "... src/main_v4l2_rga_realtime_preprocess.o"
+	@echo "... src/main_v4l2_rga_realtime_preprocess.i"
+	@echo "... src/main_v4l2_rga_realtime_preprocess.s"
+	@echo "... src/main_v4l2_rga_rknn_detect.o"
+	@echo "... src/main_v4l2_rga_rknn_detect.i"
+	@echo "... src/main_v4l2_rga_rknn_detect.s"
 	@echo "... src/main_video.o"
 	@echo "... src/main_video.i"
 	@echo "... src/main_video.s"
