@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/cat/lubancat_ai_manual_code/example/utils/audio_utils.c
+stdio.h
+-
+stdlib.h
+-
+sndfile.h
+-
+math.h
+-
+audio_utils.h
+/home/cat/lubancat_ai_manual_code/example/utils/audio_utils.h
+
+/home/cat/lubancat_ai_manual_code/example/utils/audio_utils.h
+
