@@ -96,6 +96,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/share/cmake-3.18/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake"
   "/usr/share/cmake-3.18/Modules/FindPackageHandleStandardArgs.cmake"
   "/usr/share/cmake-3.18/Modules/FindPackageMessage.cmake"
+  "/usr/share/cmake-3.18/Modules/FindPkgConfig.cmake"
   "/usr/share/cmake-3.18/Modules/Internal/CMakeCheckCompilerFlag.cmake"
   "/usr/share/cmake-3.18/Modules/Internal/FeatureTesting.cmake"
   "/usr/share/cmake-3.18/Modules/Platform/Linux-Determine-CXX.cmake"
@@ -126,6 +127,8 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/DependInfo.cmake"
+  "CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/DependInfo.cmake"
   "CMakeFiles/image_detect.dir/DependInfo.cmake"
   "CMakeFiles/v4l2_rga_rknn_detect.dir/DependInfo.cmake"
   "CMakeFiles/camera_profile.dir/DependInfo.cmake"
@@ -136,6 +139,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/camera_capture_profile.dir/DependInfo.cmake"
   "CMakeFiles/video_detect.dir/DependInfo.cmake"
   "CMakeFiles/camera_profile_setcap.dir/DependInfo.cmake"
+  "CMakeFiles/v4l2_dump_nv12.dir/DependInfo.cmake"
   "CMakeFiles/camera_profile_setcap_nowrite.dir/DependInfo.cmake"
   "CMakeFiles/v4l2_rga_realtime_preprocess.dir/DependInfo.cmake"
   "CMakeFiles/v4l2_rga_rknn_detect_profile.dir/DependInfo.cmake"

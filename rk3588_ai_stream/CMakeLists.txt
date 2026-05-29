@@ -360,3 +360,81 @@ target_compile_options(v4l2_rga_rknn_detect_profile PRIVATE
 set_target_properties(v4l2_rga_rknn_detect_profile PROPERTIES
     BUILD_RPATH "$ORIGIN/lib;$ORIGIN/../lib"
 )
+
+# 08-1: dump V4L2 NV12 frames for MPP encoder test
+add_executable(v4l2_dump_nv12
+    src/main_v4l2_dump_nv12.cpp
+)
+
+target_compile_options(v4l2_dump_nv12 PRIVATE
+    -O3
+    -DNDEBUG
+)
+
+target_link_libraries(v4l2_dump_nv12
+    pthread
+)
+
+# 08-3: V4L2 + RGA + RKNN detect + RGB back to NV12 for MPP encoder
+find_package(PkgConfig REQUIRED)
+
+if(NOT TARGET PkgConfig::LIBRGA)
+    pkg_check_modules(LIBRGA REQUIRED IMPORTED_TARGET librga)
+endif()
+
+add_executable(v4l2_rga_rknn_detect_to_nv12
+    src/main_v4l2_rga_rknn_detect_to_nv12.cpp
+    third_party/lubancat_yolo11_ref/postprocess.cc
+    ${RKNPU_YOLO11_SRC}
+)
+
+target_include_directories(v4l2_rga_rknn_detect_to_nv12 PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/third_party/lubancat_yolo11_ref
+    ${LUBANCAT_YOLO11_CPP}
+    ${LIBRKNNRT_INCLUDES}
+    ${OpenCV_INCLUDE_DIRS}
+)
+
+target_compile_options(v4l2_rga_rknn_detect_to_nv12 PRIVATE
+    -O3
+    -DNDEBUG
+)
+
+target_link_libraries(v4l2_rga_rknn_detect_to_nv12
+    imageutils
+    fileutils
+    ${OpenCV_LIBS}
+    PkgConfig::LIBRGA
+    ${LIBRKNNRT}
+    dl
+    pthread
+)
+
+# 08-4: clean profile version, no debug jpg and no per-frame fflush
+add_executable(v4l2_rga_rknn_detect_to_nv12_clean
+    src/main_v4l2_rga_rknn_detect_to_nv12_clean.cpp
+    third_party/lubancat_yolo11_ref/postprocess.cc
+    ${RKNPU_YOLO11_SRC}
+)
+
+target_include_directories(v4l2_rga_rknn_detect_to_nv12_clean PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/third_party/lubancat_yolo11_ref
+    ${LUBANCAT_YOLO11_CPP}
+    ${LIBRKNNRT_INCLUDES}
+    ${OpenCV_INCLUDE_DIRS}
+)
+
+target_compile_options(v4l2_rga_rknn_detect_to_nv12_clean PRIVATE
+    -O3
+    -DNDEBUG
+)
+
+target_link_libraries(v4l2_rga_rknn_detect_to_nv12_clean
+    imageutils
+    fileutils
+    ${OpenCV_LIBS}
+    PkgConfig::LIBRGA
+    ${LIBRKNNRT}
+    dl
+    pthread
+)

@@ -176,6 +176,32 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named v4l2_rga_rknn_detect_to_nv12_clean
+
+# Build rule for target.
+v4l2_rga_rknn_detect_to_nv12_clean: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 v4l2_rga_rknn_detect_to_nv12_clean
+.PHONY : v4l2_rga_rknn_detect_to_nv12_clean
+
+# fast build rule for target.
+v4l2_rga_rknn_detect_to_nv12_clean/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/build
+.PHONY : v4l2_rga_rknn_detect_to_nv12_clean/fast
+
+#=============================================================================
+# Target rules for targets named v4l2_rga_rknn_detect_to_nv12
+
+# Build rule for target.
+v4l2_rga_rknn_detect_to_nv12: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 v4l2_rga_rknn_detect_to_nv12
+.PHONY : v4l2_rga_rknn_detect_to_nv12
+
+# fast build rule for target.
+v4l2_rga_rknn_detect_to_nv12/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/build
+.PHONY : v4l2_rga_rknn_detect_to_nv12/fast
+
+#=============================================================================
 # Target rules for targets named image_detect
 
 # Build rule for target.
@@ -306,6 +332,19 @@ camera_profile_setcap/fast:
 .PHONY : camera_profile_setcap/fast
 
 #=============================================================================
+# Target rules for targets named v4l2_dump_nv12
+
+# Build rule for target.
+v4l2_dump_nv12: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 v4l2_dump_nv12
+.PHONY : v4l2_dump_nv12
+
+# fast build rule for target.
+v4l2_dump_nv12/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_dump_nv12.dir/build.make CMakeFiles/v4l2_dump_nv12.dir/build
+.PHONY : v4l2_dump_nv12/fast
+
+#=============================================================================
 # Target rules for targets named camera_profile_setcap_nowrite
 
 # Build rule for target.
@@ -402,6 +441,8 @@ home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.o: home/cat/lu
 
 # target to build an object file
 home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
@@ -418,6 +459,8 @@ home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.i: home/cat/lu
 
 # target to preprocess a source file
 home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
@@ -434,6 +477,8 @@ home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.s: home/cat/lu
 
 # target to generate assembly for a file
 home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
@@ -687,6 +732,33 @@ src/main_v4l2_capture_profile.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_capture_profile.dir/build.make CMakeFiles/v4l2_capture_profile.dir/src/main_v4l2_capture_profile.cpp.s
 .PHONY : src/main_v4l2_capture_profile.cpp.s
 
+src/main_v4l2_dump_nv12.o: src/main_v4l2_dump_nv12.cpp.o
+
+.PHONY : src/main_v4l2_dump_nv12.o
+
+# target to build an object file
+src/main_v4l2_dump_nv12.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_dump_nv12.dir/build.make CMakeFiles/v4l2_dump_nv12.dir/src/main_v4l2_dump_nv12.cpp.o
+.PHONY : src/main_v4l2_dump_nv12.cpp.o
+
+src/main_v4l2_dump_nv12.i: src/main_v4l2_dump_nv12.cpp.i
+
+.PHONY : src/main_v4l2_dump_nv12.i
+
+# target to preprocess a source file
+src/main_v4l2_dump_nv12.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_dump_nv12.dir/build.make CMakeFiles/v4l2_dump_nv12.dir/src/main_v4l2_dump_nv12.cpp.i
+.PHONY : src/main_v4l2_dump_nv12.cpp.i
+
+src/main_v4l2_dump_nv12.s: src/main_v4l2_dump_nv12.cpp.s
+
+.PHONY : src/main_v4l2_dump_nv12.s
+
+# target to generate assembly for a file
+src/main_v4l2_dump_nv12.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_dump_nv12.dir/build.make CMakeFiles/v4l2_dump_nv12.dir/src/main_v4l2_dump_nv12.cpp.s
+.PHONY : src/main_v4l2_dump_nv12.cpp.s
+
 src/main_v4l2_rga_realtime_preprocess.o: src/main_v4l2_rga_realtime_preprocess.cpp.o
 
 .PHONY : src/main_v4l2_rga_realtime_preprocess.o
@@ -743,6 +815,60 @@ src/main_v4l2_rga_rknn_detect.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/src/main_v4l2_rga_rknn_detect.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_profile.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_profile.dir/src/main_v4l2_rga_rknn_detect.cpp.s
 .PHONY : src/main_v4l2_rga_rknn_detect.cpp.s
+
+src/main_v4l2_rga_rknn_detect_to_nv12.o: src/main_v4l2_rga_rknn_detect_to_nv12.cpp.o
+
+.PHONY : src/main_v4l2_rga_rknn_detect_to_nv12.o
+
+# target to build an object file
+src/main_v4l2_rga_rknn_detect_to_nv12.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/src/main_v4l2_rga_rknn_detect_to_nv12.cpp.o
+.PHONY : src/main_v4l2_rga_rknn_detect_to_nv12.cpp.o
+
+src/main_v4l2_rga_rknn_detect_to_nv12.i: src/main_v4l2_rga_rknn_detect_to_nv12.cpp.i
+
+.PHONY : src/main_v4l2_rga_rknn_detect_to_nv12.i
+
+# target to preprocess a source file
+src/main_v4l2_rga_rknn_detect_to_nv12.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/src/main_v4l2_rga_rknn_detect_to_nv12.cpp.i
+.PHONY : src/main_v4l2_rga_rknn_detect_to_nv12.cpp.i
+
+src/main_v4l2_rga_rknn_detect_to_nv12.s: src/main_v4l2_rga_rknn_detect_to_nv12.cpp.s
+
+.PHONY : src/main_v4l2_rga_rknn_detect_to_nv12.s
+
+# target to generate assembly for a file
+src/main_v4l2_rga_rknn_detect_to_nv12.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/src/main_v4l2_rga_rknn_detect_to_nv12.cpp.s
+.PHONY : src/main_v4l2_rga_rknn_detect_to_nv12.cpp.s
+
+src/main_v4l2_rga_rknn_detect_to_nv12_clean.o: src/main_v4l2_rga_rknn_detect_to_nv12_clean.cpp.o
+
+.PHONY : src/main_v4l2_rga_rknn_detect_to_nv12_clean.o
+
+# target to build an object file
+src/main_v4l2_rga_rknn_detect_to_nv12_clean.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/src/main_v4l2_rga_rknn_detect_to_nv12_clean.cpp.o
+.PHONY : src/main_v4l2_rga_rknn_detect_to_nv12_clean.cpp.o
+
+src/main_v4l2_rga_rknn_detect_to_nv12_clean.i: src/main_v4l2_rga_rknn_detect_to_nv12_clean.cpp.i
+
+.PHONY : src/main_v4l2_rga_rknn_detect_to_nv12_clean.i
+
+# target to preprocess a source file
+src/main_v4l2_rga_rknn_detect_to_nv12_clean.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/src/main_v4l2_rga_rknn_detect_to_nv12_clean.cpp.i
+.PHONY : src/main_v4l2_rga_rknn_detect_to_nv12_clean.cpp.i
+
+src/main_v4l2_rga_rknn_detect_to_nv12_clean.s: src/main_v4l2_rga_rknn_detect_to_nv12_clean.cpp.s
+
+.PHONY : src/main_v4l2_rga_rknn_detect_to_nv12_clean.s
+
+# target to generate assembly for a file
+src/main_v4l2_rga_rknn_detect_to_nv12_clean.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/src/main_v4l2_rga_rknn_detect_to_nv12_clean.cpp.s
+.PHONY : src/main_v4l2_rga_rknn_detect_to_nv12_clean.cpp.s
 
 src/main_video.o: src/main_video.cpp.o
 
@@ -831,6 +957,8 @@ third_party/lubancat_yolo11_ref/postprocess.o: third_party/lubancat_yolo11_ref/p
 
 # target to build an object file
 third_party/lubancat_yolo11_ref/postprocess.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
@@ -847,6 +975,8 @@ third_party/lubancat_yolo11_ref/postprocess.i: third_party/lubancat_yolo11_ref/p
 
 # target to preprocess a source file
 third_party/lubancat_yolo11_ref/postprocess.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
@@ -863,6 +993,8 @@ third_party/lubancat_yolo11_ref/postprocess.s: third_party/lubancat_yolo11_ref/p
 
 # target to generate assembly for a file
 third_party/lubancat_yolo11_ref/postprocess.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
@@ -898,9 +1030,12 @@ help:
 	@echo "... imageutils"
 	@echo "... rga_nv12_to_rgb"
 	@echo "... v4l2_capture_profile"
+	@echo "... v4l2_dump_nv12"
 	@echo "... v4l2_rga_realtime_preprocess"
 	@echo "... v4l2_rga_rknn_detect"
 	@echo "... v4l2_rga_rknn_detect_profile"
+	@echo "... v4l2_rga_rknn_detect_to_nv12"
+	@echo "... v4l2_rga_rknn_detect_to_nv12_clean"
 	@echo "... video_detect"
 	@echo "... home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.o"
 	@echo "... home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.i"
@@ -932,12 +1067,21 @@ help:
 	@echo "... src/main_v4l2_capture_profile.o"
 	@echo "... src/main_v4l2_capture_profile.i"
 	@echo "... src/main_v4l2_capture_profile.s"
+	@echo "... src/main_v4l2_dump_nv12.o"
+	@echo "... src/main_v4l2_dump_nv12.i"
+	@echo "... src/main_v4l2_dump_nv12.s"
 	@echo "... src/main_v4l2_rga_realtime_preprocess.o"
 	@echo "... src/main_v4l2_rga_realtime_preprocess.i"
 	@echo "... src/main_v4l2_rga_realtime_preprocess.s"
 	@echo "... src/main_v4l2_rga_rknn_detect.o"
 	@echo "... src/main_v4l2_rga_rknn_detect.i"
 	@echo "... src/main_v4l2_rga_rknn_detect.s"
+	@echo "... src/main_v4l2_rga_rknn_detect_to_nv12.o"
+	@echo "... src/main_v4l2_rga_rknn_detect_to_nv12.i"
+	@echo "... src/main_v4l2_rga_rknn_detect_to_nv12.s"
+	@echo "... src/main_v4l2_rga_rknn_detect_to_nv12_clean.o"
+	@echo "... src/main_v4l2_rga_rknn_detect_to_nv12_clean.i"
+	@echo "... src/main_v4l2_rga_rknn_detect_to_nv12_clean.s"
 	@echo "... src/main_video.o"
 	@echo "... src/main_video.i"
 	@echo "... src/main_video.s"

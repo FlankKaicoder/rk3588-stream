@@ -3,6 +3,8 @@
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/list_install_components.dir
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/rebuild_cache.dir
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/edit_cache.dir
+/home/cat/projects/rk3588_ai_stream/build/CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir
+/home/cat/projects/rk3588_ai_stream/build/CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/image_detect.dir
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/v4l2_rga_rknn_detect.dir
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/camera_profile.dir
@@ -13,6 +15,7 @@
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/camera_capture_profile.dir
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/video_detect.dir
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/camera_profile_setcap.dir
+/home/cat/projects/rk3588_ai_stream/build/CMakeFiles/v4l2_dump_nv12.dir
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/camera_profile_setcap_nowrite.dir
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/install/local.dir
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/v4l2_rga_realtime_preprocess.dir

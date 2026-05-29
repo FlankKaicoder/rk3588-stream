@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/v4l2_dump_nv12.dir/src/main_v4l2_dump_nv12.cpp.o -o v4l2_dump_nv12  -lpthread 
