@@ -73,6 +73,7 @@ CMAKE_BINARY_DIR = /home/cat/projects/rk3588_ai_stream/build
 
 # The main recursive "all" target.
 all: CMakeFiles/image_detect.dir/all
+all: CMakeFiles/v4l2_rga_rknn_detect.dir/all
 all: CMakeFiles/camera_profile.dir/all
 all: CMakeFiles/camera_profile_nowrite.dir/all
 all: CMakeFiles/camera_detect.dir/all
@@ -82,6 +83,7 @@ all: CMakeFiles/camera_capture_profile.dir/all
 all: CMakeFiles/video_detect.dir/all
 all: CMakeFiles/camera_profile_setcap.dir/all
 all: CMakeFiles/camera_profile_setcap_nowrite.dir/all
+all: CMakeFiles/v4l2_rga_realtime_preprocess.dir/all
 all: 3rdparty.out/all
 all: utils.out/all
 
@@ -95,6 +97,7 @@ preinstall: utils.out/preinstall
 
 # The main recursive "clean" target.
 clean: CMakeFiles/image_detect.dir/clean
+clean: CMakeFiles/v4l2_rga_rknn_detect.dir/clean
 clean: CMakeFiles/camera_profile.dir/clean
 clean: CMakeFiles/camera_profile_nowrite.dir/clean
 clean: CMakeFiles/camera_detect.dir/clean
@@ -104,6 +107,7 @@ clean: CMakeFiles/camera_capture_profile.dir/clean
 clean: CMakeFiles/video_detect.dir/clean
 clean: CMakeFiles/camera_profile_setcap.dir/clean
 clean: CMakeFiles/camera_profile_setcap_nowrite.dir/clean
+clean: CMakeFiles/v4l2_rga_realtime_preprocess.dir/clean
 clean: 3rdparty.out/clean
 clean: utils.out/clean
 
@@ -179,6 +183,35 @@ image_detect: CMakeFiles/image_detect.dir/rule
 CMakeFiles/image_detect.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/clean
 .PHONY : CMakeFiles/image_detect.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/v4l2_rga_rknn_detect.dir
+
+# All Build rule for target.
+CMakeFiles/v4l2_rga_rknn_detect.dir/all: utils.out/CMakeFiles/imageutils.dir/all
+CMakeFiles/v4l2_rga_rknn_detect.dir/all: utils.out/CMakeFiles/imagedrawing.dir/all
+CMakeFiles/v4l2_rga_rknn_detect.dir/all: utils.out/CMakeFiles/fileutils.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=41,42,43,44 "Built target v4l2_rga_rknn_detect"
+.PHONY : CMakeFiles/v4l2_rga_rknn_detect.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/v4l2_rga_rknn_detect.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cat/projects/rk3588_ai_stream/build/CMakeFiles 10
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/v4l2_rga_rknn_detect.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cat/projects/rk3588_ai_stream/build/CMakeFiles 0
+.PHONY : CMakeFiles/v4l2_rga_rknn_detect.dir/rule
+
+# Convenience name for target.
+v4l2_rga_rknn_detect: CMakeFiles/v4l2_rga_rknn_detect.dir/rule
+
+.PHONY : v4l2_rga_rknn_detect
+
+# clean rule for target.
+CMakeFiles/v4l2_rga_rknn_detect.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/clean
+.PHONY : CMakeFiles/v4l2_rga_rknn_detect.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/camera_profile.dir
@@ -354,7 +387,7 @@ CMakeFiles/video_detect.dir/all: utils.out/CMakeFiles/imageutils.dir/all
 CMakeFiles/video_detect.dir/all: utils.out/CMakeFiles/fileutils.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/video_detect.dir/build.make CMakeFiles/video_detect.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/video_detect.dir/build.make CMakeFiles/video_detect.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=39,40,41,42 "Built target video_detect"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=45,46,47,48 "Built target video_detect"
 .PHONY : CMakeFiles/video_detect.dir/all
 
 # Build rule for subdir invocation for target.
@@ -429,6 +462,33 @@ camera_profile_setcap_nowrite: CMakeFiles/camera_profile_setcap_nowrite.dir/rule
 CMakeFiles/camera_profile_setcap_nowrite.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap_nowrite.dir/build.make CMakeFiles/camera_profile_setcap_nowrite.dir/clean
 .PHONY : CMakeFiles/camera_profile_setcap_nowrite.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/v4l2_rga_realtime_preprocess.dir
+
+# All Build rule for target.
+CMakeFiles/v4l2_rga_realtime_preprocess.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_realtime_preprocess.dir/build.make CMakeFiles/v4l2_rga_realtime_preprocess.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_realtime_preprocess.dir/build.make CMakeFiles/v4l2_rga_realtime_preprocess.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=39,40 "Built target v4l2_rga_realtime_preprocess"
+.PHONY : CMakeFiles/v4l2_rga_realtime_preprocess.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/v4l2_rga_realtime_preprocess.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cat/projects/rk3588_ai_stream/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/v4l2_rga_realtime_preprocess.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cat/projects/rk3588_ai_stream/build/CMakeFiles 0
+.PHONY : CMakeFiles/v4l2_rga_realtime_preprocess.dir/rule
+
+# Convenience name for target.
+v4l2_rga_realtime_preprocess: CMakeFiles/v4l2_rga_realtime_preprocess.dir/rule
+
+.PHONY : v4l2_rga_realtime_preprocess
+
+# clean rule for target.
+CMakeFiles/v4l2_rga_realtime_preprocess.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_realtime_preprocess.dir/build.make CMakeFiles/v4l2_rga_realtime_preprocess.dir/clean
+.PHONY : CMakeFiles/v4l2_rga_realtime_preprocess.dir/clean
 
 #=============================================================================
 # Target rules for target utils.out/CMakeFiles/audioutils.dir

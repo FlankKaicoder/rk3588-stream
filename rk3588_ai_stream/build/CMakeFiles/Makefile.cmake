@@ -127,6 +127,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/image_detect.dir/DependInfo.cmake"
+  "CMakeFiles/v4l2_rga_rknn_detect.dir/DependInfo.cmake"
   "CMakeFiles/camera_profile.dir/DependInfo.cmake"
   "CMakeFiles/camera_profile_nowrite.dir/DependInfo.cmake"
   "CMakeFiles/camera_detect.dir/DependInfo.cmake"
@@ -136,6 +137,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/video_detect.dir/DependInfo.cmake"
   "CMakeFiles/camera_profile_setcap.dir/DependInfo.cmake"
   "CMakeFiles/camera_profile_setcap_nowrite.dir/DependInfo.cmake"
+  "CMakeFiles/v4l2_rga_realtime_preprocess.dir/DependInfo.cmake"
   "utils.out/CMakeFiles/audioutils.dir/DependInfo.cmake"
   "utils.out/CMakeFiles/imageutils.dir/DependInfo.cmake"
   "utils.out/CMakeFiles/imagedrawing.dir/DependInfo.cmake"

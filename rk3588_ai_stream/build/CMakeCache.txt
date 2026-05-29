@@ -215,6 +215,12 @@ LUBANCAT_YOLO11_CPP:PATH=/home/cat/lubancat_ai_manual_code/example/yolo11/cpp
 //The directory containing a CMake configuration file for OpenCV.
 OpenCV_DIR:PATH=/usr/lib/aarch64-linux-gnu/cmake/opencv4
 
+//Path to a file.
+RGA_INCLUDE_DIR:PATH=/usr/include/rga
+
+//Path to a library.
+RGA_LIBRARY:FILEPATH=/usr/lib/aarch64-linux-gnu/librga.so
+
 //Target SoC
 TARGET_SOC:STRING=rk3588
 
