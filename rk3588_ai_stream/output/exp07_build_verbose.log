@@ -1,0 +1,46 @@
+/usr/bin/cmake -S/home/cat/projects/rk3588_ai_stream -B/home/cat/projects/rk3588_ai_stream/build --check-build-system CMakeFiles/Makefile.cmake 0
+make  -f CMakeFiles/Makefile2 v4l2_rga_rknn_detect_profile
+make[1]: 进入目录“/home/cat/projects/rk3588_ai_stream/build”
+/usr/bin/cmake -S/home/cat/projects/rk3588_ai_stream -B/home/cat/projects/rk3588_ai_stream/build --check-build-system CMakeFiles/Makefile.cmake 0
+/usr/bin/cmake -E cmake_progress_start /home/cat/projects/rk3588_ai_stream/build/CMakeFiles 10
+make  -f CMakeFiles/Makefile2 CMakeFiles/v4l2_rga_rknn_detect_profile.dir/all
+make[2]: 进入目录“/home/cat/projects/rk3588_ai_stream/build”
+make  -f utils.out/CMakeFiles/fileutils.dir/build.make utils.out/CMakeFiles/fileutils.dir/depend
+make[3]: 进入目录“/home/cat/projects/rk3588_ai_stream/build”
+cd /home/cat/projects/rk3588_ai_stream/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/cat/projects/rk3588_ai_stream /home/cat/lubancat_ai_manual_code/example/utils /home/cat/projects/rk3588_ai_stream/build /home/cat/projects/rk3588_ai_stream/build/utils.out /home/cat/projects/rk3588_ai_stream/build/utils.out/CMakeFiles/fileutils.dir/DependInfo.cmake --color=
+make[3]: 离开目录“/home/cat/projects/rk3588_ai_stream/build”
+make  -f utils.out/CMakeFiles/fileutils.dir/build.make utils.out/CMakeFiles/fileutils.dir/build
+make[3]: 进入目录“/home/cat/projects/rk3588_ai_stream/build”
+make[3]: 对“utils.out/CMakeFiles/fileutils.dir/build”无需做任何事。
+make[3]: 离开目录“/home/cat/projects/rk3588_ai_stream/build”
+[ 20%] Built target fileutils
+make  -f utils.out/CMakeFiles/imageutils.dir/build.make utils.out/CMakeFiles/imageutils.dir/depend
+make[3]: 进入目录“/home/cat/projects/rk3588_ai_stream/build”
+cd /home/cat/projects/rk3588_ai_stream/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/cat/projects/rk3588_ai_stream /home/cat/lubancat_ai_manual_code/example/utils /home/cat/projects/rk3588_ai_stream/build /home/cat/projects/rk3588_ai_stream/build/utils.out /home/cat/projects/rk3588_ai_stream/build/utils.out/CMakeFiles/imageutils.dir/DependInfo.cmake --color=
+make[3]: 离开目录“/home/cat/projects/rk3588_ai_stream/build”
+make  -f utils.out/CMakeFiles/imageutils.dir/build.make utils.out/CMakeFiles/imageutils.dir/build
+make[3]: 进入目录“/home/cat/projects/rk3588_ai_stream/build”
+make[3]: 对“utils.out/CMakeFiles/imageutils.dir/build”无需做任何事。
+make[3]: 离开目录“/home/cat/projects/rk3588_ai_stream/build”
+[ 40%] Built target imageutils
+make  -f utils.out/CMakeFiles/imagedrawing.dir/build.make utils.out/CMakeFiles/imagedrawing.dir/depend
+make[3]: 进入目录“/home/cat/projects/rk3588_ai_stream/build”
+cd /home/cat/projects/rk3588_ai_stream/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/cat/projects/rk3588_ai_stream /home/cat/lubancat_ai_manual_code/example/utils /home/cat/projects/rk3588_ai_stream/build /home/cat/projects/rk3588_ai_stream/build/utils.out /home/cat/projects/rk3588_ai_stream/build/utils.out/CMakeFiles/imagedrawing.dir/DependInfo.cmake --color=
+make[3]: 离开目录“/home/cat/projects/rk3588_ai_stream/build”
+make  -f utils.out/CMakeFiles/imagedrawing.dir/build.make utils.out/CMakeFiles/imagedrawing.dir/build
+make[3]: 进入目录“/home/cat/projects/rk3588_ai_stream/build”
+make[3]: 对“utils.out/CMakeFiles/imagedrawing.dir/build”无需做任何事。
+make[3]: 离开目录“/home/cat/projects/rk3588_ai_stream/build”
+[ 60%] Built target imagedrawing
+make  -f CMakeFiles/v4l2_rga_rknn_detect_profile.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_profile.dir/depend
+make[3]: 进入目录“/home/cat/projects/rk3588_ai_stream/build”
+cd /home/cat/projects/rk3588_ai_stream/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/cat/projects/rk3588_ai_stream /home/cat/projects/rk3588_ai_stream /home/cat/projects/rk3588_ai_stream/build /home/cat/projects/rk3588_ai_stream/build /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/v4l2_rga_rknn_detect_profile.dir/DependInfo.cmake --color=
+make[3]: 离开目录“/home/cat/projects/rk3588_ai_stream/build”
+make  -f CMakeFiles/v4l2_rga_rknn_detect_profile.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_profile.dir/build
+make[3]: 进入目录“/home/cat/projects/rk3588_ai_stream/build”
+make[3]: 对“CMakeFiles/v4l2_rga_rknn_detect_profile.dir/build”无需做任何事。
+make[3]: 离开目录“/home/cat/projects/rk3588_ai_stream/build”
+[100%] Built target v4l2_rga_rknn_detect_profile
+make[2]: 离开目录“/home/cat/projects/rk3588_ai_stream/build”
+/usr/bin/cmake -E cmake_progress_start /home/cat/projects/rk3588_ai_stream/build/CMakeFiles 0
+make[1]: 离开目录“/home/cat/projects/rk3588_ai_stream/build”

@@ -1,0 +1,59 @@
+/usr/bin/cmake -S/home/cat/projects/rk3588_ai_stream -B/home/cat/projects/rk3588_ai_stream/build --check-build-system CMakeFiles/Makefile.cmake 0
+make  -f CMakeFiles/Makefile2 v4l2_rga_rknn_detect_profile
+make[1]: 进入目录“/home/cat/projects/rk3588_ai_stream/build”
+/usr/bin/cmake -S/home/cat/projects/rk3588_ai_stream -B/home/cat/projects/rk3588_ai_stream/build --check-build-system CMakeFiles/Makefile.cmake 0
+/usr/bin/cmake -E cmake_progress_start /home/cat/projects/rk3588_ai_stream/build/CMakeFiles 10
+make  -f CMakeFiles/Makefile2 CMakeFiles/v4l2_rga_rknn_detect_profile.dir/all
+make[2]: 进入目录“/home/cat/projects/rk3588_ai_stream/build”
+make  -f utils.out/CMakeFiles/fileutils.dir/build.make utils.out/CMakeFiles/fileutils.dir/depend
+make[3]: 进入目录“/home/cat/projects/rk3588_ai_stream/build”
+cd /home/cat/projects/rk3588_ai_stream/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/cat/projects/rk3588_ai_stream /home/cat/lubancat_ai_manual_code/example/utils /home/cat/projects/rk3588_ai_stream/build /home/cat/projects/rk3588_ai_stream/build/utils.out /home/cat/projects/rk3588_ai_stream/build/utils.out/CMakeFiles/fileutils.dir/DependInfo.cmake --color=
+make[3]: 离开目录“/home/cat/projects/rk3588_ai_stream/build”
+make  -f utils.out/CMakeFiles/fileutils.dir/build.make utils.out/CMakeFiles/fileutils.dir/build
+make[3]: 进入目录“/home/cat/projects/rk3588_ai_stream/build”
+make[3]: 对“utils.out/CMakeFiles/fileutils.dir/build”无需做任何事。
+make[3]: 离开目录“/home/cat/projects/rk3588_ai_stream/build”
+[ 20%] Built target fileutils
+make  -f utils.out/CMakeFiles/imageutils.dir/build.make utils.out/CMakeFiles/imageutils.dir/depend
+make[3]: 进入目录“/home/cat/projects/rk3588_ai_stream/build”
+cd /home/cat/projects/rk3588_ai_stream/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/cat/projects/rk3588_ai_stream /home/cat/lubancat_ai_manual_code/example/utils /home/cat/projects/rk3588_ai_stream/build /home/cat/projects/rk3588_ai_stream/build/utils.out /home/cat/projects/rk3588_ai_stream/build/utils.out/CMakeFiles/imageutils.dir/DependInfo.cmake --color=
+make[3]: 离开目录“/home/cat/projects/rk3588_ai_stream/build”
+make  -f utils.out/CMakeFiles/imageutils.dir/build.make utils.out/CMakeFiles/imageutils.dir/build
+make[3]: 进入目录“/home/cat/projects/rk3588_ai_stream/build”
+make[3]: 对“utils.out/CMakeFiles/imageutils.dir/build”无需做任何事。
+make[3]: 离开目录“/home/cat/projects/rk3588_ai_stream/build”
+[ 40%] Built target imageutils
+make  -f utils.out/CMakeFiles/imagedrawing.dir/build.make utils.out/CMakeFiles/imagedrawing.dir/depend
+make[3]: 进入目录“/home/cat/projects/rk3588_ai_stream/build”
+cd /home/cat/projects/rk3588_ai_stream/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/cat/projects/rk3588_ai_stream /home/cat/lubancat_ai_manual_code/example/utils /home/cat/projects/rk3588_ai_stream/build /home/cat/projects/rk3588_ai_stream/build/utils.out /home/cat/projects/rk3588_ai_stream/build/utils.out/CMakeFiles/imagedrawing.dir/DependInfo.cmake --color=
+make[3]: 离开目录“/home/cat/projects/rk3588_ai_stream/build”
+make  -f utils.out/CMakeFiles/imagedrawing.dir/build.make utils.out/CMakeFiles/imagedrawing.dir/build
+make[3]: 进入目录“/home/cat/projects/rk3588_ai_stream/build”
+make[3]: 对“utils.out/CMakeFiles/imagedrawing.dir/build”无需做任何事。
+make[3]: 离开目录“/home/cat/projects/rk3588_ai_stream/build”
+[ 60%] Built target imagedrawing
+make  -f CMakeFiles/v4l2_rga_rknn_detect_profile.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_profile.dir/depend
+make[3]: 进入目录“/home/cat/projects/rk3588_ai_stream/build”
+cd /home/cat/projects/rk3588_ai_stream/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/cat/projects/rk3588_ai_stream /home/cat/projects/rk3588_ai_stream /home/cat/projects/rk3588_ai_stream/build /home/cat/projects/rk3588_ai_stream/build /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/v4l2_rga_rknn_detect_profile.dir/DependInfo.cmake --color=
+Dependee "/home/cat/projects/rk3588_ai_stream/src/main_v4l2_rga_rknn_detect.cpp" is newer than depender "CMakeFiles/v4l2_rga_rknn_detect_profile.dir/src/main_v4l2_rga_rknn_detect.cpp.o".
+Dependee "/home/cat/projects/rk3588_ai_stream/src/postprocess_profile.cc" is newer than depender "CMakeFiles/v4l2_rga_rknn_detect_profile.dir/src/postprocess_profile.cc.o".
+Dependee "/home/cat/projects/rk3588_ai_stream/src/yolo11_profile.cc" is newer than depender "CMakeFiles/v4l2_rga_rknn_detect_profile.dir/src/yolo11_profile.cc.o".
+Clearing dependencies in "/home/cat/projects/rk3588_ai_stream/build/CMakeFiles/v4l2_rga_rknn_detect_profile.dir/depend.make".
+Scanning dependencies of target v4l2_rga_rknn_detect_profile
+make[3]: 离开目录“/home/cat/projects/rk3588_ai_stream/build”
+make  -f CMakeFiles/v4l2_rga_rknn_detect_profile.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_profile.dir/build
+make[3]: 进入目录“/home/cat/projects/rk3588_ai_stream/build”
+[ 70%] Building CXX object CMakeFiles/v4l2_rga_rknn_detect_profile.dir/src/main_v4l2_rga_rknn_detect.cpp.o
+/usr/bin/c++  -I/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/../../3rdparty/allocator/dma -I/home/cat/projects/rk3588_ai_stream/include -I/home/cat/projects/rk3588_ai_stream/third_party/lubancat_yolo11_ref -I/home/cat/lubancat_ai_manual_code/example/yolo11/cpp -I/home/cat/lubancat_ai_manual_code/example/3rdparty/rknpu2/include -I/usr/include/rga -I/home/cat/lubancat_ai_manual_code/example/utils -I/home/cat/lubancat_ai_manual_code/example/3rdparty/stb_image -I/home/cat/lubancat_ai_manual_code/example/3rdparty/librga/include -I/home/cat/lubancat_ai_manual_code/example/3rdparty/jpeg_turbo/include -O3 -DNDEBUG -O3 -DNDEBUG -std=gnu++17 -o CMakeFiles/v4l2_rga_rknn_detect_profile.dir/src/main_v4l2_rga_rknn_detect.cpp.o -c /home/cat/projects/rk3588_ai_stream/src/main_v4l2_rga_rknn_detect.cpp
+[ 80%] Building CXX object CMakeFiles/v4l2_rga_rknn_detect_profile.dir/src/postprocess_profile.cc.o
+/usr/bin/c++  -I/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/../../3rdparty/allocator/dma -I/home/cat/projects/rk3588_ai_stream/include -I/home/cat/projects/rk3588_ai_stream/third_party/lubancat_yolo11_ref -I/home/cat/lubancat_ai_manual_code/example/yolo11/cpp -I/home/cat/lubancat_ai_manual_code/example/3rdparty/rknpu2/include -I/usr/include/rga -I/home/cat/lubancat_ai_manual_code/example/utils -I/home/cat/lubancat_ai_manual_code/example/3rdparty/stb_image -I/home/cat/lubancat_ai_manual_code/example/3rdparty/librga/include -I/home/cat/lubancat_ai_manual_code/example/3rdparty/jpeg_turbo/include -O3 -DNDEBUG -O3 -DNDEBUG -std=gnu++17 -o CMakeFiles/v4l2_rga_rknn_detect_profile.dir/src/postprocess_profile.cc.o -c /home/cat/projects/rk3588_ai_stream/src/postprocess_profile.cc
+[ 90%] Building CXX object CMakeFiles/v4l2_rga_rknn_detect_profile.dir/src/yolo11_profile.cc.o
+/usr/bin/c++  -I/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/../../3rdparty/allocator/dma -I/home/cat/projects/rk3588_ai_stream/include -I/home/cat/projects/rk3588_ai_stream/third_party/lubancat_yolo11_ref -I/home/cat/lubancat_ai_manual_code/example/yolo11/cpp -I/home/cat/lubancat_ai_manual_code/example/3rdparty/rknpu2/include -I/usr/include/rga -I/home/cat/lubancat_ai_manual_code/example/utils -I/home/cat/lubancat_ai_manual_code/example/3rdparty/stb_image -I/home/cat/lubancat_ai_manual_code/example/3rdparty/librga/include -I/home/cat/lubancat_ai_manual_code/example/3rdparty/jpeg_turbo/include -O3 -DNDEBUG -O3 -DNDEBUG -std=gnu++17 -o CMakeFiles/v4l2_rga_rknn_detect_profile.dir/src/yolo11_profile.cc.o -c /home/cat/projects/rk3588_ai_stream/src/yolo11_profile.cc
+[100%] Linking CXX executable v4l2_rga_rknn_detect_profile
+/usr/bin/cmake -E cmake_link_script CMakeFiles/v4l2_rga_rknn_detect_profile.dir/link.txt --verbose=1
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/v4l2_rga_rknn_detect_profile.dir/src/main_v4l2_rga_rknn_detect.cpp.o CMakeFiles/v4l2_rga_rknn_detect_profile.dir/src/postprocess_profile.cc.o CMakeFiles/v4l2_rga_rknn_detect_profile.dir/src/yolo11_profile.cc.o -o v4l2_rga_rknn_detect_profile  -Wl,-rpath,"\$ORIGIN/lib:\$ORIGIN/../lib:/home/cat/lubancat_ai_manual_code/example/3rdparty/rknpu2/Linux/aarch64" utils.out/libimageutils.a utils.out/libfileutils.a utils.out/libimagedrawing.a /usr/lib/aarch64-linux-gnu/librga.so /home/cat/lubancat_ai_manual_code/example/3rdparty/rknpu2/Linux/aarch64/librknnrt.so -ldl -lpthread /home/cat/lubancat_ai_manual_code/example/3rdparty/librga/Linux/aarch64/librga.a /home/cat/lubancat_ai_manual_code/example/3rdparty/jpeg_turbo/Linux/aarch64/libturbojpeg.a 
+make[3]: 离开目录“/home/cat/projects/rk3588_ai_stream/build”
+[100%] Built target v4l2_rga_rknn_detect_profile
+make[2]: 离开目录“/home/cat/projects/rk3588_ai_stream/build”
+/usr/bin/cmake -E cmake_progress_start /home/cat/projects/rk3588_ai_stream/build/CMakeFiles 0
+make[1]: 离开目录“/home/cat/projects/rk3588_ai_stream/build”

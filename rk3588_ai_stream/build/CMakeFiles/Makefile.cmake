@@ -138,6 +138,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/camera_profile_setcap.dir/DependInfo.cmake"
   "CMakeFiles/camera_profile_setcap_nowrite.dir/DependInfo.cmake"
   "CMakeFiles/v4l2_rga_realtime_preprocess.dir/DependInfo.cmake"
+  "CMakeFiles/v4l2_rga_rknn_detect_profile.dir/DependInfo.cmake"
   "utils.out/CMakeFiles/audioutils.dir/DependInfo.cmake"
   "utils.out/CMakeFiles/imageutils.dir/DependInfo.cmake"
   "utils.out/CMakeFiles/imagedrawing.dir/DependInfo.cmake"

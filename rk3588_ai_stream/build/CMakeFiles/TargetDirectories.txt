@@ -1,6 +1,8 @@
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/install/strip.dir
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/install.dir
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/list_install_components.dir
+/home/cat/projects/rk3588_ai_stream/build/CMakeFiles/rebuild_cache.dir
+/home/cat/projects/rk3588_ai_stream/build/CMakeFiles/edit_cache.dir
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/image_detect.dir
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/v4l2_rga_rknn_detect.dir
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/camera_profile.dir
@@ -14,8 +16,7 @@
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/camera_profile_setcap_nowrite.dir
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/install/local.dir
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/v4l2_rga_realtime_preprocess.dir
-/home/cat/projects/rk3588_ai_stream/build/CMakeFiles/rebuild_cache.dir
-/home/cat/projects/rk3588_ai_stream/build/CMakeFiles/edit_cache.dir
+/home/cat/projects/rk3588_ai_stream/build/CMakeFiles/v4l2_rga_rknn_detect_profile.dir
 /home/cat/projects/rk3588_ai_stream/build/3rdparty.out/CMakeFiles/install/strip.dir
 /home/cat/projects/rk3588_ai_stream/build/3rdparty.out/CMakeFiles/install/local.dir
 /home/cat/projects/rk3588_ai_stream/build/3rdparty.out/CMakeFiles/install.dir

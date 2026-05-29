@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/v4l2_rga_realtime_preprocess.dir/src/main_v4l2_rga_realtime_preprocess.cpp.o -o v4l2_rga_realtime_preprocess  -Wl,-rpath,"\$ORIGIN/lib:\$ORIGIN/../lib" /usr/lib/aarch64-linux-gnu/librga.so -lpthread 
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/v4l2_rga_realtime_preprocess.dir/src/main_v4l2_rga_realtime_preprocess.cpp.o -o v4l2_rga_realtime_preprocess  -Wl,-rpath,"\$ORIGIN/lib:\$ORIGIN/../lib" /usr/lib/aarch64-linux-gnu/librga.so -lpthread 

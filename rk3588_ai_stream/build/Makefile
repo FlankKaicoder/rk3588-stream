@@ -109,18 +109,6 @@ list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
 
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -142,6 +130,18 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -330,6 +330,19 @@ v4l2_rga_realtime_preprocess: cmake_check_build_system
 v4l2_rga_realtime_preprocess/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_realtime_preprocess.dir/build.make CMakeFiles/v4l2_rga_realtime_preprocess.dir/build
 .PHONY : v4l2_rga_realtime_preprocess/fast
+
+#=============================================================================
+# Target rules for targets named v4l2_rga_rknn_detect_profile
+
+# Build rule for target.
+v4l2_rga_rknn_detect_profile: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 v4l2_rga_rknn_detect_profile
+.PHONY : v4l2_rga_rknn_detect_profile
+
+# fast build rule for target.
+v4l2_rga_rknn_detect_profile/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_profile.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_profile.dir/build
+.PHONY : v4l2_rga_rknn_detect_profile/fast
 
 #=============================================================================
 # Target rules for targets named audioutils
@@ -708,6 +721,7 @@ src/main_v4l2_rga_rknn_detect.o: src/main_v4l2_rga_rknn_detect.cpp.o
 # target to build an object file
 src/main_v4l2_rga_rknn_detect.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/src/main_v4l2_rga_rknn_detect.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_profile.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_profile.dir/src/main_v4l2_rga_rknn_detect.cpp.o
 .PHONY : src/main_v4l2_rga_rknn_detect.cpp.o
 
 src/main_v4l2_rga_rknn_detect.i: src/main_v4l2_rga_rknn_detect.cpp.i
@@ -717,6 +731,7 @@ src/main_v4l2_rga_rknn_detect.i: src/main_v4l2_rga_rknn_detect.cpp.i
 # target to preprocess a source file
 src/main_v4l2_rga_rknn_detect.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/src/main_v4l2_rga_rknn_detect.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_profile.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_profile.dir/src/main_v4l2_rga_rknn_detect.cpp.i
 .PHONY : src/main_v4l2_rga_rknn_detect.cpp.i
 
 src/main_v4l2_rga_rknn_detect.s: src/main_v4l2_rga_rknn_detect.cpp.s
@@ -726,6 +741,7 @@ src/main_v4l2_rga_rknn_detect.s: src/main_v4l2_rga_rknn_detect.cpp.s
 # target to generate assembly for a file
 src/main_v4l2_rga_rknn_detect.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/src/main_v4l2_rga_rknn_detect.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_profile.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_profile.dir/src/main_v4l2_rga_rknn_detect.cpp.s
 .PHONY : src/main_v4l2_rga_rknn_detect.cpp.s
 
 src/main_video.o: src/main_video.cpp.o
@@ -754,6 +770,60 @@ src/main_video.s: src/main_video.cpp.s
 src/main_video.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/video_detect.dir/build.make CMakeFiles/video_detect.dir/src/main_video.cpp.s
 .PHONY : src/main_video.cpp.s
+
+src/postprocess_profile.o: src/postprocess_profile.cc.o
+
+.PHONY : src/postprocess_profile.o
+
+# target to build an object file
+src/postprocess_profile.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_profile.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_profile.dir/src/postprocess_profile.cc.o
+.PHONY : src/postprocess_profile.cc.o
+
+src/postprocess_profile.i: src/postprocess_profile.cc.i
+
+.PHONY : src/postprocess_profile.i
+
+# target to preprocess a source file
+src/postprocess_profile.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_profile.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_profile.dir/src/postprocess_profile.cc.i
+.PHONY : src/postprocess_profile.cc.i
+
+src/postprocess_profile.s: src/postprocess_profile.cc.s
+
+.PHONY : src/postprocess_profile.s
+
+# target to generate assembly for a file
+src/postprocess_profile.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_profile.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_profile.dir/src/postprocess_profile.cc.s
+.PHONY : src/postprocess_profile.cc.s
+
+src/yolo11_profile.o: src/yolo11_profile.cc.o
+
+.PHONY : src/yolo11_profile.o
+
+# target to build an object file
+src/yolo11_profile.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_profile.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_profile.dir/src/yolo11_profile.cc.o
+.PHONY : src/yolo11_profile.cc.o
+
+src/yolo11_profile.i: src/yolo11_profile.cc.i
+
+.PHONY : src/yolo11_profile.i
+
+# target to preprocess a source file
+src/yolo11_profile.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_profile.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_profile.dir/src/yolo11_profile.cc.i
+.PHONY : src/yolo11_profile.cc.i
+
+src/yolo11_profile.s: src/yolo11_profile.cc.s
+
+.PHONY : src/yolo11_profile.s
+
+# target to generate assembly for a file
+src/yolo11_profile.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_profile.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_profile.dir/src/yolo11_profile.cc.s
+.PHONY : src/yolo11_profile.cc.s
 
 third_party/lubancat_yolo11_ref/postprocess.o: third_party/lubancat_yolo11_ref/postprocess.cc.o
 
@@ -830,6 +900,7 @@ help:
 	@echo "... v4l2_capture_profile"
 	@echo "... v4l2_rga_realtime_preprocess"
 	@echo "... v4l2_rga_rknn_detect"
+	@echo "... v4l2_rga_rknn_detect_profile"
 	@echo "... video_detect"
 	@echo "... home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.o"
 	@echo "... home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.i"
@@ -870,6 +941,12 @@ help:
 	@echo "... src/main_video.o"
 	@echo "... src/main_video.i"
 	@echo "... src/main_video.s"
+	@echo "... src/postprocess_profile.o"
+	@echo "... src/postprocess_profile.i"
+	@echo "... src/postprocess_profile.s"
+	@echo "... src/yolo11_profile.o"
+	@echo "... src/yolo11_profile.i"
+	@echo "... src/yolo11_profile.s"
 	@echo "... third_party/lubancat_yolo11_ref/postprocess.o"
 	@echo "... third_party/lubancat_yolo11_ref/postprocess.i"
 	@echo "... third_party/lubancat_yolo11_ref/postprocess.s"

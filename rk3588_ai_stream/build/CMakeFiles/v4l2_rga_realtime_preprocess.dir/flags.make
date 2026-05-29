@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/../../3rdparty/allocator/dma -I/home/cat/projects/rk3588_ai_stream/include -I/usr/include/rga
 
-CXX_FLAGS = -std=gnu++17
+CXX_FLAGS = -O3 -DNDEBUG -std=gnu++17
 

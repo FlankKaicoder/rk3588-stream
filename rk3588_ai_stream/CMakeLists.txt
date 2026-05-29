@@ -317,6 +317,46 @@ set_target_properties(v4l2_rga_realtime_preprocess PROPERTIES
     BUILD_RPATH "$ORIGIN/lib;$ORIGIN/../lib"
 )
 
+target_compile_options(v4l2_rga_rknn_detect PRIVATE
+    -O3
+    -DNDEBUG
+)
+
 set_target_properties(v4l2_rga_rknn_detect PROPERTIES
+    BUILD_RPATH "$ORIGIN/lib;$ORIGIN/../lib"
+)
+
+# ===== 07 profile inference_yolo11_model internal stages =====
+
+add_executable(v4l2_rga_rknn_detect_profile
+    src/main_v4l2_rga_rknn_detect.cpp
+    src/postprocess_profile.cc
+    src/yolo11_profile.cc
+)
+
+target_include_directories(v4l2_rga_rknn_detect_profile PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/third_party/lubancat_yolo11_ref
+    ${LUBANCAT_YOLO11_CPP}
+    ${LIBRKNNRT_INCLUDES}
+    ${RGA_INCLUDE_DIR}
+)
+
+target_link_libraries(v4l2_rga_rknn_detect_profile
+    imageutils
+    fileutils
+    imagedrawing
+    ${RGA_LIBRARY}
+    ${LIBRKNNRT}
+    dl
+    pthread
+)
+
+target_compile_options(v4l2_rga_rknn_detect_profile PRIVATE
+    -O3
+    -DNDEBUG
+)
+
+set_target_properties(v4l2_rga_rknn_detect_profile PROPERTIES
     BUILD_RPATH "$ORIGIN/lib;$ORIGIN/../lib"
 )

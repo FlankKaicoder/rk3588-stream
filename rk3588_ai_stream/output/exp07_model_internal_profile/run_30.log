@@ -1,0 +1,906 @@
+========== 06 V4L2 + RGA + RKNN detect ==========
+model     : models/yolo11.rknn
+device    : /dev/video11
+size      : 1280x720
+frames    : 30
+csv       : output/exp07_model_internal_profile/profile_model_internal.csv
+snap dir  : output/exp07_model_internal_profile
+snap intv : 999999
+driver : rkisp_v6
+card   : rkisp_mainpath
+bus    : platform:rkisp0-vir0
+actual fmt: 1280x720 NV12, image_size=1382400
+WARN: VIDIOC_S_PARM failed: Inappropriate ioctl for device
+request buffers count: 4
+mmap buffer=0 length=1382400 offset=0
+mmap buffer=1 length=1382400 offset=1384448
+mmap buffer=2 length=1382400 offset=2768896
+mmap buffer=3 length=1382400 offset=4153344
+model input num: 1, output num: 9
+input tensors:
+  index=0, name=images, n_dims=4, dims=[1, 640, 640, 3], n_elems=1228800, size=1228800, fmt=NHWC, type=INT8, qnt_type=AFFINE, zp=-128, scale=0.003922
+output tensors:
+  index=0, name=output, n_dims=4, dims=[1, 64, 80, 80], n_elems=409600, size=409600, fmt=NCHW, type=INT8, qnt_type=AFFINE, zp=-56, scale=0.153800
+  index=1, name=sigmoid, n_dims=4, dims=[1, 80, 80, 80], n_elems=512000, size=512000, fmt=NCHW, type=INT8, qnt_type=AFFINE, zp=-128, scale=0.003353
+  index=2, name=clamp, n_dims=4, dims=[1, 1, 80, 80], n_elems=6400, size=6400, fmt=NCHW, type=INT8, qnt_type=AFFINE, zp=-128, scale=0.003359
+  index=3, name=conv2d_73, n_dims=4, dims=[1, 64, 40, 40], n_elems=102400, size=102400, fmt=NCHW, type=INT8, qnt_type=AFFINE, zp=-36, scale=0.099730
+  index=4, name=sigmoid_1, n_dims=4, dims=[1, 80, 40, 40], n_elems=128000, size=128000, fmt=NCHW, type=INT8, qnt_type=AFFINE, zp=-128, scale=0.003559
+  index=5, name=clamp_1, n_dims=4, dims=[1, 1, 40, 40], n_elems=1600, size=1600, fmt=NCHW, type=INT8, qnt_type=AFFINE, zp=-128, scale=0.003646
+  index=6, name=conv2d_81, n_dims=4, dims=[1, 64, 20, 20], n_elems=25600, size=25600, fmt=NCHW, type=INT8, qnt_type=AFFINE, zp=-25, scale=0.083873
+  index=7, name=sigmoid_2, n_dims=4, dims=[1, 80, 20, 20], n_elems=32000, size=32000, fmt=NCHW, type=INT8, qnt_type=AFFINE, zp=-128, scale=0.003694
+  index=8, name=clamp_2, n_dims=4, dims=[1, 1, 20, 20], n_elems=400, size=400, fmt=NCHW, type=INT8, qnt_type=AFFINE, zp=-128, scale=0.003839
+model is NHWC input fmt
+model input height=640, width=640, channel=3
+rga_api version 1.9.2_[1]
+scale=0.500000 dst_box=(0 140 639 499) allow_slight_change=1 _left_offset=0 _top_offset=140 padding_w=0 padding_h=280
+fill dst image (x y w h)=(0 0 640 640) with color=0x72727272
+ RgaCollorFill(1752) RGA_COLORFILL fail: Invalid argument
+ RgaCollorFill(1753) RGA_COLORFILL fail: Invalid argument
+154 im2d_rga_impl rga_task_submit(1943): Failed to call RockChipRga interface, please use 'dmesg' command to view driver error log.
+154 im2d_rga_impl rga_dump_channel_info(1418): src_channel: 
+  rect[x,y,w,h] = [0, 0, 0, 0]
+  image[w,h,ws,hs,f] = [0, 0, 0, 0, rgba8888]
+  buffer[handle,fd,va,pa] = [0, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+154 im2d_rga_impl rga_dump_channel_info(1418): dst_channel: 
+  rect[x,y,w,h] = [0, 0, 640, 640]
+  image[w,h,ws,hs,f] = [640, 640, 640, 640, rgb888]
+  buffer[handle,fd,va,pa] = [1604, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+154 im2d_rga_impl rga_dump_opt(1468): opt version[0x0]:
+
+154 im2d_rga_impl rga_dump_opt(1469): set_core[0x0], priority[0]
+
+154 im2d_rga_impl rga_dump_opt(1472): color[0x72727272] 
+154 im2d_rga_impl rga_dump_opt(1481): 
+
+154 im2d_rga_impl rga_task_submit(1952): acquir_fence[-1], release_fence_ptr[0x0], usage[0x280000]
+
+rknn_run
+[YOLO11_PROFILE] preprocess=5.140 inputs_set=5.813 rknn_run=22.086 outputs_get=3.458 postprocess=15.356 outputs_release=0.012 total=51.904
+write_image path: output/exp07_model_internal_profile/frame_000000.jpg width=1280 height=720 channel=3 data=0x7f86398010
+snapshot saved: output/exp07_model_internal_profile/frame_000000.jpg
+scale=0.500000 dst_box=(0 140 639 499) allow_slight_change=1 _left_offset=0 _top_offset=140 padding_w=0 padding_h=280
+fill dst image (x y w h)=(0 0 640 640) with color=0x72727272
+ RgaCollorFill(1752) RGA_COLORFILL fail: Invalid argument
+ RgaCollorFill(1753) RGA_COLORFILL fail: Invalid argument
+263 im2d_rga_impl rga_task_submit(1943): Failed to call RockChipRga interface, please use 'dmesg' command to view driver error log.
+263 im2d_rga_impl rga_dump_channel_info(1418): src_channel: 
+  rect[x,y,w,h] = [0, 0, 0, 0]
+  image[w,h,ws,hs,f] = [0, 0, 0, 0, rgba8888]
+  buffer[handle,fd,va,pa] = [0, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+263 im2d_rga_impl rga_dump_channel_info(1418): dst_channel: 
+  rect[x,y,w,h] = [0, 0, 640, 640]
+  image[w,h,ws,hs,f] = [640, 640, 640, 640, rgb888]
+  buffer[handle,fd,va,pa] = [1606, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+263 im2d_rga_impl rga_dump_opt(1468): opt version[0x0]:
+
+263 im2d_rga_impl rga_dump_opt(1469): set_core[0x0], priority[0]
+
+263 im2d_rga_impl rga_dump_opt(1472): color[0x72727272] 
+263 im2d_rga_impl rga_dump_opt(1481): 
+
+263 im2d_rga_impl rga_task_submit(1952): acquir_fence[-1], release_fence_ptr[0x0], usage[0x280000]
+
+rknn_run
+[YOLO11_PROFILE] preprocess=6.503 inputs_set=0.456 rknn_run=21.635 outputs_get=1.796 postprocess=13.260 outputs_release=0.008 total=43.670
+scale=0.500000 dst_box=(0 140 639 499) allow_slight_change=1 _left_offset=0 _top_offset=140 padding_w=0 padding_h=280
+fill dst image (x y w h)=(0 0 640 640) with color=0x72727272
+ RgaCollorFill(1752) RGA_COLORFILL fail: Invalid argument
+ RgaCollorFill(1753) RGA_COLORFILL fail: Invalid argument
+309 im2d_rga_impl rga_task_submit(1943): Failed to call RockChipRga interface, please use 'dmesg' command to view driver error log.
+309 im2d_rga_impl rga_dump_channel_info(1418): src_channel: 
+  rect[x,y,w,h] = [0, 0, 0, 0]
+  image[w,h,ws,hs,f] = [0, 0, 0, 0, rgba8888]
+  buffer[handle,fd,va,pa] = [0, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+309 im2d_rga_impl rga_dump_channel_info(1418): dst_channel: 
+  rect[x,y,w,h] = [0, 0, 640, 640]
+  image[w,h,ws,hs,f] = [640, 640, 640, 640, rgb888]
+  buffer[handle,fd,va,pa] = [1608, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+309 im2d_rga_impl rga_dump_opt(1468): opt version[0x0]:
+
+309 im2d_rga_impl rga_dump_opt(1469): set_core[0x0], priority[0]
+
+309 im2d_rga_impl rga_dump_opt(1472): color[0x72727272] 
+309 im2d_rga_impl rga_dump_opt(1481): 
+
+309 im2d_rga_impl rga_task_submit(1952): acquir_fence[-1], release_fence_ptr[0x0], usage[0x280000]
+
+rknn_run
+[YOLO11_PROFILE] preprocess=4.687 inputs_set=0.420 rknn_run=21.240 outputs_get=2.792 postprocess=25.823 outputs_release=0.011 total=54.994
+scale=0.500000 dst_box=(0 140 639 499) allow_slight_change=1 _left_offset=0 _top_offset=140 padding_w=0 padding_h=280
+fill dst image (x y w h)=(0 0 640 640) with color=0x72727272
+ RgaCollorFill(1752) RGA_COLORFILL fail: Invalid argument
+ RgaCollorFill(1753) RGA_COLORFILL fail: Invalid argument
+368 im2d_rga_impl rga_task_submit(1943): Failed to call RockChipRga interface, please use 'dmesg' command to view driver error log.
+368 im2d_rga_impl rga_dump_channel_info(1418): src_channel: 
+  rect[x,y,w,h] = [0, 0, 0, 0]
+  image[w,h,ws,hs,f] = [0, 0, 0, 0, rgba8888]
+  buffer[handle,fd,va,pa] = [0, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+368 im2d_rga_impl rga_dump_channel_info(1418): dst_channel: 
+  rect[x,y,w,h] = [0, 0, 640, 640]
+  image[w,h,ws,hs,f] = [640, 640, 640, 640, rgb888]
+  buffer[handle,fd,va,pa] = [1610, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+368 im2d_rga_impl rga_dump_opt(1468): opt version[0x0]:
+
+368 im2d_rga_impl rga_dump_opt(1469): set_core[0x0], priority[0]
+
+368 im2d_rga_impl rga_dump_opt(1472): color[0x72727272] 
+368 im2d_rga_impl rga_dump_opt(1481): 
+
+368 im2d_rga_impl rga_task_submit(1952): acquir_fence[-1], release_fence_ptr[0x0], usage[0x280000]
+
+rknn_run
+[YOLO11_PROFILE] preprocess=5.711 inputs_set=0.435 rknn_run=21.552 outputs_get=2.438 postprocess=20.415 outputs_release=0.009 total=50.578
+scale=0.500000 dst_box=(0 140 639 499) allow_slight_change=1 _left_offset=0 _top_offset=140 padding_w=0 padding_h=280
+fill dst image (x y w h)=(0 0 640 640) with color=0x72727272
+ RgaCollorFill(1752) RGA_COLORFILL fail: Invalid argument
+ RgaCollorFill(1753) RGA_COLORFILL fail: Invalid argument
+421 im2d_rga_impl rga_task_submit(1943): Failed to call RockChipRga interface, please use 'dmesg' command to view driver error log.
+421 im2d_rga_impl rga_dump_channel_info(1418): src_channel: 
+  rect[x,y,w,h] = [0, 0, 0, 0]
+  image[w,h,ws,hs,f] = [0, 0, 0, 0, rgba8888]
+  buffer[handle,fd,va,pa] = [0, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+421 im2d_rga_impl rga_dump_channel_info(1418): dst_channel: 
+  rect[x,y,w,h] = [0, 0, 640, 640]
+  image[w,h,ws,hs,f] = [640, 640, 640, 640, rgb888]
+  buffer[handle,fd,va,pa] = [1612, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+421 im2d_rga_impl rga_dump_opt(1468): opt version[0x0]:
+
+421 im2d_rga_impl rga_dump_opt(1469): set_core[0x0], priority[0]
+
+421 im2d_rga_impl rga_dump_opt(1472): color[0x72727272] 
+421 im2d_rga_impl rga_dump_opt(1481): 
+
+421 im2d_rga_impl rga_task_submit(1952): acquir_fence[-1], release_fence_ptr[0x0], usage[0x280000]
+
+rknn_run
+[YOLO11_PROFILE] preprocess=4.477 inputs_set=0.370 rknn_run=23.067 outputs_get=3.814 postprocess=15.634 outputs_release=0.005 total=47.385
+scale=0.500000 dst_box=(0 140 639 499) allow_slight_change=1 _left_offset=0 _top_offset=140 padding_w=0 padding_h=280
+fill dst image (x y w h)=(0 0 640 640) with color=0x72727272
+ RgaCollorFill(1752) RGA_COLORFILL fail: Invalid argument
+ RgaCollorFill(1753) RGA_COLORFILL fail: Invalid argument
+472 im2d_rga_impl rga_task_submit(1943): Failed to call RockChipRga interface, please use 'dmesg' command to view driver error log.
+472 im2d_rga_impl rga_dump_channel_info(1418): src_channel: 
+  rect[x,y,w,h] = [0, 0, 0, 0]
+  image[w,h,ws,hs,f] = [0, 0, 0, 0, rgba8888]
+  buffer[handle,fd,va,pa] = [0, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+472 im2d_rga_impl rga_dump_channel_info(1418): dst_channel: 
+  rect[x,y,w,h] = [0, 0, 640, 640]
+  image[w,h,ws,hs,f] = [640, 640, 640, 640, rgb888]
+  buffer[handle,fd,va,pa] = [1614, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+472 im2d_rga_impl rga_dump_opt(1468): opt version[0x0]:
+
+472 im2d_rga_impl rga_dump_opt(1469): set_core[0x0], priority[0]
+
+472 im2d_rga_impl rga_dump_opt(1472): color[0x72727272] 
+472 im2d_rga_impl rga_dump_opt(1481): 
+
+472 im2d_rga_impl rga_task_submit(1952): acquir_fence[-1], release_fence_ptr[0x0], usage[0x280000]
+
+rknn_run
+[YOLO11_PROFILE] preprocess=5.391 inputs_set=0.240 rknn_run=20.731 outputs_get=1.853 postprocess=19.823 outputs_release=0.011 total=48.062
+scale=0.500000 dst_box=(0 140 639 499) allow_slight_change=1 _left_offset=0 _top_offset=140 padding_w=0 padding_h=280
+fill dst image (x y w h)=(0 0 640 640) with color=0x72727272
+ RgaCollorFill(1752) RGA_COLORFILL fail: Invalid argument
+ RgaCollorFill(1753) RGA_COLORFILL fail: Invalid argument
+524 im2d_rga_impl rga_task_submit(1943): Failed to call RockChipRga interface, please use 'dmesg' command to view driver error log.
+524 im2d_rga_impl rga_dump_channel_info(1418): src_channel: 
+  rect[x,y,w,h] = [0, 0, 0, 0]
+  image[w,h,ws,hs,f] = [0, 0, 0, 0, rgba8888]
+  buffer[handle,fd,va,pa] = [0, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+524 im2d_rga_impl rga_dump_channel_info(1418): dst_channel: 
+  rect[x,y,w,h] = [0, 0, 640, 640]
+  image[w,h,ws,hs,f] = [640, 640, 640, 640, rgb888]
+  buffer[handle,fd,va,pa] = [1616, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+524 im2d_rga_impl rga_dump_opt(1468): opt version[0x0]:
+
+524 im2d_rga_impl rga_dump_opt(1469): set_core[0x0], priority[0]
+
+524 im2d_rga_impl rga_dump_opt(1472): color[0x72727272] 
+524 im2d_rga_impl rga_dump_opt(1481): 
+
+524 im2d_rga_impl rga_task_submit(1952): acquir_fence[-1], release_fence_ptr[0x0], usage[0x280000]
+
+rknn_run
+[YOLO11_PROFILE] preprocess=5.503 inputs_set=0.258 rknn_run=21.382 outputs_get=2.450 postprocess=16.515 outputs_release=0.016 total=46.139
+scale=0.500000 dst_box=(0 140 639 499) allow_slight_change=1 _left_offset=0 _top_offset=140 padding_w=0 padding_h=280
+fill dst image (x y w h)=(0 0 640 640) with color=0x72727272
+ RgaCollorFill(1752) RGA_COLORFILL fail: Invalid argument
+ RgaCollorFill(1753) RGA_COLORFILL fail: Invalid argument
+572 im2d_rga_impl rga_task_submit(1943): Failed to call RockChipRga interface, please use 'dmesg' command to view driver error log.
+572 im2d_rga_impl rga_dump_channel_info(1418): src_channel: 
+  rect[x,y,w,h] = [0, 0, 0, 0]
+  image[w,h,ws,hs,f] = [0, 0, 0, 0, rgba8888]
+  buffer[handle,fd,va,pa] = [0, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+572 im2d_rga_impl rga_dump_channel_info(1418): dst_channel: 
+  rect[x,y,w,h] = [0, 0, 640, 640]
+  image[w,h,ws,hs,f] = [640, 640, 640, 640, rgb888]
+  buffer[handle,fd,va,pa] = [1618, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+572 im2d_rga_impl rga_dump_opt(1468): opt version[0x0]:
+
+572 im2d_rga_impl rga_dump_opt(1469): set_core[0x0], priority[0]
+
+572 im2d_rga_impl rga_dump_opt(1472): color[0x72727272] 
+572 im2d_rga_impl rga_dump_opt(1481): 
+
+572 im2d_rga_impl rga_task_submit(1952): acquir_fence[-1], release_fence_ptr[0x0], usage[0x280000]
+
+rknn_run
+[YOLO11_PROFILE] preprocess=3.900 inputs_set=0.368 rknn_run=21.429 outputs_get=2.440 postprocess=15.897 outputs_release=0.013 total=44.070
+scale=0.500000 dst_box=(0 140 639 499) allow_slight_change=1 _left_offset=0 _top_offset=140 padding_w=0 padding_h=280
+fill dst image (x y w h)=(0 0 640 640) with color=0x72727272
+ RgaCollorFill(1752) RGA_COLORFILL fail: Invalid argument
+ RgaCollorFill(1753) RGA_COLORFILL fail: Invalid argument
+619 im2d_rga_impl rga_task_submit(1943): Failed to call RockChipRga interface, please use 'dmesg' command to view driver error log.
+619 im2d_rga_impl rga_dump_channel_info(1418): src_channel: 
+  rect[x,y,w,h] = [0, 0, 0, 0]
+  image[w,h,ws,hs,f] = [0, 0, 0, 0, rgba8888]
+  buffer[handle,fd,va,pa] = [0, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+619 im2d_rga_impl rga_dump_channel_info(1418): dst_channel: 
+  rect[x,y,w,h] = [0, 0, 640, 640]
+  image[w,h,ws,hs,f] = [640, 640, 640, 640, rgb888]
+  buffer[handle,fd,va,pa] = [1620, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+619 im2d_rga_impl rga_dump_opt(1468): opt version[0x0]:
+
+619 im2d_rga_impl rga_dump_opt(1469): set_core[0x0], priority[0]
+
+619 im2d_rga_impl rga_dump_opt(1472): color[0x72727272] 
+619 im2d_rga_impl rga_dump_opt(1481): 
+
+619 im2d_rga_impl rga_task_submit(1952): acquir_fence[-1], release_fence_ptr[0x0], usage[0x280000]
+
+rknn_run
+[YOLO11_PROFILE] preprocess=4.454 inputs_set=0.318 rknn_run=22.289 outputs_get=1.609 postprocess=11.826 outputs_release=0.009 total=40.520
+scale=0.500000 dst_box=(0 140 639 499) allow_slight_change=1 _left_offset=0 _top_offset=140 padding_w=0 padding_h=280
+fill dst image (x y w h)=(0 0 640 640) with color=0x72727272
+ RgaCollorFill(1752) RGA_COLORFILL fail: Invalid argument
+ RgaCollorFill(1753) RGA_COLORFILL fail: Invalid argument
+663 im2d_rga_impl rga_task_submit(1943): Failed to call RockChipRga interface, please use 'dmesg' command to view driver error log.
+663 im2d_rga_impl rga_dump_channel_info(1418): src_channel: 
+  rect[x,y,w,h] = [0, 0, 0, 0]
+  image[w,h,ws,hs,f] = [0, 0, 0, 0, rgba8888]
+  buffer[handle,fd,va,pa] = [0, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+663 im2d_rga_impl rga_dump_channel_info(1418): dst_channel: 
+  rect[x,y,w,h] = [0, 0, 640, 640]
+  image[w,h,ws,hs,f] = [640, 640, 640, 640, rgb888]
+  buffer[handle,fd,va,pa] = [1622, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+663 im2d_rga_impl rga_dump_opt(1468): opt version[0x0]:
+
+663 im2d_rga_impl rga_dump_opt(1469): set_core[0x0], priority[0]
+
+663 im2d_rga_impl rga_dump_opt(1472): color[0x72727272] 
+663 im2d_rga_impl rga_dump_opt(1481): 
+
+663 im2d_rga_impl rga_task_submit(1952): acquir_fence[-1], release_fence_ptr[0x0], usage[0x280000]
+
+rknn_run
+[YOLO11_PROFILE] preprocess=5.843 inputs_set=0.237 rknn_run=24.626 outputs_get=2.951 postprocess=12.729 outputs_release=0.009 total=46.411
+scale=0.500000 dst_box=(0 140 639 499) allow_slight_change=1 _left_offset=0 _top_offset=140 padding_w=0 padding_h=280
+fill dst image (x y w h)=(0 0 640 640) with color=0x72727272
+ RgaCollorFill(1752) RGA_COLORFILL fail: Invalid argument
+ RgaCollorFill(1753) RGA_COLORFILL fail: Invalid argument
+711 im2d_rga_impl rga_task_submit(1943): Failed to call RockChipRga interface, please use 'dmesg' command to view driver error log.
+711 im2d_rga_impl rga_dump_channel_info(1418): src_channel: 
+  rect[x,y,w,h] = [0, 0, 0, 0]
+  image[w,h,ws,hs,f] = [0, 0, 0, 0, rgba8888]
+  buffer[handle,fd,va,pa] = [0, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+711 im2d_rga_impl rga_dump_channel_info(1418): dst_channel: 
+  rect[x,y,w,h] = [0, 0, 640, 640]
+  image[w,h,ws,hs,f] = [640, 640, 640, 640, rgb888]
+  buffer[handle,fd,va,pa] = [1624, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+711 im2d_rga_impl rga_dump_opt(1468): opt version[0x0]:
+
+711 im2d_rga_impl rga_dump_opt(1469): set_core[0x0], priority[0]
+
+711 im2d_rga_impl rga_dump_opt(1472): color[0x72727272] 
+711 im2d_rga_impl rga_dump_opt(1481): 
+
+711 im2d_rga_impl rga_task_submit(1952): acquir_fence[-1], release_fence_ptr[0x0], usage[0x280000]
+
+rknn_run
+[YOLO11_PROFILE] preprocess=4.320 inputs_set=0.354 rknn_run=21.992 outputs_get=2.929 postprocess=20.663 outputs_release=0.015 total=50.290
+scale=0.500000 dst_box=(0 140 639 499) allow_slight_change=1 _left_offset=0 _top_offset=140 padding_w=0 padding_h=280
+fill dst image (x y w h)=(0 0 640 640) with color=0x72727272
+ RgaCollorFill(1752) RGA_COLORFILL fail: Invalid argument
+ RgaCollorFill(1753) RGA_COLORFILL fail: Invalid argument
+765 im2d_rga_impl rga_task_submit(1943): Failed to call RockChipRga interface, please use 'dmesg' command to view driver error log.
+765 im2d_rga_impl rga_dump_channel_info(1418): src_channel: 
+  rect[x,y,w,h] = [0, 0, 0, 0]
+  image[w,h,ws,hs,f] = [0, 0, 0, 0, rgba8888]
+  buffer[handle,fd,va,pa] = [0, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+765 im2d_rga_impl rga_dump_channel_info(1418): dst_channel: 
+  rect[x,y,w,h] = [0, 0, 640, 640]
+  image[w,h,ws,hs,f] = [640, 640, 640, 640, rgb888]
+  buffer[handle,fd,va,pa] = [1626, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+765 im2d_rga_impl rga_dump_opt(1468): opt version[0x0]:
+
+765 im2d_rga_impl rga_dump_opt(1469): set_core[0x0], priority[0]
+
+765 im2d_rga_impl rga_dump_opt(1472): color[0x72727272] 
+765 im2d_rga_impl rga_dump_opt(1481): 
+
+765 im2d_rga_impl rga_task_submit(1952): acquir_fence[-1], release_fence_ptr[0x0], usage[0x280000]
+
+rknn_run
+[YOLO11_PROFILE] preprocess=4.696 inputs_set=0.320 rknn_run=22.990 outputs_get=2.599 postprocess=15.570 outputs_release=0.011 total=46.200
+scale=0.500000 dst_box=(0 140 639 499) allow_slight_change=1 _left_offset=0 _top_offset=140 padding_w=0 padding_h=280
+fill dst image (x y w h)=(0 0 640 640) with color=0x72727272
+ RgaCollorFill(1752) RGA_COLORFILL fail: Invalid argument
+ RgaCollorFill(1753) RGA_COLORFILL fail: Invalid argument
+815 im2d_rga_impl rga_task_submit(1943): Failed to call RockChipRga interface, please use 'dmesg' command to view driver error log.
+815 im2d_rga_impl rga_dump_channel_info(1418): src_channel: 
+  rect[x,y,w,h] = [0, 0, 0, 0]
+  image[w,h,ws,hs,f] = [0, 0, 0, 0, rgba8888]
+  buffer[handle,fd,va,pa] = [0, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+815 im2d_rga_impl rga_dump_channel_info(1418): dst_channel: 
+  rect[x,y,w,h] = [0, 0, 640, 640]
+  image[w,h,ws,hs,f] = [640, 640, 640, 640, rgb888]
+  buffer[handle,fd,va,pa] = [1628, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+815 im2d_rga_impl rga_dump_opt(1468): opt version[0x0]:
+
+815 im2d_rga_impl rga_dump_opt(1469): set_core[0x0], priority[0]
+
+815 im2d_rga_impl rga_dump_opt(1472): color[0x72727272] 
+815 im2d_rga_impl rga_dump_opt(1481): 
+
+815 im2d_rga_impl rga_task_submit(1952): acquir_fence[-1], release_fence_ptr[0x0], usage[0x280000]
+
+rknn_run
+[YOLO11_PROFILE] preprocess=6.064 inputs_set=0.428 rknn_run=21.400 outputs_get=3.799 postprocess=16.238 outputs_release=0.008 total=47.955
+scale=0.500000 dst_box=(0 140 639 499) allow_slight_change=1 _left_offset=0 _top_offset=140 padding_w=0 padding_h=280
+fill dst image (x y w h)=(0 0 640 640) with color=0x72727272
+ RgaCollorFill(1752) RGA_COLORFILL fail: Invalid argument
+ RgaCollorFill(1753) RGA_COLORFILL fail: Invalid argument
+866 im2d_rga_impl rga_task_submit(1943): Failed to call RockChipRga interface, please use 'dmesg' command to view driver error log.
+866 im2d_rga_impl rga_dump_channel_info(1418): src_channel: 
+  rect[x,y,w,h] = [0, 0, 0, 0]
+  image[w,h,ws,hs,f] = [0, 0, 0, 0, rgba8888]
+  buffer[handle,fd,va,pa] = [0, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+866 im2d_rga_impl rga_dump_channel_info(1418): dst_channel: 
+  rect[x,y,w,h] = [0, 0, 640, 640]
+  image[w,h,ws,hs,f] = [640, 640, 640, 640, rgb888]
+  buffer[handle,fd,va,pa] = [1630, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+866 im2d_rga_impl rga_dump_opt(1468): opt version[0x0]:
+
+866 im2d_rga_impl rga_dump_opt(1469): set_core[0x0], priority[0]
+
+866 im2d_rga_impl rga_dump_opt(1472): color[0x72727272] 
+866 im2d_rga_impl rga_dump_opt(1481): 
+
+866 im2d_rga_impl rga_task_submit(1952): acquir_fence[-1], release_fence_ptr[0x0], usage[0x280000]
+
+rknn_run
+[YOLO11_PROFILE] preprocess=5.947 inputs_set=0.506 rknn_run=22.277 outputs_get=2.337 postprocess=15.738 outputs_release=0.011 total=46.834
+scale=0.500000 dst_box=(0 140 639 499) allow_slight_change=1 _left_offset=0 _top_offset=140 padding_w=0 padding_h=280
+fill dst image (x y w h)=(0 0 640 640) with color=0x72727272
+ RgaCollorFill(1752) RGA_COLORFILL fail: Invalid argument
+ RgaCollorFill(1753) RGA_COLORFILL fail: Invalid argument
+915 im2d_rga_impl rga_task_submit(1943): Failed to call RockChipRga interface, please use 'dmesg' command to view driver error log.
+915 im2d_rga_impl rga_dump_channel_info(1418): src_channel: 
+  rect[x,y,w,h] = [0, 0, 0, 0]
+  image[w,h,ws,hs,f] = [0, 0, 0, 0, rgba8888]
+  buffer[handle,fd,va,pa] = [0, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+915 im2d_rga_impl rga_dump_channel_info(1418): dst_channel: 
+  rect[x,y,w,h] = [0, 0, 640, 640]
+  image[w,h,ws,hs,f] = [640, 640, 640, 640, rgb888]
+  buffer[handle,fd,va,pa] = [1632, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+916 im2d_rga_impl rga_dump_opt(1468): opt version[0x0]:
+
+916 im2d_rga_impl rga_dump_opt(1469): set_core[0x0], priority[0]
+
+916 im2d_rga_impl rga_dump_opt(1472): color[0x72727272] 
+916 im2d_rga_impl rga_dump_opt(1481): 
+
+916 im2d_rga_impl rga_task_submit(1952): acquir_fence[-1], release_fence_ptr[0x0], usage[0x280000]
+
+rknn_run
+[YOLO11_PROFILE] preprocess=6.036 inputs_set=0.254 rknn_run=26.540 outputs_get=3.834 postprocess=16.349 outputs_release=0.008 total=53.038
+scale=0.500000 dst_box=(0 140 639 499) allow_slight_change=1 _left_offset=0 _top_offset=140 padding_w=0 padding_h=280
+fill dst image (x y w h)=(0 0 640 640) with color=0x72727272
+ RgaCollorFill(1752) RGA_COLORFILL fail: Invalid argument
+ RgaCollorFill(1753) RGA_COLORFILL fail: Invalid argument
+970 im2d_rga_impl rga_task_submit(1943): Failed to call RockChipRga interface, please use 'dmesg' command to view driver error log.
+970 im2d_rga_impl rga_dump_channel_info(1418): src_channel: 
+  rect[x,y,w,h] = [0, 0, 0, 0]
+  image[w,h,ws,hs,f] = [0, 0, 0, 0, rgba8888]
+  buffer[handle,fd,va,pa] = [0, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+970 im2d_rga_impl rga_dump_channel_info(1418): dst_channel: 
+  rect[x,y,w,h] = [0, 0, 640, 640]
+  image[w,h,ws,hs,f] = [640, 640, 640, 640, rgb888]
+  buffer[handle,fd,va,pa] = [1634, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+970 im2d_rga_impl rga_dump_opt(1468): opt version[0x0]:
+
+970 im2d_rga_impl rga_dump_opt(1469): set_core[0x0], priority[0]
+
+970 im2d_rga_impl rga_dump_opt(1472): color[0x72727272] 
+970 im2d_rga_impl rga_dump_opt(1481): 
+
+970 im2d_rga_impl rga_task_submit(1952): acquir_fence[-1], release_fence_ptr[0x0], usage[0x280000]
+
+rknn_run
+[YOLO11_PROFILE] preprocess=4.648 inputs_set=0.439 rknn_run=22.183 outputs_get=1.619 postprocess=11.818 outputs_release=0.008 total=40.732
+scale=0.500000 dst_box=(0 140 639 499) allow_slight_change=1 _left_offset=0 _top_offset=140 padding_w=0 padding_h=280
+fill dst image (x y w h)=(0 0 640 640) with color=0x72727272
+ RgaCollorFill(1752) RGA_COLORFILL fail: Invalid argument
+ RgaCollorFill(1753) RGA_COLORFILL fail: Invalid argument
+1014 im2d_rga_impl rga_task_submit(1943): Failed to call RockChipRga interface, please use 'dmesg' command to view driver error log.
+1014 im2d_rga_impl rga_dump_channel_info(1418): src_channel: 
+  rect[x,y,w,h] = [0, 0, 0, 0]
+  image[w,h,ws,hs,f] = [0, 0, 0, 0, rgba8888]
+  buffer[handle,fd,va,pa] = [0, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+1014 im2d_rga_impl rga_dump_channel_info(1418): dst_channel: 
+  rect[x,y,w,h] = [0, 0, 640, 640]
+  image[w,h,ws,hs,f] = [640, 640, 640, 640, rgb888]
+  buffer[handle,fd,va,pa] = [1636, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+1014 im2d_rga_impl rga_dump_opt(1468): opt version[0x0]:
+
+1014 im2d_rga_impl rga_dump_opt(1469): set_core[0x0], priority[0]
+
+1014 im2d_rga_impl rga_dump_opt(1472): color[0x72727272] 
+1014 im2d_rga_impl rga_dump_opt(1481): 
+
+1014 im2d_rga_impl rga_task_submit(1952): acquir_fence[-1], release_fence_ptr[0x0], usage[0x280000]
+
+rknn_run
+[YOLO11_PROFILE] preprocess=4.995 inputs_set=0.343 rknn_run=22.678 outputs_get=1.528 postprocess=10.341 outputs_release=0.007 total=39.908
+scale=0.500000 dst_box=(0 140 639 499) allow_slight_change=1 _left_offset=0 _top_offset=140 padding_w=0 padding_h=280
+fill dst image (x y w h)=(0 0 640 640) with color=0x72727272
+ RgaCollorFill(1752) RGA_COLORFILL fail: Invalid argument
+ RgaCollorFill(1753) RGA_COLORFILL fail: Invalid argument
+1057 im2d_rga_impl rga_task_submit(1943): Failed to call RockChipRga interface, please use 'dmesg' command to view driver error log.
+1057 im2d_rga_impl rga_dump_channel_info(1418): src_channel: 
+  rect[x,y,w,h] = [0, 0, 0, 0]
+  image[w,h,ws,hs,f] = [0, 0, 0, 0, rgba8888]
+  buffer[handle,fd,va,pa] = [0, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+1057 im2d_rga_impl rga_dump_channel_info(1418): dst_channel: 
+  rect[x,y,w,h] = [0, 0, 640, 640]
+  image[w,h,ws,hs,f] = [640, 640, 640, 640, rgb888]
+  buffer[handle,fd,va,pa] = [1638, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+1057 im2d_rga_impl rga_dump_opt(1468): opt version[0x0]:
+
+1057 im2d_rga_impl rga_dump_opt(1469): set_core[0x0], priority[0]
+
+1057 im2d_rga_impl rga_dump_opt(1472): color[0x72727272] 
+1057 im2d_rga_impl rga_dump_opt(1481): 
+
+1057 im2d_rga_impl rga_task_submit(1952): acquir_fence[-1], release_fence_ptr[0x0], usage[0x280000]
+
+rknn_run
+[YOLO11_PROFILE] preprocess=5.159 inputs_set=0.357 rknn_run=21.541 outputs_get=8.287 postprocess=14.652 outputs_release=0.007 total=50.016
+scale=0.500000 dst_box=(0 140 639 499) allow_slight_change=1 _left_offset=0 _top_offset=140 padding_w=0 padding_h=280
+fill dst image (x y w h)=(0 0 640 640) with color=0x72727272
+ RgaCollorFill(1752) RGA_COLORFILL fail: Invalid argument
+ RgaCollorFill(1753) RGA_COLORFILL fail: Invalid argument
+1110 im2d_rga_impl rga_task_submit(1943): Failed to call RockChipRga interface, please use 'dmesg' command to view driver error log.
+1110 im2d_rga_impl rga_dump_channel_info(1418): src_channel: 
+  rect[x,y,w,h] = [0, 0, 0, 0]
+  image[w,h,ws,hs,f] = [0, 0, 0, 0, rgba8888]
+  buffer[handle,fd,va,pa] = [0, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+1110 im2d_rga_impl rga_dump_channel_info(1418): dst_channel: 
+  rect[x,y,w,h] = [0, 0, 640, 640]
+  image[w,h,ws,hs,f] = [640, 640, 640, 640, rgb888]
+  buffer[handle,fd,va,pa] = [1640, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+1110 im2d_rga_impl rga_dump_opt(1468): opt version[0x0]:
+
+1110 im2d_rga_impl rga_dump_opt(1469): set_core[0x0], priority[0]
+
+1110 im2d_rga_impl rga_dump_opt(1472): color[0x72727272] 
+1110 im2d_rga_impl rga_dump_opt(1481): 
+
+1110 im2d_rga_impl rga_task_submit(1952): acquir_fence[-1], release_fence_ptr[0x0], usage[0x280000]
+
+rknn_run
+[YOLO11_PROFILE] preprocess=6.406 inputs_set=0.434 rknn_run=21.517 outputs_get=1.678 postprocess=13.145 outputs_release=0.014 total=43.208
+scale=0.500000 dst_box=(0 140 639 499) allow_slight_change=1 _left_offset=0 _top_offset=140 padding_w=0 padding_h=280
+fill dst image (x y w h)=(0 0 640 640) with color=0x72727272
+ RgaCollorFill(1752) RGA_COLORFILL fail: Invalid argument
+ RgaCollorFill(1753) RGA_COLORFILL fail: Invalid argument
+1157 im2d_rga_impl rga_task_submit(1943): Failed to call RockChipRga interface, please use 'dmesg' command to view driver error log.
+1157 im2d_rga_impl rga_dump_channel_info(1418): src_channel: 
+  rect[x,y,w,h] = [0, 0, 0, 0]
+  image[w,h,ws,hs,f] = [0, 0, 0, 0, rgba8888]
+  buffer[handle,fd,va,pa] = [0, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+1157 im2d_rga_impl rga_dump_channel_info(1418): dst_channel: 
+  rect[x,y,w,h] = [0, 0, 640, 640]
+  image[w,h,ws,hs,f] = [640, 640, 640, 640, rgb888]
+  buffer[handle,fd,va,pa] = [1642, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+1157 im2d_rga_impl rga_dump_opt(1468): opt version[0x0]:
+
+1157 im2d_rga_impl rga_dump_opt(1469): set_core[0x0], priority[0]
+
+1157 im2d_rga_impl rga_dump_opt(1472): color[0x72727272] 
+1157 im2d_rga_impl rga_dump_opt(1481): 
+
+1157 im2d_rga_impl rga_task_submit(1952): acquir_fence[-1], release_fence_ptr[0x0], usage[0x280000]
+
+rknn_run
+[YOLO11_PROFILE] preprocess=6.363 inputs_set=0.441 rknn_run=22.465 outputs_get=2.809 postprocess=15.458 outputs_release=0.006 total=47.558
+scale=0.500000 dst_box=(0 140 639 499) allow_slight_change=1 _left_offset=0 _top_offset=140 padding_w=0 padding_h=280
+fill dst image (x y w h)=(0 0 640 640) with color=0x72727272
+ RgaCollorFill(1752) RGA_COLORFILL fail: Invalid argument
+ RgaCollorFill(1753) RGA_COLORFILL fail: Invalid argument
+1207 im2d_rga_impl rga_task_submit(1943): Failed to call RockChipRga interface, please use 'dmesg' command to view driver error log.
+1207 im2d_rga_impl rga_dump_channel_info(1418): src_channel: 
+  rect[x,y,w,h] = [0, 0, 0, 0]
+  image[w,h,ws,hs,f] = [0, 0, 0, 0, rgba8888]
+  buffer[handle,fd,va,pa] = [0, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+1207 im2d_rga_impl rga_dump_channel_info(1418): dst_channel: 
+  rect[x,y,w,h] = [0, 0, 640, 640]
+  image[w,h,ws,hs,f] = [640, 640, 640, 640, rgb888]
+  buffer[handle,fd,va,pa] = [1644, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+1207 im2d_rga_impl rga_dump_opt(1468): opt version[0x0]:
+
+1207 im2d_rga_impl rga_dump_opt(1469): set_core[0x0], priority[0]
+
+1207 im2d_rga_impl rga_dump_opt(1472): color[0x72727272] 
+1207 im2d_rga_impl rga_dump_opt(1481): 
+
+1207 im2d_rga_impl rga_task_submit(1952): acquir_fence[-1], release_fence_ptr[0x0], usage[0x280000]
+
+rknn_run
+[YOLO11_PROFILE] preprocess=5.658 inputs_set=0.440 rknn_run=22.851 outputs_get=2.370 postprocess=11.763 outputs_release=0.006 total=43.104
+scale=0.500000 dst_box=(0 140 639 499) allow_slight_change=1 _left_offset=0 _top_offset=140 padding_w=0 padding_h=280
+fill dst image (x y w h)=(0 0 640 640) with color=0x72727272
+ RgaCollorFill(1752) RGA_COLORFILL fail: Invalid argument
+ RgaCollorFill(1753) RGA_COLORFILL fail: Invalid argument
+1252 im2d_rga_impl rga_task_submit(1943): Failed to call RockChipRga interface, please use 'dmesg' command to view driver error log.
+1252 im2d_rga_impl rga_dump_channel_info(1418): src_channel: 
+  rect[x,y,w,h] = [0, 0, 0, 0]
+  image[w,h,ws,hs,f] = [0, 0, 0, 0, rgba8888]
+  buffer[handle,fd,va,pa] = [0, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+1252 im2d_rga_impl rga_dump_channel_info(1418): dst_channel: 
+  rect[x,y,w,h] = [0, 0, 640, 640]
+  image[w,h,ws,hs,f] = [640, 640, 640, 640, rgb888]
+  buffer[handle,fd,va,pa] = [1646, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+1252 im2d_rga_impl rga_dump_opt(1468): opt version[0x0]:
+
+1252 im2d_rga_impl rga_dump_opt(1469): set_core[0x0], priority[0]
+
+1252 im2d_rga_impl rga_dump_opt(1472): color[0x72727272] 
+1252 im2d_rga_impl rga_dump_opt(1481): 
+
+1252 im2d_rga_impl rga_task_submit(1952): acquir_fence[-1], release_fence_ptr[0x0], usage[0x280000]
+
+rknn_run
+[YOLO11_PROFILE] preprocess=4.534 inputs_set=0.354 rknn_run=24.138 outputs_get=2.471 postprocess=13.838 outputs_release=0.007 total=45.356
+scale=0.500000 dst_box=(0 140 639 499) allow_slight_change=1 _left_offset=0 _top_offset=140 padding_w=0 padding_h=280
+fill dst image (x y w h)=(0 0 640 640) with color=0x72727272
+ RgaCollorFill(1752) RGA_COLORFILL fail: Invalid argument
+ RgaCollorFill(1753) RGA_COLORFILL fail: Invalid argument
+1301 im2d_rga_impl rga_task_submit(1943): Failed to call RockChipRga interface, please use 'dmesg' command to view driver error log.
+1301 im2d_rga_impl rga_dump_channel_info(1418): src_channel: 
+  rect[x,y,w,h] = [0, 0, 0, 0]
+  image[w,h,ws,hs,f] = [0, 0, 0, 0, rgba8888]
+  buffer[handle,fd,va,pa] = [0, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+1301 im2d_rga_impl rga_dump_channel_info(1418): dst_channel: 
+  rect[x,y,w,h] = [0, 0, 640, 640]
+  image[w,h,ws,hs,f] = [640, 640, 640, 640, rgb888]
+  buffer[handle,fd,va,pa] = [1648, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+1301 im2d_rga_impl rga_dump_opt(1468): opt version[0x0]:
+
+1301 im2d_rga_impl rga_dump_opt(1469): set_core[0x0], priority[0]
+
+1301 im2d_rga_impl rga_dump_opt(1472): color[0x72727272] 
+1301 im2d_rga_impl rga_dump_opt(1481): 
+
+1301 im2d_rga_impl rga_task_submit(1952): acquir_fence[-1], release_fence_ptr[0x0], usage[0x280000]
+
+rknn_run
+[YOLO11_PROFILE] preprocess=6.657 inputs_set=0.435 rknn_run=23.582 outputs_get=1.890 postprocess=13.212 outputs_release=0.009 total=45.802
+scale=0.500000 dst_box=(0 140 639 499) allow_slight_change=1 _left_offset=0 _top_offset=140 padding_w=0 padding_h=280
+fill dst image (x y w h)=(0 0 640 640) with color=0x72727272
+ RgaCollorFill(1752) RGA_COLORFILL fail: Invalid argument
+ RgaCollorFill(1753) RGA_COLORFILL fail: Invalid argument
+1350 im2d_rga_impl rga_task_submit(1943): Failed to call RockChipRga interface, please use 'dmesg' command to view driver error log.
+1350 im2d_rga_impl rga_dump_channel_info(1418): src_channel: 
+  rect[x,y,w,h] = [0, 0, 0, 0]
+  image[w,h,ws,hs,f] = [0, 0, 0, 0, rgba8888]
+  buffer[handle,fd,va,pa] = [0, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+1350 im2d_rga_impl rga_dump_channel_info(1418): dst_channel: 
+  rect[x,y,w,h] = [0, 0, 640, 640]
+  image[w,h,ws,hs,f] = [640, 640, 640, 640, rgb888]
+  buffer[handle,fd,va,pa] = [1650, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+1350 im2d_rga_impl rga_dump_opt(1468): opt version[0x0]:
+
+1350 im2d_rga_impl rga_dump_opt(1469): set_core[0x0], priority[0]
+
+1350 im2d_rga_impl rga_dump_opt(1472): color[0x72727272] 
+1350 im2d_rga_impl rga_dump_opt(1481): 
+
+1350 im2d_rga_impl rga_task_submit(1952): acquir_fence[-1], release_fence_ptr[0x0], usage[0x280000]
+
+rknn_run
+[YOLO11_PROFILE] preprocess=5.920 inputs_set=0.263 rknn_run=23.150 outputs_get=3.776 postprocess=14.976 outputs_release=0.009 total=48.110
+scale=0.500000 dst_box=(0 140 639 499) allow_slight_change=1 _left_offset=0 _top_offset=140 padding_w=0 padding_h=280
+fill dst image (x y w h)=(0 0 640 640) with color=0x72727272
+ RgaCollorFill(1752) RGA_COLORFILL fail: Invalid argument
+ RgaCollorFill(1753) RGA_COLORFILL fail: Invalid argument
+1401 im2d_rga_impl rga_task_submit(1943): Failed to call RockChipRga interface, please use 'dmesg' command to view driver error log.
+1401 im2d_rga_impl rga_dump_channel_info(1418): src_channel: 
+  rect[x,y,w,h] = [0, 0, 0, 0]
+  image[w,h,ws,hs,f] = [0, 0, 0, 0, rgba8888]
+  buffer[handle,fd,va,pa] = [0, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+1401 im2d_rga_impl rga_dump_channel_info(1418): dst_channel: 
+  rect[x,y,w,h] = [0, 0, 640, 640]
+  image[w,h,ws,hs,f] = [640, 640, 640, 640, rgb888]
+  buffer[handle,fd,va,pa] = [1652, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+1401 im2d_rga_impl rga_dump_opt(1468): opt version[0x0]:
+
+1401 im2d_rga_impl rga_dump_opt(1469): set_core[0x0], priority[0]
+
+1401 im2d_rga_impl rga_dump_opt(1472): color[0x72727272] 
+1401 im2d_rga_impl rga_dump_opt(1481): 
+
+1401 im2d_rga_impl rga_task_submit(1952): acquir_fence[-1], release_fence_ptr[0x0], usage[0x280000]
+
+rknn_run
+[YOLO11_PROFILE] preprocess=6.433 inputs_set=0.440 rknn_run=23.016 outputs_get=2.369 postprocess=12.927 outputs_release=0.009 total=45.209
+scale=0.500000 dst_box=(0 140 639 499) allow_slight_change=1 _left_offset=0 _top_offset=140 padding_w=0 padding_h=280
+fill dst image (x y w h)=(0 0 640 640) with color=0x72727272
+ RgaCollorFill(1752) RGA_COLORFILL fail: Invalid argument
+ RgaCollorFill(1753) RGA_COLORFILL fail: Invalid argument
+1450 im2d_rga_impl rga_task_submit(1943): Failed to call RockChipRga interface, please use 'dmesg' command to view driver error log.
+1450 im2d_rga_impl rga_dump_channel_info(1418): src_channel: 
+  rect[x,y,w,h] = [0, 0, 0, 0]
+  image[w,h,ws,hs,f] = [0, 0, 0, 0, rgba8888]
+  buffer[handle,fd,va,pa] = [0, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+1450 im2d_rga_impl rga_dump_channel_info(1418): dst_channel: 
+  rect[x,y,w,h] = [0, 0, 640, 640]
+  image[w,h,ws,hs,f] = [640, 640, 640, 640, rgb888]
+  buffer[handle,fd,va,pa] = [1654, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+1450 im2d_rga_impl rga_dump_opt(1468): opt version[0x0]:
+
+1450 im2d_rga_impl rga_dump_opt(1469): set_core[0x0], priority[0]
+
+1450 im2d_rga_impl rga_dump_opt(1472): color[0x72727272] 
+1450 im2d_rga_impl rga_dump_opt(1481): 
+
+1450 im2d_rga_impl rga_task_submit(1952): acquir_fence[-1], release_fence_ptr[0x0], usage[0x280000]
+
+rknn_run
+[YOLO11_PROFILE] preprocess=8.000 inputs_set=0.484 rknn_run=22.811 outputs_get=2.512 postprocess=15.980 outputs_release=0.006 total=49.808
+scale=0.500000 dst_box=(0 140 639 499) allow_slight_change=1 _left_offset=0 _top_offset=140 padding_w=0 padding_h=280
+fill dst image (x y w h)=(0 0 640 640) with color=0x72727272
+ RgaCollorFill(1752) RGA_COLORFILL fail: Invalid argument
+ RgaCollorFill(1753) RGA_COLORFILL fail: Invalid argument
+1501 im2d_rga_impl rga_task_submit(1943): Failed to call RockChipRga interface, please use 'dmesg' command to view driver error log.
+1501 im2d_rga_impl rga_dump_channel_info(1418): src_channel: 
+  rect[x,y,w,h] = [0, 0, 0, 0]
+  image[w,h,ws,hs,f] = [0, 0, 0, 0, rgba8888]
+  buffer[handle,fd,va,pa] = [0, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+1501 im2d_rga_impl rga_dump_channel_info(1418): dst_channel: 
+  rect[x,y,w,h] = [0, 0, 640, 640]
+  image[w,h,ws,hs,f] = [640, 640, 640, 640, rgb888]
+  buffer[handle,fd,va,pa] = [1656, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+1501 im2d_rga_impl rga_dump_opt(1468): opt version[0x0]:
+
+1501 im2d_rga_impl rga_dump_opt(1469): set_core[0x0], priority[0]
+
+1501 im2d_rga_impl rga_dump_opt(1472): color[0x72727272] 
+1501 im2d_rga_impl rga_dump_opt(1481): 
+
+1501 im2d_rga_impl rga_task_submit(1952): acquir_fence[-1], release_fence_ptr[0x0], usage[0x280000]
+
+rknn_run
+[YOLO11_PROFILE] preprocess=6.680 inputs_set=0.440 rknn_run=21.985 outputs_get=2.345 postprocess=11.697 outputs_release=0.008 total=43.170
+scale=0.500000 dst_box=(0 140 639 499) allow_slight_change=1 _left_offset=0 _top_offset=140 padding_w=0 padding_h=280
+fill dst image (x y w h)=(0 0 640 640) with color=0x72727272
+ RgaCollorFill(1752) RGA_COLORFILL fail: Invalid argument
+ RgaCollorFill(1753) RGA_COLORFILL fail: Invalid argument
+1547 im2d_rga_impl rga_task_submit(1943): Failed to call RockChipRga interface, please use 'dmesg' command to view driver error log.
+1547 im2d_rga_impl rga_dump_channel_info(1418): src_channel: 
+  rect[x,y,w,h] = [0, 0, 0, 0]
+  image[w,h,ws,hs,f] = [0, 0, 0, 0, rgba8888]
+  buffer[handle,fd,va,pa] = [0, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+1547 im2d_rga_impl rga_dump_channel_info(1418): dst_channel: 
+  rect[x,y,w,h] = [0, 0, 640, 640]
+  image[w,h,ws,hs,f] = [640, 640, 640, 640, rgb888]
+  buffer[handle,fd,va,pa] = [1658, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+1547 im2d_rga_impl rga_dump_opt(1468): opt version[0x0]:
+
+1547 im2d_rga_impl rga_dump_opt(1469): set_core[0x0], priority[0]
+
+1547 im2d_rga_impl rga_dump_opt(1472): color[0x72727272] 
+1547 im2d_rga_impl rga_dump_opt(1481): 
+
+1547 im2d_rga_impl rga_task_submit(1952): acquir_fence[-1], release_fence_ptr[0x0], usage[0x280000]
+
+rknn_run
+[YOLO11_PROFILE] preprocess=6.867 inputs_set=0.438 rknn_run=24.569 outputs_get=3.594 postprocess=14.085 outputs_release=0.006 total=49.577
+scale=0.500000 dst_box=(0 140 639 499) allow_slight_change=1 _left_offset=0 _top_offset=140 padding_w=0 padding_h=280
+fill dst image (x y w h)=(0 0 640 640) with color=0x72727272
+ RgaCollorFill(1752) RGA_COLORFILL fail: Invalid argument
+ RgaCollorFill(1753) RGA_COLORFILL fail: Invalid argument
+1599 im2d_rga_impl rga_task_submit(1943): Failed to call RockChipRga interface, please use 'dmesg' command to view driver error log.
+1599 im2d_rga_impl rga_dump_channel_info(1418): src_channel: 
+  rect[x,y,w,h] = [0, 0, 0, 0]
+  image[w,h,ws,hs,f] = [0, 0, 0, 0, rgba8888]
+  buffer[handle,fd,va,pa] = [0, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+1599 im2d_rga_impl rga_dump_channel_info(1418): dst_channel: 
+  rect[x,y,w,h] = [0, 0, 640, 640]
+  image[w,h,ws,hs,f] = [640, 640, 640, 640, rgb888]
+  buffer[handle,fd,va,pa] = [1660, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+1599 im2d_rga_impl rga_dump_opt(1468): opt version[0x0]:
+
+1599 im2d_rga_impl rga_dump_opt(1469): set_core[0x0], priority[0]
+
+1599 im2d_rga_impl rga_dump_opt(1472): color[0x72727272] 
+1599 im2d_rga_impl rga_dump_opt(1481): 
+
+1600 im2d_rga_impl rga_task_submit(1952): acquir_fence[-1], release_fence_ptr[0x0], usage[0x280000]
+
+rknn_run
+[YOLO11_PROFILE] preprocess=5.963 inputs_set=0.854 rknn_run=23.333 outputs_get=2.843 postprocess=11.685 outputs_release=0.006 total=44.701
+scale=0.500000 dst_box=(0 140 639 499) allow_slight_change=1 _left_offset=0 _top_offset=140 padding_w=0 padding_h=280
+fill dst image (x y w h)=(0 0 640 640) with color=0x72727272
+ RgaCollorFill(1752) RGA_COLORFILL fail: Invalid argument
+ RgaCollorFill(1753) RGA_COLORFILL fail: Invalid argument
+1647 im2d_rga_impl rga_task_submit(1943): Failed to call RockChipRga interface, please use 'dmesg' command to view driver error log.
+1647 im2d_rga_impl rga_dump_channel_info(1418): src_channel: 
+  rect[x,y,w,h] = [0, 0, 0, 0]
+  image[w,h,ws,hs,f] = [0, 0, 0, 0, rgba8888]
+  buffer[handle,fd,va,pa] = [0, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+1647 im2d_rga_impl rga_dump_channel_info(1418): dst_channel: 
+  rect[x,y,w,h] = [0, 0, 640, 640]
+  image[w,h,ws,hs,f] = [640, 640, 640, 640, rgb888]
+  buffer[handle,fd,va,pa] = [1662, 0, 0, 0]
+  color_space = 0x0, global_alpha = 0x0, rd_mode = 0x0
+
+1647 im2d_rga_impl rga_dump_opt(1468): opt version[0x0]:
+
+1647 im2d_rga_impl rga_dump_opt(1469): set_core[0x0], priority[0]
+
+1647 im2d_rga_impl rga_dump_opt(1472): color[0x72727272] 
+1647 im2d_rga_impl rga_dump_opt(1481): 
+
+1647 im2d_rga_impl rga_task_submit(1952): acquir_fence[-1], release_fence_ptr[0x0], usage[0x280000]
+
+rknn_run
+[YOLO11_PROFILE] preprocess=5.900 inputs_set=0.216 rknn_run=25.927 outputs_get=1.708 postprocess=12.342 outputs_release=0.005 total=46.111
+
+========== 06 avg ==========
+frames          : 30
+select_ms       : 1.646
+dqbuf_ms        : 0.006
+rga_ms          : 2.741
+input_prepare_ms: 0.002
+model_total_ms  : 46.746
+draw_ms         : 0.000
+snapshot_ms     : 1.726
+qbuf_ms         : 0.089
+total_ms        : 52.963
+avg_fps         : 18.881
+============================
+
+========== 06 final ==========
+frames       : 30
+wall_time_ms : 1590.302
+wall_fps     : 18.864
+avg_select_ms       : 1.646
+avg_dqbuf_ms        : 0.006
+avg_rga_ms          : 2.741
+avg_input_prepare_ms: 0.002
+avg_model_total_ms  : 46.746
+avg_draw_ms         : 0.000
+avg_snapshot_ms     : 1.726
+avg_qbuf_ms         : 0.089
+avg_total_ms        : 52.963
+csv saved: output/exp07_model_internal_profile/profile_model_internal.csv
+================================

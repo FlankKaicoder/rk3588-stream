@@ -6,5 +6,5 @@ C_DEFINES = -DLIBRGA_IM2D_HANDLE
 
 C_INCLUDES = -I/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/../../3rdparty/allocator/dma -I/home/cat/lubancat_ai_manual_code/example/utils
 
-C_FLAGS = 
+C_FLAGS = -O3 -DNDEBUG
 
