@@ -23,12 +23,12 @@
 
 #include "im2d.hpp"
 #include "RgaUtils.h"
-
+//结构体用来记录映射之后的内存地址方便代码读取
 struct Buffer {
     void* start = nullptr;
     size_t length = 0;
 };
-
+//封装原生的ioctl函数，避免系统软中断打断系统调用（ioctl控制摄像头被系统软终端打断）
 static int xioctl(int fd, unsigned long request, void* arg)
 {
     int r;
@@ -37,7 +37,7 @@ static int xioctl(int fd, unsigned long request, void* arg)
     } while (r == -1 && errno == EINTR);
     return r;
 }
-
+//用chrono库进行高精度耗时计算，进行性能分析
 static double diff_ms(const std::chrono::steady_clock::time_point& a,
                       const std::chrono::steady_clock::time_point& b)
 {
@@ -83,7 +83,7 @@ static void draw_detections_on_rgb(cv::Mat& rgb,
         cv::Scalar box_color(color[2], color[1], color[0]);
 
         const object_detect_result* det = &(od_results.results[i]);
-
+        //从npu推理完成之后的结果中提取边界框置信度然后打印到终端
         printf("frame=%d %s @ (%d %d %d %d) %.3f\n",
                frame_id,
                coco_cls_to_name(det->cls_id),
@@ -92,12 +92,12 @@ static void draw_detections_on_rgb(cv::Mat& rgb,
                det->box.right,
                det->box.bottom,
                det->prop);
-
+        //边界保护
         int x1 = det->box.left;
         int y1 = det->box.top;
         int x2 = det->box.right;
         int y2 = det->box.bottom;
-
+        //
         if (x1 < 0) x1 = 0;
         if (y1 < 0) y1 = 0;
         if (x2 > rgb.cols - 1) x2 = rgb.cols - 1;
@@ -106,7 +106,7 @@ static void draw_detections_on_rgb(cv::Mat& rgb,
         if (x2 <= x1 || y2 <= y1) {
             continue;
         }
-
+        //调用opencv::rectangle画框，snprintf格式化类别名称和置信度，gettextsize计算文字大小画上文字背景板，puttext协商白色文字
         cv::rectangle(rgb,
                       cv::Rect(cv::Point(x1, y1), cv::Point(x2, y2)),
                       box_color,
@@ -155,7 +155,7 @@ static void draw_detections_on_rgb(cv::Mat& rgb,
                     1);
     }
 }
-
+//保留debug开发工具
 static bool save_rgb_debug_jpg(const char* path, const unsigned char* rgb_data, int width, int height)
 {
     cv::Mat rgb(height, width, CV_8UC3, const_cast<unsigned char*>(rgb_data));
@@ -165,13 +165,13 @@ static bool save_rgb_debug_jpg(const char* path, const unsigned char* rgb_data, 
 }
 
 int main(int argc, char** argv)
-{
+{   //参数校验
     if (argc != 8) {
         printf("Usage: %s <model_path> <video_dev> <width> <height> <frames> <out_nv12_or_fifo> <profile_csv>\n", argv[0]);
         printf("Example: %s models/yolo11.rknn /dev/video11 1280 720 120 output/exp08_3_detect_fifo_mpp/live_detect_nv12.fifo output/exp08_3_detect_fifo_mpp/profile.csv\n", argv[0]);
         return -1;
     }
-
+    //atoi字符串转成整数，赋值给相应变量
     const char* model_path = argv[1];
     const char* dev_name = argv[2];
     int width = atoi(argv[3]);
@@ -179,7 +179,7 @@ int main(int argc, char** argv)
     int frames = atoi(argv[5]);
     const char* out_path = argv[6];
     const char* profile_csv_path = argv[7];
-
+    //计算图像大小
     const size_t nv12_size = (size_t)width * height * 3 / 2;
     const size_t rgb_size = (size_t)width * height * 3;
 
@@ -192,7 +192,7 @@ int main(int argc, char** argv)
     printf("profile csv: %s\n", profile_csv_path);
     printf("nv12 size  : %zu\n", nv12_size);
     printf("rgb size   : %zu\n", rgb_size);
-    //打开设备查询能力
+    //打开设备查询能力（非阻塞模式进行设备能力查询）
     int fd = open(dev_name, O_RDWR | O_NONBLOCK, 0);
     if (fd < 0) {
         perror("open video device failed");
@@ -223,10 +223,10 @@ int main(int argc, char** argv)
         return -1;
     }
 
-    v4l2_format fmt;
+    v4l2_format fmt; //填充这个结构体
     memset(&fmt, 0, sizeof(fmt));
 
-    fmt.type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
+    fmt.type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;  //瑞芯微采用多平面采集
     fmt.fmt.pix_mp.width = width;
     fmt.fmt.pix_mp.height = height;
     fmt.fmt.pix_mp.pixelformat = V4L2_PIX_FMT_NV12;
@@ -253,9 +253,9 @@ int main(int argc, char** argv)
     v4l2_requestbuffers req;
     memset(&req, 0, sizeof(req));
 
-    req.count = 4;
+    req.count = 4;  //多缓冲队列
     req.type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
-    req.memory = V4L2_MEMORY_MMAP;
+    req.memory = V4L2_MEMORY_MMAP; //指定采用内存映射模式
 
     if (xioctl(fd, VIDIOC_REQBUFS, &req) < 0) {
         perror("VIDIOC_REQBUFS failed");
@@ -286,13 +286,13 @@ int main(int argc, char** argv)
             return -1;
         }
 
-        buffers[i].length = buf.m.planes[0].length;
-        buffers[i].start = mmap(NULL,
-                                buffers[i].length,
-                                PROT_READ | PROT_WRITE,
-                                MAP_SHARED,
-                                fd,
-                                buf.m.planes[0].m.mem_offset);
+        buffers[i].length = buf.m.planes[0].length;  //保存缓冲区长度
+        buffers[i].start = mmap(NULL,                               //内核选择映射地址
+                                buffers[i].length,                  //映射大小
+                                PROT_READ | PROT_WRITE,//读写
+                                MAP_SHARED,  //共享映射（对硬件的修改也可见）
+                                fd,                 //文件描述符
+                                buf.m.planes[0].m.mem_offset);    //缓冲区在设备内存中的偏移量
 
         if (buffers[i].start == MAP_FAILED) {
             perror("mmap failed");
@@ -376,7 +376,7 @@ int main(int argc, char** argv)
         return -1;
     }
 
-    v4l2_buf_type type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
+    v4l2_buf_type type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE; // VIDIOC_STREAM是一个宏定义常量，只是数字用于标识视频流启动；启动失败则资源释放
     if (xioctl(fd, VIDIOC_STREAMON, &type) < 0) {
         perror("VIDIOC_STREAMON failed");
         release_yolo11_model(&rknn_app_ctx);
@@ -386,7 +386,7 @@ int main(int argc, char** argv)
         close(fd);
         return -1;
     }
-
+    //double变量用于累加所有帧中的各个阶段的耗时，最后计算平均值
     double sum_select_ms = 0.0;
     double sum_dqbuf_ms = 0.0;
     double sum_rga_nv12_to_rgb_ms = 0.0;
@@ -397,26 +397,26 @@ int main(int argc, char** argv)
     double sum_write_ms = 0.0;
     double sum_qbuf_ms = 0.0;
     double sum_total_ms = 0.0;
-
+    //记录整个采集循环的墙钟开始时间，计算总运行时间和帧率
     auto wall_start = std::chrono::steady_clock::now();
-
+    //成功处理的帧数计数器
     int actual_frames = 0;
 
     for (int frame_id = 0; frame_id < frames; ++frame_id) {
-        auto t_total0 = std::chrono::steady_clock::now();
+        auto t_total0 = std::chrono::steady_clock::now(); //记录此帧开始的时间
+        //设置select监听
+        fd_set fds;  //文件描述集合
+        FD_ZERO(&fds);  //清空
+        FD_SET(fd, &fds);  //加入集合
 
-        fd_set fds;
-        FD_ZERO(&fds);
-        FD_SET(fd, &fds);
-
-        timeval tv;
-        tv.tv_sec = 2;
+        timeval tv;   //设置超时时间
+        tv.tv_sec = 2;   //超时两秒就select返回0
         tv.tv_usec = 0;
 
         auto t_select0 = std::chrono::steady_clock::now();
         int sret = select(fd + 1, &fds, NULL, NULL, &tv); //等待摄像头，超时两秒
-        auto t_select1 = std::chrono::steady_clock::now();
-
+        auto t_select1 = std::chrono::steady_clock::now();   //t_select0和1记录等待耗时
+        //错误超时终止循环
         if (sret < 0) {
             perror("select failed");
             break;
@@ -439,7 +439,7 @@ int main(int argc, char** argv)
         buf.m.planes = planes;
 
         auto t_dq0 = std::chrono::steady_clock::now();
-        if (xioctl(fd, VIDIOC_DQBUF, &buf) < 0) {
+        if (xioctl(fd, VIDIOC_DQBUF, &buf) < 0) {           //VIDIOC_DQBUF从驱动中取出已经填充的buffer
             if (errno == EAGAIN) {
                 --frame_id;
                 continue;
@@ -449,11 +449,11 @@ int main(int argc, char** argv)
         }
         auto t_dq1 = std::chrono::steady_clock::now();
 
-        unsigned char* nv12_in = (unsigned char*)buffers[buf.index].start;
+        unsigned char* nv12_in = (unsigned char*)buffers[buf.index].start;  //获取NV12原始数据的指针，通过buffer.index就可以找到对应的虚拟地址，指向摄像头输出的NV12帧数据
 
         auto t_rga_in0 = std::chrono::steady_clock::now();
         //NV12格式转成RGA认识NV类型
-        rga_buffer_t rga_src_nv12 = wrapbuffer_virtualaddr((void*)nv12_in,
+        rga_buffer_t rga_src_nv12 = wrapbuffer_virtualaddr((void*)nv12_in,    //wrapbuffer_virtualaddr将虚拟地址和图像参数重新包装RGA可操作的rga_buffer_t类型
                                                            width,
                                                            height,
                                                            RK_FORMAT_YCbCr_420_SP);
@@ -478,7 +478,7 @@ int main(int argc, char** argv)
             xioctl(fd, VIDIOC_QBUF, &buf);   //取出装满的buffer
             break;
         }
-
+        //准备模型输入
         auto t_prepare0 = std::chrono::steady_clock::now();
 
         image_buffer_t src_image;
@@ -491,12 +491,12 @@ int main(int argc, char** argv)
         src_image.size = rgb_size;
 
         object_detect_result_list od_results;
-        memset(&od_results, 0, sizeof(od_results));
+        memset(&od_results, 0, sizeof(od_results));  //od_results用于检验接收结果（框的坐标、类别置信度都填充到结构体中）
 
         auto t_prepare1 = std::chrono::steady_clock::now();
 
         auto t_model0 = std::chrono::steady_clock::now();
-        ret = inference_yolo11_model(&rknn_app_ctx, &src_image, &od_results);
+        ret = inference_yolo11_model(&rknn_app_ctx, &src_image, &od_results);//inference_yolo11_model需要一个标准化输入参数来描述图像而不是一堆变量，用以统一接口
         auto t_model1 = std::chrono::steady_clock::now();
 
         if (ret != 0) {
@@ -504,14 +504,14 @@ int main(int argc, char** argv)
             xioctl(fd, VIDIOC_QBUF, &buf);
             break;
         }
-
+        //rgb图上绘制检测结果
         auto t_draw0 = std::chrono::steady_clock::now();
 
         cv::Mat rgb_mat(height, width, CV_8UC3, rgb_buf.data());
         draw_detections_on_rgb(rgb_mat, od_results, frame_id);
 
         auto t_draw1 = std::chrono::steady_clock::now();
-
+        //第二次格式转换
         auto t_rga_out0 = std::chrono::steady_clock::now();
 
         rga_buffer_t rga_src_rgb = wrapbuffer_virtualaddr((void*)rgb_buf.data(),
@@ -539,7 +539,7 @@ int main(int argc, char** argv)
             xioctl(fd, VIDIOC_QBUF, &buf);
             break;
         }
-
+        //写入输出文件或者fifo
         auto t_write0 = std::chrono::steady_clock::now();
         size_t written = fwrite(out_nv12_buf.data(), 1, nv12_size, fout);
         auto t_write1 = std::chrono::steady_clock::now();
@@ -550,16 +550,16 @@ int main(int argc, char** argv)
             xioctl(fd, VIDIOC_QBUF, &buf);
             break;
         }
-
+        //缓冲区重新入队（归还buffer）
         auto t_q0 = std::chrono::steady_clock::now();
         if (xioctl(fd, VIDIOC_QBUF, &buf) < 0) {
             perror("VIDIOC_QBUF requeue failed");
             break;
         }
         auto t_q1 = std::chrono::steady_clock::now();
-
+        //记录总的耗时
         auto t_total1 = std::chrono::steady_clock::now();
-
+        //各个阶段耗时
         double select_ms = diff_ms(t_select0, t_select1);
         double dqbuf_ms = diff_ms(t_dq0, t_dq1);
         double rga_in_ms = diff_ms(t_rga_in0, t_rga_in1);
@@ -613,18 +613,18 @@ int main(int argc, char** argv)
                    od_results.count);
         }
     }
-
+    //记录墙钟结束时间
     auto wall_end = std::chrono::steady_clock::now();
     double wall_ms = diff_ms(wall_start, wall_end);
-
+    //停止视频流
     xioctl(fd, VIDIOC_STREAMOFF, &type);
-
+    //释放模型后处理资源
     release_yolo11_model(&rknn_app_ctx);
     deinit_post_process();
-
+    //关闭文件
     profile_csv.close();
     fclose(fout);
-
+    //解除内存映射，关闭设备
     for (auto& b : buffers) {
         if (b.start && b.start != MAP_FAILED) {
             munmap(b.start, b.length);

@@ -1,10 +1,3 @@
-#!/usr/bin/env bash
-set -e
-
-cd ~/projects/rk3588_ai_stream
-mkdir -p docs
-
-cat > docs/11_webrtc_browser_preview.md <<'EOF_MD'
 # 11 WebRTC / 浏览器低延迟实时检测预览实验记录
 
 ## 1. 实验背景
@@ -475,7 +468,3 @@ VLC / 浏览器实时预览
 最终证明当前 RK3588 AI 流媒体项目已经具备完整演示形态：板端实时检测、板端硬件编码、网络推流、VLC 预览、浏览器预览和 WebRTC 低延迟访问。
 
 项目主线已经从底层采集、硬件加速、NPU 推理、硬件编码，推进到了完整的网络预览系统。
-EOF_MD
-
-echo "docs/11_webrtc_browser_preview.md written."
-ls -lh docs/11_webrtc_browser_preview.md
