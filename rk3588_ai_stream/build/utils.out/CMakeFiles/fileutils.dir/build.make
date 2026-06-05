@@ -77,17 +77,17 @@ include utils.out/CMakeFiles/fileutils.dir/progress.make
 include utils.out/CMakeFiles/fileutils.dir/flags.make
 
 utils.out/CMakeFiles/fileutils.dir/file_utils.c.o: utils.out/CMakeFiles/fileutils.dir/flags.make
-utils.out/CMakeFiles/fileutils.dir/file_utils.c.o: /home/cat/lubancat_ai_manual_code/example/utils/file_utils.c
+utils.out/CMakeFiles/fileutils.dir/file_utils.c.o: ../third_party/lubancat_common_utils/file_utils.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object utils.out/CMakeFiles/fileutils.dir/file_utils.c.o"
-	cd /home/cat/projects/rk3588_ai_stream/build/utils.out && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/fileutils.dir/file_utils.c.o -c /home/cat/lubancat_ai_manual_code/example/utils/file_utils.c
+	cd /home/cat/projects/rk3588_ai_stream/build/utils.out && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/fileutils.dir/file_utils.c.o -c /home/cat/projects/rk3588_ai_stream/third_party/lubancat_common_utils/file_utils.c
 
 utils.out/CMakeFiles/fileutils.dir/file_utils.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fileutils.dir/file_utils.c.i"
-	cd /home/cat/projects/rk3588_ai_stream/build/utils.out && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/cat/lubancat_ai_manual_code/example/utils/file_utils.c > CMakeFiles/fileutils.dir/file_utils.c.i
+	cd /home/cat/projects/rk3588_ai_stream/build/utils.out && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/cat/projects/rk3588_ai_stream/third_party/lubancat_common_utils/file_utils.c > CMakeFiles/fileutils.dir/file_utils.c.i
 
 utils.out/CMakeFiles/fileutils.dir/file_utils.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fileutils.dir/file_utils.c.s"
-	cd /home/cat/projects/rk3588_ai_stream/build/utils.out && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/cat/lubancat_ai_manual_code/example/utils/file_utils.c -o CMakeFiles/fileutils.dir/file_utils.c.s
+	cd /home/cat/projects/rk3588_ai_stream/build/utils.out && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/cat/projects/rk3588_ai_stream/third_party/lubancat_common_utils/file_utils.c -o CMakeFiles/fileutils.dir/file_utils.c.s
 
 # Object files for target fileutils
 fileutils_OBJECTS = \
@@ -113,6 +113,6 @@ utils.out/CMakeFiles/fileutils.dir/clean:
 .PHONY : utils.out/CMakeFiles/fileutils.dir/clean
 
 utils.out/CMakeFiles/fileutils.dir/depend:
-	cd /home/cat/projects/rk3588_ai_stream/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cat/projects/rk3588_ai_stream /home/cat/lubancat_ai_manual_code/example/utils /home/cat/projects/rk3588_ai_stream/build /home/cat/projects/rk3588_ai_stream/build/utils.out /home/cat/projects/rk3588_ai_stream/build/utils.out/CMakeFiles/fileutils.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/cat/projects/rk3588_ai_stream/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cat/projects/rk3588_ai_stream /home/cat/projects/rk3588_ai_stream/third_party/lubancat_common_utils /home/cat/projects/rk3588_ai_stream/build /home/cat/projects/rk3588_ai_stream/build/utils.out /home/cat/projects/rk3588_ai_stream/build/utils.out/CMakeFiles/fileutils.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : utils.out/CMakeFiles/fileutils.dir/depend
 

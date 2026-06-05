@@ -122,11 +122,11 @@ math.h
 assert.h
 -
 
-/home/cat/lubancat_ai_manual_code/example/utils/common.h
+/home/cat/projects/rk3588_ai_stream/third_party/lubancat_common_utils/common.h
 
-/home/cat/lubancat_ai_manual_code/example/utils/file_utils.h
+/home/cat/projects/rk3588_ai_stream/third_party/lubancat_common_utils/file_utils.h
 
-/home/cat/lubancat_ai_manual_code/example/utils/image_utils.c
+/home/cat/projects/rk3588_ai_stream/third_party/lubancat_common_utils/image_utils.c
 stdio.h
 -
 stdlib.h
@@ -138,21 +138,21 @@ math.h
 sys/time.h
 -
 im2d.h
-/home/cat/lubancat_ai_manual_code/example/utils/im2d.h
+/home/cat/projects/rk3588_ai_stream/third_party/lubancat_common_utils/im2d.h
 drmrga.h
-/home/cat/lubancat_ai_manual_code/example/utils/drmrga.h
+/home/cat/projects/rk3588_ai_stream/third_party/lubancat_common_utils/drmrga.h
 stb_image.h
-/home/cat/lubancat_ai_manual_code/example/utils/stb_image.h
+/home/cat/projects/rk3588_ai_stream/third_party/lubancat_common_utils/stb_image.h
 stb_image_write.h
-/home/cat/lubancat_ai_manual_code/example/utils/stb_image_write.h
+/home/cat/projects/rk3588_ai_stream/third_party/lubancat_common_utils/stb_image_write.h
 image_utils.h
-/home/cat/lubancat_ai_manual_code/example/utils/image_utils.h
+/home/cat/projects/rk3588_ai_stream/third_party/lubancat_common_utils/image_utils.h
 file_utils.h
-/home/cat/lubancat_ai_manual_code/example/utils/file_utils.h
+/home/cat/projects/rk3588_ai_stream/third_party/lubancat_common_utils/file_utils.h
 turbojpeg.h
-/home/cat/lubancat_ai_manual_code/example/utils/turbojpeg.h
+/home/cat/projects/rk3588_ai_stream/third_party/lubancat_common_utils/turbojpeg.h
 
-/home/cat/lubancat_ai_manual_code/example/utils/image_utils.h
+/home/cat/projects/rk3588_ai_stream/third_party/lubancat_common_utils/image_utils.h
 common.h
-/home/cat/lubancat_ai_manual_code/example/utils/common.h
+/home/cat/projects/rk3588_ai_stream/third_party/lubancat_common_utils/common.h
 

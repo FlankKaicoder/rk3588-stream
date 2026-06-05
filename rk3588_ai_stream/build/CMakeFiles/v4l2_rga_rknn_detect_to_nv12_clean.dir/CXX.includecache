@@ -6,6 +6,14 @@
 
 #IncludeRegexTransform: 
 
+../third_party/lubancat_common_utils/common.h
+
+../third_party/lubancat_common_utils/file_utils.h
+
+../third_party/lubancat_common_utils/image_utils.h
+common.h
+../third_party/lubancat_common_utils/common.h
+
 ../third_party/lubancat_yolo11_ref/postprocess.h
 stdint.h
 -
@@ -149,14 +157,6 @@ rga.h
 /home/cat/lubancat_ai_manual_code/example/3rdparty/rknpu2/include/rknn_api.h
 stdint.h
 -
-
-/home/cat/lubancat_ai_manual_code/example/utils/common.h
-
-/home/cat/lubancat_ai_manual_code/example/utils/file_utils.h
-
-/home/cat/lubancat_ai_manual_code/example/utils/image_utils.h
-common.h
-/home/cat/lubancat_ai_manual_code/example/utils/common.h
 
 /home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc
 stdio.h

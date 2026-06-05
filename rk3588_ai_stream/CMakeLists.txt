@@ -21,7 +21,7 @@ find_package(OpenCV REQUIRED)
 include_directories(${LUBANCAT_EXAMPLE_DIR}/3rdparty/allocator/dma)
 
 add_subdirectory(${LUBANCAT_EXAMPLE_DIR}/3rdparty 3rdparty.out)
-add_subdirectory(${LUBANCAT_EXAMPLE_DIR}/utils utils.out)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/third_party/lubancat_common_utils utils.out)
 
 set(RKNPU_YOLO11_SRC "${LUBANCAT_YOLO11_CPP}/rknpu2/yolo11.cc")
 

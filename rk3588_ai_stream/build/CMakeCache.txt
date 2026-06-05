@@ -246,7 +246,7 @@ rknn_model_zoo_3rdparty_libs_SOURCE_DIR:STATIC=/home/cat/lubancat_ai_manual_code
 rknn_model_zoo_utils_BINARY_DIR:STATIC=/home/cat/projects/rk3588_ai_stream/build/utils.out
 
 //Value Computed by CMake
-rknn_model_zoo_utils_SOURCE_DIR:STATIC=/home/cat/lubancat_ai_manual_code/example/utils
+rknn_model_zoo_utils_SOURCE_DIR:STATIC=/home/cat/projects/rk3588_ai_stream/third_party/lubancat_common_utils
 
 
 ########################

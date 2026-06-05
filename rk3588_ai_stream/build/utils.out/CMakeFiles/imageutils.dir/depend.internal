@@ -15,7 +15,7 @@ utils.out/CMakeFiles/imageutils.dir/image_utils.c.o
  /home/cat/lubancat_ai_manual_code/example/3rdparty/librga/include/rga.h
  /home/cat/lubancat_ai_manual_code/example/3rdparty/stb_image/stb_image.h
  /home/cat/lubancat_ai_manual_code/example/3rdparty/stb_image/stb_image_write.h
- /home/cat/lubancat_ai_manual_code/example/utils/common.h
- /home/cat/lubancat_ai_manual_code/example/utils/file_utils.h
- /home/cat/lubancat_ai_manual_code/example/utils/image_utils.c
- /home/cat/lubancat_ai_manual_code/example/utils/image_utils.h
+ /home/cat/projects/rk3588_ai_stream/third_party/lubancat_common_utils/common.h
+ /home/cat/projects/rk3588_ai_stream/third_party/lubancat_common_utils/file_utils.h
+ /home/cat/projects/rk3588_ai_stream/third_party/lubancat_common_utils/image_utils.c
+ /home/cat/projects/rk3588_ai_stream/third_party/lubancat_common_utils/image_utils.h

@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_DEFINES = -DLIBRGA_IM2D_HANDLE
 
-C_INCLUDES = -I/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/../../3rdparty/allocator/dma -I/home/cat/lubancat_ai_manual_code/example/utils
+C_INCLUDES = -I/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/../../3rdparty/allocator/dma -I/home/cat/projects/rk3588_ai_stream/third_party/lubancat_common_utils
 
 C_FLAGS = -O3 -DNDEBUG
 
