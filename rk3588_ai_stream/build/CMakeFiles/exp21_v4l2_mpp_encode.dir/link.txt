@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/exp21_v4l2_mpp_encode.dir/src/main_exp21_v4l2_mpp_encode.cpp.o CMakeFiles/exp21_v4l2_mpp_encode.dir/src/mpp_h264_encoder.cpp.o -o exp21_v4l2_mpp_encode  -Wl,-rpath,/home/cat/mpp/build/mpp /home/cat/mpp/build/mpp/librockchip_mpp.so -lpthread 

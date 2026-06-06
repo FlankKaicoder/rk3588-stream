@@ -75,18 +75,6 @@ CMAKE_BINARY_DIR = /home/cat/projects/rk3588_ai_stream/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
-
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
@@ -131,6 +119,18 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -174,6 +174,58 @@ preinstall/fast:
 depend:
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+#=============================================================================
+# Target rules for targets named exp21_detect_mpp_encode_async
+
+# Build rule for target.
+exp21_detect_mpp_encode_async: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 exp21_detect_mpp_encode_async
+.PHONY : exp21_detect_mpp_encode_async
+
+# fast build rule for target.
+exp21_detect_mpp_encode_async/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode_async.dir/build.make CMakeFiles/exp21_detect_mpp_encode_async.dir/build
+.PHONY : exp21_detect_mpp_encode_async/fast
+
+#=============================================================================
+# Target rules for targets named exp21_detect_mpp_encode
+
+# Build rule for target.
+exp21_detect_mpp_encode: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 exp21_detect_mpp_encode
+.PHONY : exp21_detect_mpp_encode
+
+# fast build rule for target.
+exp21_detect_mpp_encode/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode.dir/build.make CMakeFiles/exp21_detect_mpp_encode.dir/build
+.PHONY : exp21_detect_mpp_encode/fast
+
+#=============================================================================
+# Target rules for targets named exp21_v4l2_mpp_encode
+
+# Build rule for target.
+exp21_v4l2_mpp_encode: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 exp21_v4l2_mpp_encode
+.PHONY : exp21_v4l2_mpp_encode
+
+# fast build rule for target.
+exp21_v4l2_mpp_encode/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_v4l2_mpp_encode.dir/build.make CMakeFiles/exp21_v4l2_mpp_encode.dir/build
+.PHONY : exp21_v4l2_mpp_encode/fast
+
+#=============================================================================
+# Target rules for targets named exp21_mpp_file_encode
+
+# Build rule for target.
+exp21_mpp_file_encode: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 exp21_mpp_file_encode
+.PHONY : exp21_mpp_file_encode
+
+# fast build rule for target.
+exp21_mpp_file_encode/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_mpp_file_encode.dir/build.make CMakeFiles/exp21_mpp_file_encode.dir/build
+.PHONY : exp21_mpp_file_encode/fast
 
 #=============================================================================
 # Target rules for targets named v4l2_rga_rknn_detect_to_nv12_clean
@@ -651,6 +703,114 @@ src/main_camera_profile_setcap_nowrite.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap_nowrite.dir/build.make CMakeFiles/camera_profile_setcap_nowrite.dir/src/main_camera_profile_setcap_nowrite.cpp.s
 .PHONY : src/main_camera_profile_setcap_nowrite.cpp.s
 
+src/main_exp21_detect_mpp_encode.o: src/main_exp21_detect_mpp_encode.cpp.o
+
+.PHONY : src/main_exp21_detect_mpp_encode.o
+
+# target to build an object file
+src/main_exp21_detect_mpp_encode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode.dir/build.make CMakeFiles/exp21_detect_mpp_encode.dir/src/main_exp21_detect_mpp_encode.cpp.o
+.PHONY : src/main_exp21_detect_mpp_encode.cpp.o
+
+src/main_exp21_detect_mpp_encode.i: src/main_exp21_detect_mpp_encode.cpp.i
+
+.PHONY : src/main_exp21_detect_mpp_encode.i
+
+# target to preprocess a source file
+src/main_exp21_detect_mpp_encode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode.dir/build.make CMakeFiles/exp21_detect_mpp_encode.dir/src/main_exp21_detect_mpp_encode.cpp.i
+.PHONY : src/main_exp21_detect_mpp_encode.cpp.i
+
+src/main_exp21_detect_mpp_encode.s: src/main_exp21_detect_mpp_encode.cpp.s
+
+.PHONY : src/main_exp21_detect_mpp_encode.s
+
+# target to generate assembly for a file
+src/main_exp21_detect_mpp_encode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode.dir/build.make CMakeFiles/exp21_detect_mpp_encode.dir/src/main_exp21_detect_mpp_encode.cpp.s
+.PHONY : src/main_exp21_detect_mpp_encode.cpp.s
+
+src/main_exp21_detect_mpp_encode_async.o: src/main_exp21_detect_mpp_encode_async.cpp.o
+
+.PHONY : src/main_exp21_detect_mpp_encode_async.o
+
+# target to build an object file
+src/main_exp21_detect_mpp_encode_async.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode_async.dir/build.make CMakeFiles/exp21_detect_mpp_encode_async.dir/src/main_exp21_detect_mpp_encode_async.cpp.o
+.PHONY : src/main_exp21_detect_mpp_encode_async.cpp.o
+
+src/main_exp21_detect_mpp_encode_async.i: src/main_exp21_detect_mpp_encode_async.cpp.i
+
+.PHONY : src/main_exp21_detect_mpp_encode_async.i
+
+# target to preprocess a source file
+src/main_exp21_detect_mpp_encode_async.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode_async.dir/build.make CMakeFiles/exp21_detect_mpp_encode_async.dir/src/main_exp21_detect_mpp_encode_async.cpp.i
+.PHONY : src/main_exp21_detect_mpp_encode_async.cpp.i
+
+src/main_exp21_detect_mpp_encode_async.s: src/main_exp21_detect_mpp_encode_async.cpp.s
+
+.PHONY : src/main_exp21_detect_mpp_encode_async.s
+
+# target to generate assembly for a file
+src/main_exp21_detect_mpp_encode_async.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode_async.dir/build.make CMakeFiles/exp21_detect_mpp_encode_async.dir/src/main_exp21_detect_mpp_encode_async.cpp.s
+.PHONY : src/main_exp21_detect_mpp_encode_async.cpp.s
+
+src/main_exp21_mpp_file_encode.o: src/main_exp21_mpp_file_encode.cpp.o
+
+.PHONY : src/main_exp21_mpp_file_encode.o
+
+# target to build an object file
+src/main_exp21_mpp_file_encode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_mpp_file_encode.dir/build.make CMakeFiles/exp21_mpp_file_encode.dir/src/main_exp21_mpp_file_encode.cpp.o
+.PHONY : src/main_exp21_mpp_file_encode.cpp.o
+
+src/main_exp21_mpp_file_encode.i: src/main_exp21_mpp_file_encode.cpp.i
+
+.PHONY : src/main_exp21_mpp_file_encode.i
+
+# target to preprocess a source file
+src/main_exp21_mpp_file_encode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_mpp_file_encode.dir/build.make CMakeFiles/exp21_mpp_file_encode.dir/src/main_exp21_mpp_file_encode.cpp.i
+.PHONY : src/main_exp21_mpp_file_encode.cpp.i
+
+src/main_exp21_mpp_file_encode.s: src/main_exp21_mpp_file_encode.cpp.s
+
+.PHONY : src/main_exp21_mpp_file_encode.s
+
+# target to generate assembly for a file
+src/main_exp21_mpp_file_encode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_mpp_file_encode.dir/build.make CMakeFiles/exp21_mpp_file_encode.dir/src/main_exp21_mpp_file_encode.cpp.s
+.PHONY : src/main_exp21_mpp_file_encode.cpp.s
+
+src/main_exp21_v4l2_mpp_encode.o: src/main_exp21_v4l2_mpp_encode.cpp.o
+
+.PHONY : src/main_exp21_v4l2_mpp_encode.o
+
+# target to build an object file
+src/main_exp21_v4l2_mpp_encode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_v4l2_mpp_encode.dir/build.make CMakeFiles/exp21_v4l2_mpp_encode.dir/src/main_exp21_v4l2_mpp_encode.cpp.o
+.PHONY : src/main_exp21_v4l2_mpp_encode.cpp.o
+
+src/main_exp21_v4l2_mpp_encode.i: src/main_exp21_v4l2_mpp_encode.cpp.i
+
+.PHONY : src/main_exp21_v4l2_mpp_encode.i
+
+# target to preprocess a source file
+src/main_exp21_v4l2_mpp_encode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_v4l2_mpp_encode.dir/build.make CMakeFiles/exp21_v4l2_mpp_encode.dir/src/main_exp21_v4l2_mpp_encode.cpp.i
+.PHONY : src/main_exp21_v4l2_mpp_encode.cpp.i
+
+src/main_exp21_v4l2_mpp_encode.s: src/main_exp21_v4l2_mpp_encode.cpp.s
+
+.PHONY : src/main_exp21_v4l2_mpp_encode.s
+
+# target to generate assembly for a file
+src/main_exp21_v4l2_mpp_encode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_v4l2_mpp_encode.dir/build.make CMakeFiles/exp21_v4l2_mpp_encode.dir/src/main_exp21_v4l2_mpp_encode.cpp.s
+.PHONY : src/main_exp21_v4l2_mpp_encode.cpp.s
+
 src/main_image.o: src/main_image.cpp.o
 
 .PHONY : src/main_image.o
@@ -897,6 +1057,42 @@ src/main_video.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/video_detect.dir/build.make CMakeFiles/video_detect.dir/src/main_video.cpp.s
 .PHONY : src/main_video.cpp.s
 
+src/mpp_h264_encoder.o: src/mpp_h264_encoder.cpp.o
+
+.PHONY : src/mpp_h264_encoder.o
+
+# target to build an object file
+src/mpp_h264_encoder.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode_async.dir/build.make CMakeFiles/exp21_detect_mpp_encode_async.dir/src/mpp_h264_encoder.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode.dir/build.make CMakeFiles/exp21_detect_mpp_encode.dir/src/mpp_h264_encoder.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_v4l2_mpp_encode.dir/build.make CMakeFiles/exp21_v4l2_mpp_encode.dir/src/mpp_h264_encoder.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_mpp_file_encode.dir/build.make CMakeFiles/exp21_mpp_file_encode.dir/src/mpp_h264_encoder.cpp.o
+.PHONY : src/mpp_h264_encoder.cpp.o
+
+src/mpp_h264_encoder.i: src/mpp_h264_encoder.cpp.i
+
+.PHONY : src/mpp_h264_encoder.i
+
+# target to preprocess a source file
+src/mpp_h264_encoder.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode_async.dir/build.make CMakeFiles/exp21_detect_mpp_encode_async.dir/src/mpp_h264_encoder.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode.dir/build.make CMakeFiles/exp21_detect_mpp_encode.dir/src/mpp_h264_encoder.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_v4l2_mpp_encode.dir/build.make CMakeFiles/exp21_v4l2_mpp_encode.dir/src/mpp_h264_encoder.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_mpp_file_encode.dir/build.make CMakeFiles/exp21_mpp_file_encode.dir/src/mpp_h264_encoder.cpp.i
+.PHONY : src/mpp_h264_encoder.cpp.i
+
+src/mpp_h264_encoder.s: src/mpp_h264_encoder.cpp.s
+
+.PHONY : src/mpp_h264_encoder.s
+
+# target to generate assembly for a file
+src/mpp_h264_encoder.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode_async.dir/build.make CMakeFiles/exp21_detect_mpp_encode_async.dir/src/mpp_h264_encoder.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode.dir/build.make CMakeFiles/exp21_detect_mpp_encode.dir/src/mpp_h264_encoder.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_v4l2_mpp_encode.dir/build.make CMakeFiles/exp21_v4l2_mpp_encode.dir/src/mpp_h264_encoder.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_mpp_file_encode.dir/build.make CMakeFiles/exp21_mpp_file_encode.dir/src/mpp_h264_encoder.cpp.s
+.PHONY : src/mpp_h264_encoder.cpp.s
+
 src/postprocess_profile.o: src/postprocess_profile.cc.o
 
 .PHONY : src/postprocess_profile.o
@@ -923,6 +1119,36 @@ src/postprocess_profile.s: src/postprocess_profile.cc.s
 src/postprocess_profile.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_profile.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_profile.dir/src/postprocess_profile.cc.s
 .PHONY : src/postprocess_profile.cc.s
+
+src/yolo11_clean_silent.o: src/yolo11_clean_silent.cc.o
+
+.PHONY : src/yolo11_clean_silent.o
+
+# target to build an object file
+src/yolo11_clean_silent.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode_async.dir/build.make CMakeFiles/exp21_detect_mpp_encode_async.dir/src/yolo11_clean_silent.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode.dir/build.make CMakeFiles/exp21_detect_mpp_encode.dir/src/yolo11_clean_silent.cc.o
+.PHONY : src/yolo11_clean_silent.cc.o
+
+src/yolo11_clean_silent.i: src/yolo11_clean_silent.cc.i
+
+.PHONY : src/yolo11_clean_silent.i
+
+# target to preprocess a source file
+src/yolo11_clean_silent.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode_async.dir/build.make CMakeFiles/exp21_detect_mpp_encode_async.dir/src/yolo11_clean_silent.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode.dir/build.make CMakeFiles/exp21_detect_mpp_encode.dir/src/yolo11_clean_silent.cc.i
+.PHONY : src/yolo11_clean_silent.cc.i
+
+src/yolo11_clean_silent.s: src/yolo11_clean_silent.cc.s
+
+.PHONY : src/yolo11_clean_silent.s
+
+# target to generate assembly for a file
+src/yolo11_clean_silent.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode_async.dir/build.make CMakeFiles/exp21_detect_mpp_encode_async.dir/src/yolo11_clean_silent.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode.dir/build.make CMakeFiles/exp21_detect_mpp_encode.dir/src/yolo11_clean_silent.cc.s
+.PHONY : src/yolo11_clean_silent.cc.s
 
 src/yolo11_profile.o: src/yolo11_profile.cc.o
 
@@ -957,6 +1183,8 @@ third_party/lubancat_yolo11_ref/postprocess.o: third_party/lubancat_yolo11_ref/p
 
 # target to build an object file
 third_party/lubancat_yolo11_ref/postprocess.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode_async.dir/build.make CMakeFiles/exp21_detect_mpp_encode_async.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode.dir/build.make CMakeFiles/exp21_detect_mpp_encode.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
@@ -975,6 +1203,8 @@ third_party/lubancat_yolo11_ref/postprocess.i: third_party/lubancat_yolo11_ref/p
 
 # target to preprocess a source file
 third_party/lubancat_yolo11_ref/postprocess.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode_async.dir/build.make CMakeFiles/exp21_detect_mpp_encode_async.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode.dir/build.make CMakeFiles/exp21_detect_mpp_encode.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
@@ -993,6 +1223,8 @@ third_party/lubancat_yolo11_ref/postprocess.s: third_party/lubancat_yolo11_ref/p
 
 # target to generate assembly for a file
 third_party/lubancat_yolo11_ref/postprocess.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode_async.dir/build.make CMakeFiles/exp21_detect_mpp_encode_async.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode.dir/build.make CMakeFiles/exp21_detect_mpp_encode.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
@@ -1024,6 +1256,10 @@ help:
 	@echo "... camera_profile_nowrite"
 	@echo "... camera_profile_setcap"
 	@echo "... camera_profile_setcap_nowrite"
+	@echo "... exp21_detect_mpp_encode"
+	@echo "... exp21_detect_mpp_encode_async"
+	@echo "... exp21_mpp_file_encode"
+	@echo "... exp21_v4l2_mpp_encode"
 	@echo "... fileutils"
 	@echo "... image_detect"
 	@echo "... imagedrawing"
@@ -1058,6 +1294,18 @@ help:
 	@echo "... src/main_camera_profile_setcap_nowrite.o"
 	@echo "... src/main_camera_profile_setcap_nowrite.i"
 	@echo "... src/main_camera_profile_setcap_nowrite.s"
+	@echo "... src/main_exp21_detect_mpp_encode.o"
+	@echo "... src/main_exp21_detect_mpp_encode.i"
+	@echo "... src/main_exp21_detect_mpp_encode.s"
+	@echo "... src/main_exp21_detect_mpp_encode_async.o"
+	@echo "... src/main_exp21_detect_mpp_encode_async.i"
+	@echo "... src/main_exp21_detect_mpp_encode_async.s"
+	@echo "... src/main_exp21_mpp_file_encode.o"
+	@echo "... src/main_exp21_mpp_file_encode.i"
+	@echo "... src/main_exp21_mpp_file_encode.s"
+	@echo "... src/main_exp21_v4l2_mpp_encode.o"
+	@echo "... src/main_exp21_v4l2_mpp_encode.i"
+	@echo "... src/main_exp21_v4l2_mpp_encode.s"
 	@echo "... src/main_image.o"
 	@echo "... src/main_image.i"
 	@echo "... src/main_image.s"
@@ -1085,9 +1333,15 @@ help:
 	@echo "... src/main_video.o"
 	@echo "... src/main_video.i"
 	@echo "... src/main_video.s"
+	@echo "... src/mpp_h264_encoder.o"
+	@echo "... src/mpp_h264_encoder.i"
+	@echo "... src/mpp_h264_encoder.s"
 	@echo "... src/postprocess_profile.o"
 	@echo "... src/postprocess_profile.i"
 	@echo "... src/postprocess_profile.s"
+	@echo "... src/yolo11_clean_silent.o"
+	@echo "... src/yolo11_clean_silent.i"
+	@echo "... src/yolo11_clean_silent.s"
 	@echo "... src/yolo11_profile.o"
 	@echo "... src/yolo11_profile.i"
 	@echo "... src/yolo11_profile.s"

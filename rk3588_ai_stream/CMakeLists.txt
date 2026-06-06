@@ -438,3 +438,159 @@ target_link_libraries(v4l2_rga_rknn_detect_to_nv12_clean
     dl
     pthread
 )
+
+
+# ================= EXP21_MPP_FILE_ENCODE_BEGIN =================
+
+# EXP21：使用 /home/cat/mpp 源码树中的头文件，避免系统 MPP 头文件与源码内部头文件混用。
+set(EXP21_MPP_ROOT /home/cat/mpp)
+
+set(EXP21_MPP_INCLUDE_DIRS
+    ${EXP21_MPP_ROOT}/inc
+    ${EXP21_MPP_ROOT}/mpp/inc
+    ${EXP21_MPP_ROOT}/kmpp/base/inc
+    ${EXP21_MPP_ROOT}/osal/inc
+)
+
+set(EXP21_MPP_LIBRARY
+    ${EXP21_MPP_ROOT}/build/mpp/librockchip_mpp.so
+)
+
+if(NOT EXISTS ${EXP21_MPP_LIBRARY})
+    message(WARNING "EXP21_MPP_LIBRARY not found at ${EXP21_MPP_LIBRARY}, fallback to system rockchip_mpp")
+    find_library(EXP21_MPP_LIBRARY
+        NAMES rockchip_mpp
+        PATHS
+            /usr/local/lib
+            /usr/lib/aarch64-linux-gnu
+    )
+endif()
+
+message(STATUS "EXP21_MPP_ROOT         = ${EXP21_MPP_ROOT}")
+message(STATUS "EXP21_MPP_INCLUDE_DIRS = ${EXP21_MPP_INCLUDE_DIRS}")
+message(STATUS "EXP21_MPP_LIBRARY      = ${EXP21_MPP_LIBRARY}")
+
+add_executable(exp21_mpp_file_encode
+    src/main_exp21_mpp_file_encode.cpp
+    src/mpp_h264_encoder.cpp
+)
+
+target_include_directories(exp21_mpp_file_encode PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${EXP21_MPP_INCLUDE_DIRS}
+)
+
+target_compile_options(exp21_mpp_file_encode PRIVATE
+    -O3
+    -DNDEBUG
+)
+
+target_link_libraries(exp21_mpp_file_encode
+    ${EXP21_MPP_LIBRARY}
+    pthread
+)
+
+# ================= EXP21_MPP_FILE_ENCODE_END =================
+
+
+# ================= EXP21_2_V4L2_MPP_ENCODE_BEGIN =================
+add_executable(exp21_v4l2_mpp_encode
+    src/main_exp21_v4l2_mpp_encode.cpp
+    src/mpp_h264_encoder.cpp
+)
+
+target_include_directories(exp21_v4l2_mpp_encode PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${EXP21_MPP_INCLUDE_DIRS}
+)
+
+target_compile_options(exp21_v4l2_mpp_encode PRIVATE
+    -O3
+    -DNDEBUG
+)
+
+target_link_libraries(exp21_v4l2_mpp_encode
+    ${EXP21_MPP_LIBRARY}
+    pthread
+)
+# ================= EXP21_2_V4L2_MPP_ENCODE_END =================
+
+
+# ================= EXP21_3_DETECT_MPP_ENCODE_BEGIN =================
+add_executable(exp21_detect_mpp_encode
+    src/main_exp21_detect_mpp_encode.cpp
+    src/mpp_h264_encoder.cpp
+    third_party/lubancat_yolo11_ref/postprocess.cc
+    src/yolo11_clean_silent.cc
+)
+
+target_include_directories(exp21_detect_mpp_encode PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/third_party/lubancat_yolo11_ref
+    ${LUBANCAT_YOLO11_CPP}
+    ${LIBRKNNRT_INCLUDES}
+    ${RGA_INCLUDE_DIR}
+    ${EXP21_MPP_INCLUDE_DIRS}
+)
+
+target_compile_options(exp21_detect_mpp_encode PRIVATE
+    -O3
+    -DNDEBUG
+)
+
+target_link_libraries(exp21_detect_mpp_encode
+    imageutils
+    fileutils
+    imagedrawing
+    ${RGA_LIBRARY}
+    ${LIBRKNNRT}
+    ${OpenCV_LIBS}
+    ${EXP21_MPP_LIBRARY}
+    dl
+    pthread
+)
+
+set_target_properties(exp21_detect_mpp_encode PROPERTIES
+    BUILD_RPATH "$ORIGIN/lib;$ORIGIN/../lib"
+)
+
+# ================= EXP21_3_DETECT_MPP_ENCODE_END =================
+
+# ================= EXP21_4_ASYNC_DETECT_MPP_ENCODE_BEGIN =================
+add_executable(exp21_detect_mpp_encode_async
+    src/main_exp21_detect_mpp_encode_async.cpp
+    src/mpp_h264_encoder.cpp
+    third_party/lubancat_yolo11_ref/postprocess.cc
+    src/yolo11_clean_silent.cc
+)
+
+target_include_directories(exp21_detect_mpp_encode_async PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/third_party/lubancat_yolo11_ref
+    ${LUBANCAT_YOLO11_CPP}
+    ${LIBRKNNRT_INCLUDES}
+    ${RGA_INCLUDE_DIR}
+    ${EXP21_MPP_INCLUDE_DIRS}
+)
+
+target_compile_options(exp21_detect_mpp_encode_async PRIVATE
+    -O3
+    -DNDEBUG
+)
+
+target_link_libraries(exp21_detect_mpp_encode_async
+    imageutils
+    fileutils
+    imagedrawing
+    ${RGA_LIBRARY}
+    ${LIBRKNNRT}
+    ${OpenCV_LIBS}
+    ${EXP21_MPP_LIBRARY}
+    dl
+    pthread
+)
+
+set_target_properties(exp21_detect_mpp_encode_async PROPERTIES
+    BUILD_RPATH "$ORIGIN/lib;$ORIGIN/../lib"
+)
+# ================= EXP21_4_ASYNC_DETECT_MPP_ENCODE_END =================

@@ -1,8 +1,12 @@
-/home/cat/projects/rk3588_ai_stream/build/CMakeFiles/install/strip.dir
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/install.dir
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/list_install_components.dir
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/rebuild_cache.dir
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/edit_cache.dir
+/home/cat/projects/rk3588_ai_stream/build/CMakeFiles/exp21_detect_mpp_encode_async.dir
+/home/cat/projects/rk3588_ai_stream/build/CMakeFiles/exp21_detect_mpp_encode.dir
+/home/cat/projects/rk3588_ai_stream/build/CMakeFiles/exp21_v4l2_mpp_encode.dir
+/home/cat/projects/rk3588_ai_stream/build/CMakeFiles/install/strip.dir
+/home/cat/projects/rk3588_ai_stream/build/CMakeFiles/exp21_mpp_file_encode.dir
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/image_detect.dir

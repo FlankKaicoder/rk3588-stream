@@ -762,9 +762,13 @@ int convert_image_with_letterbox(image_buffer_t* src_image, image_buffer_t* dst_
         dst_box.right = dst_box.left + resize_w - 1;
         _left_offset = dst_box.left;
     }
-    printf("scale=%f dst_box=(%d %d %d %d) allow_slight_change=%d _left_offset=%d _top_offset=%d padding_w=%d padding_h=%d\n",
+    /* EXP21_SILENT:
+     * Disable per-frame letterbox debug log.
+     * This log is useful during debugging but pollutes realtime profiling output.
+     */
+    /* printf("scale=%f dst_box=(%d %d %d %d) allow_slight_change=%d _left_offset=%d _top_offset=%d padding_w=%d padding_h=%d\\n",
         scale, dst_box.left, dst_box.top, dst_box.right, dst_box.bottom, allow_slight_change,
-        _left_offset, _top_offset, padding_w, padding_h);
+        _left_offset, _top_offset, padding_w, padding_h); */
 
     //set offset and scale
     if(letterbox != NULL){

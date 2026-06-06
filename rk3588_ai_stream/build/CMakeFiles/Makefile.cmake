@@ -127,6 +127,10 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/exp21_detect_mpp_encode_async.dir/DependInfo.cmake"
+  "CMakeFiles/exp21_detect_mpp_encode.dir/DependInfo.cmake"
+  "CMakeFiles/exp21_v4l2_mpp_encode.dir/DependInfo.cmake"
+  "CMakeFiles/exp21_mpp_file_encode.dir/DependInfo.cmake"
   "CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/DependInfo.cmake"
   "CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/DependInfo.cmake"
   "CMakeFiles/image_detect.dir/DependInfo.cmake"
