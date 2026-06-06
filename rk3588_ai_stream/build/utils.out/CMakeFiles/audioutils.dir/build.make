@@ -77,17 +77,17 @@ include utils.out/CMakeFiles/audioutils.dir/progress.make
 include utils.out/CMakeFiles/audioutils.dir/flags.make
 
 utils.out/CMakeFiles/audioutils.dir/audio_utils.c.o: utils.out/CMakeFiles/audioutils.dir/flags.make
-utils.out/CMakeFiles/audioutils.dir/audio_utils.c.o: /home/cat/lubancat_ai_manual_code/example/utils/audio_utils.c
+utils.out/CMakeFiles/audioutils.dir/audio_utils.c.o: ../third_party/lubancat_common_utils/audio_utils.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object utils.out/CMakeFiles/audioutils.dir/audio_utils.c.o"
-	cd /home/cat/projects/rk3588_ai_stream/build/utils.out && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/audioutils.dir/audio_utils.c.o -c /home/cat/lubancat_ai_manual_code/example/utils/audio_utils.c
+	cd /home/cat/projects/rk3588_ai_stream/build/utils.out && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/audioutils.dir/audio_utils.c.o -c /home/cat/projects/rk3588_ai_stream/third_party/lubancat_common_utils/audio_utils.c
 
 utils.out/CMakeFiles/audioutils.dir/audio_utils.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/audioutils.dir/audio_utils.c.i"
-	cd /home/cat/projects/rk3588_ai_stream/build/utils.out && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/cat/lubancat_ai_manual_code/example/utils/audio_utils.c > CMakeFiles/audioutils.dir/audio_utils.c.i
+	cd /home/cat/projects/rk3588_ai_stream/build/utils.out && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/cat/projects/rk3588_ai_stream/third_party/lubancat_common_utils/audio_utils.c > CMakeFiles/audioutils.dir/audio_utils.c.i
 
 utils.out/CMakeFiles/audioutils.dir/audio_utils.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/audioutils.dir/audio_utils.c.s"
-	cd /home/cat/projects/rk3588_ai_stream/build/utils.out && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/cat/lubancat_ai_manual_code/example/utils/audio_utils.c -o CMakeFiles/audioutils.dir/audio_utils.c.s
+	cd /home/cat/projects/rk3588_ai_stream/build/utils.out && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/cat/projects/rk3588_ai_stream/third_party/lubancat_common_utils/audio_utils.c -o CMakeFiles/audioutils.dir/audio_utils.c.s
 
 # Object files for target audioutils
 audioutils_OBJECTS = \
@@ -113,6 +113,6 @@ utils.out/CMakeFiles/audioutils.dir/clean:
 .PHONY : utils.out/CMakeFiles/audioutils.dir/clean
 
 utils.out/CMakeFiles/audioutils.dir/depend:
-	cd /home/cat/projects/rk3588_ai_stream/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cat/projects/rk3588_ai_stream /home/cat/lubancat_ai_manual_code/example/utils /home/cat/projects/rk3588_ai_stream/build /home/cat/projects/rk3588_ai_stream/build/utils.out /home/cat/projects/rk3588_ai_stream/build/utils.out/CMakeFiles/audioutils.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/cat/projects/rk3588_ai_stream/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cat/projects/rk3588_ai_stream /home/cat/projects/rk3588_ai_stream/third_party/lubancat_common_utils /home/cat/projects/rk3588_ai_stream/build /home/cat/projects/rk3588_ai_stream/build/utils.out /home/cat/projects/rk3588_ai_stream/build/utils.out/CMakeFiles/audioutils.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : utils.out/CMakeFiles/audioutils.dir/depend
 

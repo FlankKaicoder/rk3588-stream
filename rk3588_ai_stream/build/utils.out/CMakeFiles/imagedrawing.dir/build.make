@@ -77,17 +77,17 @@ include utils.out/CMakeFiles/imagedrawing.dir/progress.make
 include utils.out/CMakeFiles/imagedrawing.dir/flags.make
 
 utils.out/CMakeFiles/imagedrawing.dir/image_drawing.c.o: utils.out/CMakeFiles/imagedrawing.dir/flags.make
-utils.out/CMakeFiles/imagedrawing.dir/image_drawing.c.o: /home/cat/lubancat_ai_manual_code/example/utils/image_drawing.c
+utils.out/CMakeFiles/imagedrawing.dir/image_drawing.c.o: ../third_party/lubancat_common_utils/image_drawing.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object utils.out/CMakeFiles/imagedrawing.dir/image_drawing.c.o"
-	cd /home/cat/projects/rk3588_ai_stream/build/utils.out && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/imagedrawing.dir/image_drawing.c.o -c /home/cat/lubancat_ai_manual_code/example/utils/image_drawing.c
+	cd /home/cat/projects/rk3588_ai_stream/build/utils.out && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/imagedrawing.dir/image_drawing.c.o -c /home/cat/projects/rk3588_ai_stream/third_party/lubancat_common_utils/image_drawing.c
 
 utils.out/CMakeFiles/imagedrawing.dir/image_drawing.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/imagedrawing.dir/image_drawing.c.i"
-	cd /home/cat/projects/rk3588_ai_stream/build/utils.out && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/cat/lubancat_ai_manual_code/example/utils/image_drawing.c > CMakeFiles/imagedrawing.dir/image_drawing.c.i
+	cd /home/cat/projects/rk3588_ai_stream/build/utils.out && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/cat/projects/rk3588_ai_stream/third_party/lubancat_common_utils/image_drawing.c > CMakeFiles/imagedrawing.dir/image_drawing.c.i
 
 utils.out/CMakeFiles/imagedrawing.dir/image_drawing.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/imagedrawing.dir/image_drawing.c.s"
-	cd /home/cat/projects/rk3588_ai_stream/build/utils.out && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/cat/lubancat_ai_manual_code/example/utils/image_drawing.c -o CMakeFiles/imagedrawing.dir/image_drawing.c.s
+	cd /home/cat/projects/rk3588_ai_stream/build/utils.out && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/cat/projects/rk3588_ai_stream/third_party/lubancat_common_utils/image_drawing.c -o CMakeFiles/imagedrawing.dir/image_drawing.c.s
 
 # Object files for target imagedrawing
 imagedrawing_OBJECTS = \
@@ -113,6 +113,6 @@ utils.out/CMakeFiles/imagedrawing.dir/clean:
 .PHONY : utils.out/CMakeFiles/imagedrawing.dir/clean
 
 utils.out/CMakeFiles/imagedrawing.dir/depend:
-	cd /home/cat/projects/rk3588_ai_stream/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cat/projects/rk3588_ai_stream /home/cat/lubancat_ai_manual_code/example/utils /home/cat/projects/rk3588_ai_stream/build /home/cat/projects/rk3588_ai_stream/build/utils.out /home/cat/projects/rk3588_ai_stream/build/utils.out/CMakeFiles/imagedrawing.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/cat/projects/rk3588_ai_stream/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/cat/projects/rk3588_ai_stream /home/cat/projects/rk3588_ai_stream/third_party/lubancat_common_utils /home/cat/projects/rk3588_ai_stream/build /home/cat/projects/rk3588_ai_stream/build/utils.out /home/cat/projects/rk3588_ai_stream/build/utils.out/CMakeFiles/imagedrawing.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : utils.out/CMakeFiles/imagedrawing.dir/depend
 

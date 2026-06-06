@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/cat/lubancat_ai_manual_code/example/utils/file_utils.c
+/home/cat/projects/rk3588_ai_stream/third_party/lubancat_common_utils/file_utils.c
 stdio.h
 -
 stdlib.h

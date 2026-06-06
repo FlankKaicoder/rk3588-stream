@@ -1,4 +1,4 @@
-# Install script for directory: /home/cat/lubancat_ai_manual_code/example/utils
+# Install script for directory: /home/cat/projects/rk3588_ai_stream/third_party/lubancat_common_utils
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

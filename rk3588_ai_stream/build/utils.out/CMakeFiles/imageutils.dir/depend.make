@@ -14,8 +14,8 @@ utils.out/CMakeFiles/imageutils.dir/image_utils.c.o: /home/cat/lubancat_ai_manua
 utils.out/CMakeFiles/imageutils.dir/image_utils.c.o: /home/cat/lubancat_ai_manual_code/example/3rdparty/librga/include/rga.h
 utils.out/CMakeFiles/imageutils.dir/image_utils.c.o: /home/cat/lubancat_ai_manual_code/example/3rdparty/stb_image/stb_image.h
 utils.out/CMakeFiles/imageutils.dir/image_utils.c.o: /home/cat/lubancat_ai_manual_code/example/3rdparty/stb_image/stb_image_write.h
-utils.out/CMakeFiles/imageutils.dir/image_utils.c.o: /home/cat/lubancat_ai_manual_code/example/utils/common.h
-utils.out/CMakeFiles/imageutils.dir/image_utils.c.o: /home/cat/lubancat_ai_manual_code/example/utils/file_utils.h
-utils.out/CMakeFiles/imageutils.dir/image_utils.c.o: /home/cat/lubancat_ai_manual_code/example/utils/image_utils.c
-utils.out/CMakeFiles/imageutils.dir/image_utils.c.o: /home/cat/lubancat_ai_manual_code/example/utils/image_utils.h
+utils.out/CMakeFiles/imageutils.dir/image_utils.c.o: ../third_party/lubancat_common_utils/common.h
+utils.out/CMakeFiles/imageutils.dir/image_utils.c.o: ../third_party/lubancat_common_utils/file_utils.h
+utils.out/CMakeFiles/imageutils.dir/image_utils.c.o: ../third_party/lubancat_common_utils/image_utils.c
+utils.out/CMakeFiles/imageutils.dir/image_utils.c.o: ../third_party/lubancat_common_utils/image_utils.h
 

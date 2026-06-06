@@ -18,7 +18,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/home/cat/lubancat_ai_manual_code/example/yolo11/cpp"
   "/home/cat/lubancat_ai_manual_code/example/3rdparty/rknpu2/include"
   "/usr/include/rga"
-  "/home/cat/lubancat_ai_manual_code/example/utils"
+  "../third_party/lubancat_common_utils"
   "/home/cat/lubancat_ai_manual_code/example/3rdparty/stb_image"
   "/home/cat/lubancat_ai_manual_code/example/3rdparty/librga/include"
   "/home/cat/lubancat_ai_manual_code/example/3rdparty/jpeg_turbo/include"

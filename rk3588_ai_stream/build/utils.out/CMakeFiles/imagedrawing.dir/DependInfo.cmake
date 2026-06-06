@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/cat/lubancat_ai_manual_code/example/utils/image_drawing.c" "/home/cat/projects/rk3588_ai_stream/build/utils.out/CMakeFiles/imagedrawing.dir/image_drawing.c.o"
+  "/home/cat/projects/rk3588_ai_stream/third_party/lubancat_common_utils/image_drawing.c" "/home/cat/projects/rk3588_ai_stream/build/utils.out/CMakeFiles/imagedrawing.dir/image_drawing.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
@@ -16,7 +16,7 @@ set(CMAKE_TARGET_DEFINITIONS_C
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
   "/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/../../3rdparty/allocator/dma"
-  "/home/cat/lubancat_ai_manual_code/example/utils"
+  "../third_party/lubancat_common_utils"
   )
 
 # Targets to which this target links.
