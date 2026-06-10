@@ -6,8 +6,8 @@
 #include <algorithm>
 #include <unistd.h>
 
-MppH264Encoder::MppH264Encoder()
-    : ctx_(nullptr),
+MppH264Encoder::MppH264Encoder()   //初始化，所有指针置空然后清零防止野指针
+    : ctx_(nullptr), //省略部分初始化代码
       mpi_(nullptr),
       cfg_(nullptr),
       width_(0),
@@ -26,7 +26,7 @@ MppH264Encoder::~MppH264Encoder()
     release();
 }
 
-int MppH264Encoder::align_up(int value, int align)
+int MppH264Encoder::align_up(int value, int align)  //向上对齐
 {
     return (value + align - 1) / align * align;
 }
@@ -65,7 +65,7 @@ bool MppH264Encoder::init(int width, int height, int fps, int bitrate)
 
     MPP_RET ret = MPP_OK;
 
-    ret = mpp_create(&ctx_, &mpi_);
+    ret = mpp_create(&ctx_, &mpi_);  //向mpp框架申请实例拿到上下文ctx_和接口指针mpi_
     if (ret != MPP_OK || ctx_ == nullptr || mpi_ == nullptr)
     {
         printf("mpp_create failed, ret=%d\n", ret);
@@ -80,7 +80,7 @@ bool MppH264Encoder::init(int width, int height, int fps, int bitrate)
         return false;
     }
 
-    ret = mpp_enc_cfg_init(&cfg_);
+    ret = mpp_enc_cfg_init(&cfg_);    //分配一个配置句柄然后getcfg获取默认的配置模板，方便之后修改
     if (ret != MPP_OK || cfg_ == nullptr)
     {
         printf("mpp_enc_cfg_init failed, ret=%d\n", ret);
@@ -97,7 +97,7 @@ bool MppH264Encoder::init(int width, int height, int fps, int bitrate)
     }
 
     /*
-     * prep：输入图像参数。
+     * prep：输入图像参数。《prep预处理阶段》
      * 当前实验输入为 1280x720 NV12。
      */
     mpp_enc_cfg_set_s32(cfg_, "prep:width", width_);
@@ -107,7 +107,7 @@ bool MppH264Encoder::init(int width, int height, int fps, int bitrate)
     mpp_enc_cfg_set_s32(cfg_, "prep:format", MPP_FMT_YUV420SP);
 
     /*
-     * rc：码率控制。
+     * rc：码率控制。《rc码率控制》
      * 这里先使用 CBR，方便后续和 mpi_enc_test 对比。
      */
     mpp_enc_cfg_set_s32(cfg_, "rc:mode", MPP_ENC_RC_MODE_CBR);
@@ -127,7 +127,7 @@ bool MppH264Encoder::init(int width, int height, int fps, int bitrate)
     mpp_enc_cfg_set_s32(cfg_, "rc:bps_min", bitrate_ * 15 / 16);
 
     /*
-     * codec：H.264 / AVC。
+     * codec：H.264 / AVC。《编码器特性》
      */
     mpp_enc_cfg_set_s32(cfg_, "codec:type", MPP_VIDEO_CodingAVC);
 
@@ -137,13 +137,13 @@ bool MppH264Encoder::init(int width, int height, int fps, int bitrate)
      * 77  = main
      * 100 = high
      */
-    mpp_enc_cfg_set_s32(cfg_, "h264:profile", 100);
-    mpp_enc_cfg_set_s32(cfg_, "h264:level", 40);
+    mpp_enc_cfg_set_s32(cfg_, "h264:profile", 100);  //设置为100代表最高压缩率和画质的压缩
+    mpp_enc_cfg_set_s32(cfg_, "h264:level", 40);     //规定最大分辨率和码率支持上限
     mpp_enc_cfg_set_s32(cfg_, "h264:cabac_en", 1);
     mpp_enc_cfg_set_s32(cfg_, "h264:cabac_idc", 0);
     mpp_enc_cfg_set_s32(cfg_, "h264:trans8x8", 1);
 
-    ret = mpi_->control(ctx_, MPP_ENC_SET_CFG, cfg_);
+    ret = mpi_->control(ctx_, MPP_ENC_SET_CFG, cfg_);   //将修改好的配置写回硬件
     if (ret != MPP_OK)
     {
         printf("MPP_ENC_SET_CFG failed, ret=%d\n", ret);
@@ -151,7 +151,7 @@ bool MppH264Encoder::init(int width, int height, int fps, int bitrate)
         return false;
     }
 
-    inited_ = true;
+    inited_ = true;  //标记初始化完成
     return true;
 }
 
@@ -165,8 +165,8 @@ bool MppH264Encoder::get_header(std::vector<uint8_t> &out_packet)
         return false;
     }
 
-    MppPacket packet = nullptr;
-    MPP_RET ret = mpi_->control(ctx_, MPP_ENC_GET_EXTRA_INFO, &packet);
+    MppPacket packet = nullptr; //一开始不能接受，必须先接受sps\pps
+    MPP_RET ret = mpi_->control(ctx_, MPP_ENC_GET_EXTRA_INFO, &packet);//通过MPP_ENC_GET_EXTRA_INFO函数向硬件索要这段头部数据，然后提取内存指针和长度，塞进packet中返回给调用，最后清理
 
     if (ret != MPP_OK)
     {
@@ -252,7 +252,7 @@ bool MppH264Encoder::copy_nv12_to_mpp_buffer(const uint8_t *src,
 
 bool MppH264Encoder::encode(const uint8_t *nv12_data,
                             size_t nv12_size,
-                            std::vector<uint8_t> &out_packet)
+                            std::vector<uint8_t> &out_packet) // 核心编码流水线
 {
     out_packet.clear();
 
@@ -264,8 +264,8 @@ bool MppH264Encoder::encode(const uint8_t *nv12_data,
 
     MPP_RET ret = MPP_OK;
 
-    MppBuffer frame_buf = nullptr;
-    ret = mpp_buffer_get(nullptr, &frame_buf, frame_size_);
+    MppBuffer frame_buf = nullptr;  
+    ret = mpp_buffer_get(nullptr, &frame_buf, frame_size_);  //申请内存
     if (ret != MPP_OK || frame_buf == nullptr)
     {
         printf("mpp_buffer_get failed, ret=%d\n", ret);
@@ -283,13 +283,13 @@ bool MppH264Encoder::encode(const uint8_t *nv12_data,
     bool copy_ok = copy_nv12_to_mpp_buffer(nv12_data,
                                            nv12_size,
                                            static_cast<uint8_t *>(buf_ptr),
-                                           frame_size_);
+                                           frame_size_);   // 搬运数据，
     if (!copy_ok)
     {
         mpp_buffer_put(frame_buf);
         return false;
     }
-
+    // 开始打包成frame结构，然后做成MppFrame结构，打标签（数据宽高以及对齐的跨距和格式等等）
     MppFrame frame = nullptr;
     ret = mpp_frame_init(&frame);
     if (ret != MPP_OK || frame == nullptr)
@@ -323,9 +323,9 @@ bool MppH264Encoder::encode(const uint8_t *nv12_data,
      * H.264 一般每输入一帧可以取到一个 packet。
      * 这里加短暂轮询，避免偶发的异步返回。
      */
-    for (int retry = 0; retry < 100; ++retry)
+    for (int retry = 0; retry < 100; ++retry) //硬件计算耗时，代码中进行循环的轮询 
     {
-        ret = mpi_->encode_get_packet(ctx_, &packet);
+        ret = mpi_->encode_get_packet(ctx_, &packet); //不断调用此函数直到拿到非空的packet然后追加到out_packet当中，跳出循环
         if (ret != MPP_OK)
         {
             printf("encode_get_packet failed, ret=%d retry=%d\n", ret, retry);
