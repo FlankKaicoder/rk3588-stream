@@ -20,6 +20,15 @@ public:
 
     bool init(int width, int height, int fps, int bitrate); //初始化函数，传入视频的宽高帧率码率等信息
     bool get_header(std::vector<uint8_t> &out_packet);  // H.264编码中必须首先获取sps\pps（序列参数集\图像参数集）（视频目录信息），out_packet用于传出数据
+    // exp23: PTS metadata interface.
+    // The old encode() byte-stream interface is kept unchanged.
+    void set_next_pts_us(int64_t pts_us);
+    int64_t last_packet_pts_us() const;
+    int64_t last_packet_dts_us() const;
+    uint32_t last_packet_flags() const;
+    bool last_packet_is_intra() const;
+
+
     bool encode(const uint8_t *nv12_data,
                 size_t nv12_size,
                 std::vector<uint8_t> &out_packet);// 核心编码函数
@@ -33,6 +42,12 @@ public:
     size_t mpp_frame_size() const { return frame_size_; }
 
 private:
+    // exp23: PTS metadata cache.
+    int64_t next_pts_us_ = -1;
+    int64_t last_packet_pts_us_ = -1;
+    int64_t last_packet_dts_us_ = -1;
+    uint32_t last_packet_flags_ = 0;
+
     static int align_up(int value, int align); // 工具函数，用于将给定的数值向上对齐（硬件一般要对其16字节或者64字节） （向上对齐：1080对齐到16倍数就是1088）
 
     bool copy_nv12_to_mpp_buffer(const uint8_t *src,

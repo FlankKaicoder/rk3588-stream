@@ -237,6 +237,10 @@ condition_variable
 -
 thread
 -
+cstdint
+-
+string
+-
 atomic
 -
 utility

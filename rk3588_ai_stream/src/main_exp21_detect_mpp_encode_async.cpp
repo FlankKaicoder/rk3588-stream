@@ -3,6 +3,16 @@
 #include <mutex>
 #include <condition_variable>
 #include <thread>
+#include <cstdint>
+#include <string>
+
+static int64_t exp23_now_us()
+{
+    using namespace std::chrono;
+    return duration_cast<microseconds>(steady_clock::now().time_since_epoch()).count();
+}
+
+
 #include <atomic>
 #include <utility>
 #include <fcntl.h>
@@ -175,6 +185,8 @@ static bool save_rgb_debug_jpg(const char* path, const unsigned char* rgb_data, 
 struct Exp21EncFrame
 {
     int frame_id = 0;
+    int64_t pts_us = -1;
+    int64_t enqueue_ts_us = -1;
     std::vector<unsigned char> nv12;
 };
 
@@ -382,6 +394,12 @@ int main(int argc, char** argv)
 
     const size_t max_enc_queue_size = 8;
 
+
+    std::string enc_pts_csv_path = std::string(out_path) + ".pts.csv";
+    std::ofstream enc_pts_csv(enc_pts_csv_path);
+    enc_pts_csv << "frame_id,input_pts_us,mpp_packet_pts_us,mpp_packet_dts_us,"
+                   "pts_match,is_intra,queue_delay_ms,encode_wall_ms,packet_size\n";
+
     std::thread encoder_thread([&]() {
         std::vector<uint8_t> local_packet;
 
@@ -407,7 +425,16 @@ int main(int argc, char** argv)
 
             auto t0 = std::chrono::steady_clock::now();
 
+            int64_t exp23_encode_start_us = exp23_now_us();
+            int64_t exp23_queue_delay_us = item.enqueue_ts_us >= 0 ? (exp23_encode_start_us - item.enqueue_ts_us) : -1;
+
+            mpp_encoder.set_next_pts_us(item.pts_us);
             bool ok = mpp_encoder.encode(item.nv12.data(), nv12_size, local_packet);
+            int64_t exp23_encode_end_us = exp23_now_us();
+
+            int64_t exp23_mpp_packet_pts_us = mpp_encoder.last_packet_pts_us();
+            int64_t exp23_mpp_packet_dts_us = mpp_encoder.last_packet_dts_us();
+            bool exp23_is_intra = mpp_encoder.last_packet_is_intra();
 
             auto t1 = std::chrono::steady_clock::now();
 
@@ -435,19 +462,35 @@ int main(int argc, char** argv)
             double wr_ms = diff_ms(t1, t2);
             double total_ms = diff_ms(t0, t2);
 
+            if (enc_pts_csv.is_open()) {
+                int pts_match = (exp23_mpp_packet_pts_us == item.pts_us) ? 1 : 0;
+                enc_pts_csv << item.frame_id << ","
+                            << item.pts_us << ","
+                            << exp23_mpp_packet_pts_us << ","
+                            << exp23_mpp_packet_dts_us << ","
+                            << pts_match << ","
+                            << (exp23_is_intra ? 1 : 0) << ","
+                            << (exp23_queue_delay_us >= 0 ? exp23_queue_delay_us / 1000.0 : -1.0) << ","
+                            << ((exp23_encode_end_us - exp23_encode_start_us) / 1000.0) << ","
+                            << local_packet.size() << "\n";
+            }
+
             async_encode_us += (long long)(enc_ms * 1000.0);
             async_write_us += (long long)(wr_ms * 1000.0);
             async_total_us += (long long)(total_ms * 1000.0);
 
             int cnt = ++async_encoded_frames;
             if (cnt == 1 || cnt % 30 == 0) {
-                printf("[ENC] encoded=%d src_frame=%d packet=%zu encode=%.3f write=%.3f total=%.3f\n",
+                printf("[ENC] encoded=%d src_frame=%d packet=%zu input_pts=%lld pkt_pts=%lld pkt_dts=%lld intra=%d qdelay=%.3f encode=%.3f\n",
                        cnt,
                        item.frame_id,
                        local_packet.size(),
-                       enc_ms,
-                       wr_ms,
-                       total_ms);
+                       (long long)item.pts_us,
+                       (long long)exp23_mpp_packet_pts_us,
+                       (long long)exp23_mpp_packet_dts_us,
+                       exp23_is_intra ? 1 : 0,
+                       exp23_queue_delay_us >= 0 ? exp23_queue_delay_us / 1000.0 : -1.0,
+                       enc_ms);
                 fflush(stdout);
             }
         }
@@ -669,6 +712,8 @@ int main(int argc, char** argv)
         auto t_write0 = std::chrono::steady_clock::now();
         Exp21EncFrame enc_frame;
         enc_frame.frame_id = frame_id;
+        enc_frame.pts_us = (int64_t)frame_id * 1000000LL / (int64_t)mpp_fps;
+        enc_frame.enqueue_ts_us = exp23_now_us();
         enc_frame.nv12.assign(out_nv12_buf.begin(), out_nv12_buf.end());
 
         {
@@ -775,6 +820,7 @@ int main(int argc, char** argv)
     printf("async_encode_failures: %d\n", async_encode_failures.load());
     printf("async_drop_frames    : %d\n", async_drop_frames.load());
     printf("async_avg_encode_ms  : %.3f\n", async_avg_encode_ms);
+    printf("enc pts csv saved   : %s\n", enc_pts_csv_path.c_str());
     printf("async_avg_write_ms   : %.3f\n", async_avg_write_ms);
     printf("async_avg_total_ms   : %.3f\n", async_avg_total_ms);
 

@@ -165,31 +165,61 @@ bool MppH264Encoder::get_header(std::vector<uint8_t> &out_packet)
         return false;
     }
 
-    MppPacket packet = nullptr; //一开始不能接受，必须先接受sps\pps
-    MPP_RET ret = mpi_->control(ctx_, MPP_ENC_GET_EXTRA_INFO, &packet);//通过MPP_ENC_GET_EXTRA_INFO函数向硬件索要这段头部数据，然后提取内存指针和长度，塞进packet中返回给调用，最后清理
+    /*
+     * exp23-3:
+     * Use MPP_ENC_GET_HDR_SYNC instead of unsafe MPP_ENC_GET_EXTRA_INFO.
+     *
+     * Rockchip official usage:
+     *   mpp_packet_init_with_buffer(&packet, p->pkt_buf);
+     *   mpp_packet_set_length(packet, 0);
+     *   mpi->control(ctx, MPP_ENC_GET_HDR_SYNC, packet);
+     *
+     * For this project, we use a normal external memory buffer and wrap it
+     * as MppPacket. The important point is that packet must have valid
+     * external storage, and packet length must be cleared before control().
+     */
+    constexpr size_t kHeaderBufSize = 4096;
+    uint8_t header_buf[kHeaderBufSize];
 
-    if (ret != MPP_OK)
+    MppPacket packet = nullptr;
+    MPP_RET ret = mpp_packet_init(&packet, header_buf, kHeaderBufSize);
+    if (ret != MPP_OK || packet == nullptr)
     {
-        printf("MPP_ENC_GET_EXTRA_INFO failed, ret=%d\n", ret);
+        printf("mpp_packet_init for header failed, ret=%d\n", ret);
         return false;
     }
 
-    if (packet != nullptr)
+    /*
+     * Important:
+     * Official mpi_enc_test.c explicitly clears output packet length before
+     * MPP_ENC_GET_HDR_SYNC.
+     */
+    mpp_packet_set_length(packet, 0);
+
+    ret = mpi_->control(ctx_, MPP_ENC_GET_HDR_SYNC, packet);
+    if (ret != MPP_OK)
     {
-        void *ptr = mpp_packet_get_pos(packet);
-        size_t len = mpp_packet_get_length(packet);
-
-        if (ptr != nullptr && len > 0)
-        {
-            const uint8_t *p = static_cast<const uint8_t *>(ptr);
-            out_packet.assign(p, p + len);
-            printf("got h264 header: %zu bytes\n", len);
-        }
-
+        printf("MPP_ENC_GET_HDR_SYNC failed, ret=%d\n", ret);
         mpp_packet_deinit(&packet);
+        return false;
     }
 
-    return true;
+    void *ptr = mpp_packet_get_pos(packet);
+    size_t len = mpp_packet_get_length(packet);
+
+    if (ptr != nullptr && len > 0)
+    {
+        const uint8_t *p = static_cast<const uint8_t *>(ptr);
+        out_packet.assign(p, p + len);
+        printf("got h264 header by MPP_ENC_GET_HDR_SYNC: %zu bytes\n", len);
+    }
+    else
+    {
+        printf("warning: MPP_ENC_GET_HDR_SYNC returned empty header\n");
+    }
+
+    mpp_packet_deinit(&packet);
+    return !out_packet.empty();
 }
 
 bool MppH264Encoder::copy_nv12_to_mpp_buffer(const uint8_t *src,
@@ -250,6 +280,36 @@ bool MppH264Encoder::copy_nv12_to_mpp_buffer(const uint8_t *src,
     return true;
 }
 
+
+void MppH264Encoder::set_next_pts_us(int64_t pts_us)
+{
+    next_pts_us_ = pts_us;
+}
+
+int64_t MppH264Encoder::last_packet_pts_us() const
+{
+    return last_packet_pts_us_;
+}
+
+int64_t MppH264Encoder::last_packet_dts_us() const
+{
+    return last_packet_dts_us_;
+}
+
+uint32_t MppH264Encoder::last_packet_flags() const
+{
+    return last_packet_flags_;
+}
+
+bool MppH264Encoder::last_packet_is_intra() const
+{
+#ifdef MPP_PACKET_FLAG_INTRA
+    return (last_packet_flags_ & MPP_PACKET_FLAG_INTRA) != 0;
+#else
+    return (last_packet_flags_ & 0x00000008) != 0;
+#endif
+}
+
 bool MppH264Encoder::encode(const uint8_t *nv12_data,
                             size_t nv12_size,
                             std::vector<uint8_t> &out_packet) // 核心编码流水线
@@ -305,6 +365,9 @@ bool MppH264Encoder::encode(const uint8_t *nv12_data,
     mpp_frame_set_ver_stride(frame, ver_stride_);
     mpp_frame_set_fmt(frame, MPP_FMT_YUV420SP);
     mpp_frame_set_buffer(frame, frame_buf);
+    if (next_pts_us_ >= 0) {
+        mpp_frame_set_pts(frame, next_pts_us_);
+    }
     mpp_frame_set_eos(frame, 0);
 
     ret = mpi_->encode_put_frame(ctx_, frame);
@@ -335,6 +398,10 @@ bool MppH264Encoder::encode(const uint8_t *nv12_data,
 
         if (packet != nullptr)
         {
+            last_packet_pts_us_ = mpp_packet_get_pts(packet);
+            last_packet_dts_us_ = mpp_packet_get_dts(packet);
+            last_packet_flags_ = mpp_packet_get_flag(packet);
+
             void *ptr = mpp_packet_get_pos(packet);
             size_t len = mpp_packet_get_length(packet);
 
@@ -344,7 +411,6 @@ bool MppH264Encoder::encode(const uint8_t *nv12_data,
                 out_packet.assign(p, p + len);
                 got_packet = true;
             }
-
             mpp_packet_deinit(&packet);
             break;
         }
