@@ -84,12 +84,12 @@ static const unsigned char colors[19][3] = {
 };
 //cv::mat默认是BGR，但是此时cv::scalar按照内存通道写入
 static void draw_detections_on_rgb(cv::Mat& rgb,
-                                   const object_detect_result_list& od_results,
+                                   const object_detect_result_list& od_results,  //od_results yolo检测结果列表
                                    int frame_id)
 {
-    char text[256];
+    char text[256];  // 用来保存标签文字内容
 
-    for (int i = 0; i < od_results.count; i++) {
+    for (int i = 0; i < od_results.count; i++) { // 便利每一个检测框
         const unsigned char* color = colors[i % 19];
 
         /*
@@ -182,15 +182,15 @@ static bool save_rgb_debug_jpg(const char* path, const unsigned char* rgb_data, 
 }
 
 
-struct Exp21EncFrame
+struct Exp21EncFrame   //异步编码帧结构体
 {
     int frame_id = 0;
     int64_t pts_us = -1;
     int64_t enqueue_ts_us = -1;
-    std::vector<unsigned char> nv12;
+    std::vector<unsigned char> nv12; //拷贝一份数据给编码线程
 };
 
-int main(int argc, char** argv)
+int main(int argc, char** argv)  // argc:命令行参数个数；argv：命令行参数组数
 {   //参数校验
     if (argc != 8) {
         printf("Usage: %s <model_path> <video_dev> <width> <height> <frames> <output_h264> <profile_csv>\n", argv[0]);
@@ -200,7 +200,7 @@ int main(int argc, char** argv)
     //atoi字符串转成整数，赋值给相应变量
     const char* model_path = argv[1];
     const char* dev_name = argv[2];
-    int width = atoi(argv[3]);
+    int width = atoi(argv[3]);  //将字符串转成整数
     int height = atoi(argv[4]);
     int frames = atoi(argv[5]);
     const char* out_path = argv[6];
@@ -224,16 +224,16 @@ int main(int argc, char** argv)
     printf("mpp bitrate: %d\n", mpp_bitrate);
     printf("rgb size   : %zu\n", rgb_size);
     //打开设备查询能力（非阻塞模式进行设备能力查询）
-    int fd = open(dev_name, O_RDWR | O_NONBLOCK, 0);
+    int fd = open(dev_name, O_RDWR | O_NONBLOCK, 0);  //非阻塞方式查询摄像头设备的能力
     if (fd < 0) {
         perror("open video device failed");
         return -1;
     }
 
-    v4l2_capability cap;
+    v4l2_capability cap;   
     memset(&cap, 0, sizeof(cap));
 
-    if (xioctl(fd, VIDIOC_QUERYCAP, &cap) < 0) {
+    if (xioctl(fd, VIDIOC_QUERYCAP, &cap) < 0) { //查询摄像头节点能力是否支持streaming 
         perror("VIDIOC_QUERYCAP failed");
         close(fd);
         return -1;
@@ -242,20 +242,20 @@ int main(int argc, char** argv)
     printf("driver     : %s\n", cap.driver);
     printf("card       : %s\n", cap.card);
 
-    if (!(cap.capabilities & V4L2_CAP_VIDEO_CAPTURE_MPLANE)) {
+    if (!(cap.capabilities & V4L2_CAP_VIDEO_CAPTURE_MPLANE)) { //是否支持多平面采集
         printf("ERROR: device does not support V4L2_CAP_VIDEO_CAPTURE_MPLANE\n");
         close(fd);
         return -1;
     }
 
-    if (!(cap.capabilities & V4L2_CAP_STREAMING)) {
+    if (!(cap.capabilities & V4L2_CAP_STREAMING)) {  // 是否支持streaming模式（mmap buffer与streamon都需要这个能力）
         printf("ERROR: device does not support V4L2_CAP_STREAMING\n");
         close(fd);
         return -1;
     }
 
     v4l2_format fmt; //填充这个结构体
-    memset(&fmt, 0, sizeof(fmt));
+    memset(&fmt, 0, sizeof(fmt));  //清零避免数据污染
 
     fmt.type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;  //瑞芯微采用多平面采集
     fmt.fmt.pix_mp.width = width;
@@ -264,7 +264,7 @@ int main(int argc, char** argv)
     fmt.fmt.pix_mp.field = V4L2_FIELD_NONE;
     fmt.fmt.pix_mp.num_planes = 1;
 
-    if (xioctl(fd, VIDIOC_S_FMT, &fmt) < 0) {
+    if (xioctl(fd, VIDIOC_S_FMT, &fmt) < 0) {  //设置好的格式给摄像头驱动
         perror("VIDIOC_S_FMT failed");
         close(fd);
         return -1;
@@ -281,14 +281,14 @@ int main(int argc, char** argv)
            fmt.fmt.pix_mp.plane_fmt[0].sizeimage,
            fmt.fmt.pix_mp.plane_fmt[0].bytesperline);
 
-    v4l2_requestbuffers req;
+    v4l2_requestbuffers req;  //申请buffer 
     memset(&req, 0, sizeof(req));
 
     req.count = 4;  //多缓冲队列
     req.type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
     req.memory = V4L2_MEMORY_MMAP; //指定采用内存映射模式
 
-    if (xioctl(fd, VIDIOC_REQBUFS, &req) < 0) {
+    if (xioctl(fd, VIDIOC_REQBUFS, &req) < 0) {   //向驱动申请4个mmap buffer
         perror("VIDIOC_REQBUFS failed");
         close(fd);
         return -1;
@@ -296,9 +296,9 @@ int main(int argc, char** argv)
 
     printf("request buffers count: %u\n", req.count);
 
-    std::vector<Buffer> buffers(req.count);
+    std::vector<Buffer> buffers(req.count);  //创建用户态的数组，然后保存每个buffer的地址和长度
 
-    for (unsigned int i = 0; i < req.count; ++i) {
+    for (unsigned int i = 0; i < req.count; ++i) {   //对每一个buffer查询并且mmap（1、创建v4l2_buffer buf和v4l2_plane planes[1]；2、清空；3、设置类型内存方式索引；4、查询buffer长度和偏移；5、调用mmap映射用户态）
         v4l2_buffer buf;
         v4l2_plane planes[1];
 
@@ -337,7 +337,7 @@ int main(int argc, char** argv)
                buf.m.planes[0].m.mem_offset);
     }
 
-    for (unsigned int i = 0; i < req.count; ++i) {
+    for (unsigned int i = 0; i < req.count; ++i) {  //填充之后的buffer全部放回驱动队列然后驱动读取
         v4l2_buffer buf;
         v4l2_plane planes[1];
 
@@ -357,14 +357,14 @@ int main(int argc, char** argv)
         }
     }
     //打开输出管道等
-    FILE* fout = fopen(out_path, "wb");
+    FILE* fout = fopen(out_path, "wb");  //打开h264的文件fifo
     if (!fout) {
         perror("fopen output failed");
         close(fd);
         return -1;
     }
 
-    MppH264Encoder mpp_encoder;
+    MppH264Encoder mpp_encoder;  //创建mpp编码器对象并且初始化
     if (!mpp_encoder.init(width, height, mpp_fps, mpp_bitrate)) {
         printf("MppH264Encoder init failed\n");
         fclose(fout);
@@ -378,21 +378,21 @@ int main(int argc, char** argv)
     } else {
         printf("warning: empty h264 header\n");
     }
-
+    //异步编码需要的数据结构；
     std::vector<uint8_t> h264_packet;
 
-    std::queue<Exp21EncFrame> enc_queue;
-    std::mutex enc_mutex;
+    std::queue<Exp21EncFrame> enc_queue;   // 主线程向编码线程传帧队列
+    std::mutex enc_mutex;                    // 保护队列互斥锁
     std::condition_variable enc_cv;
-    std::atomic<bool> enc_stop(false);
-    std::atomic<int> async_encoded_frames(0);
-    std::atomic<int> async_encode_failures(0);
-    std::atomic<int> async_drop_frames(0);
-    std::atomic<long long> async_encode_us(0);
-    std::atomic<long long> async_write_us(0);
-    std::atomic<long long> async_total_us(0);
+    std::atomic<bool> enc_stop(false);   //编码线程退出
+    std::atomic<int> async_encoded_frames(0); // 已编码帧数
+    std::atomic<int> async_encode_failures(0);  // 编码失败
+    std::atomic<int> async_drop_frames(0);   // 队列满丢弃的帧数
+    std::atomic<long long> async_encode_us(0); //编码耗时
+    std::atomic<long long> async_write_us(0);  // 写文件耗时
+    std::atomic<long long> async_total_us(0);   // 编码线程总耗时累计
 
-    const size_t max_enc_queue_size = 8;
+    const size_t max_enc_queue_size = 8;  // 最大编码队列长度为8；
 
 
     std::string enc_pts_csv_path = std::string(out_path) + ".pts.csv";
@@ -400,15 +400,15 @@ int main(int argc, char** argv)
     enc_pts_csv << "frame_id,input_pts_us,mpp_packet_pts_us,mpp_packet_dts_us,"
                    "pts_match,is_intra,queue_delay_ms,encode_wall_ms,packet_size\n";
 
-    std::thread encoder_thread([&]() {
-        std::vector<uint8_t> local_packet;
+    std::thread encoder_thread([&]() {     // 创建新线程，线程函数可以引用外部变量
+        std::vector<uint8_t> local_packet;  // 编码内部使用输出buffer
 
         while (true) {
             Exp21EncFrame item;
 
             {
-                std::unique_lock<std::mutex> lk(enc_mutex);
-                enc_cv.wait(lk, [&]() {
+                std::unique_lock<std::mutex> lk(enc_mutex);  // 队列为空没停止就开始等待，有push新帧就通知开始编码
+                enc_cv.wait(lk, [&]() {        
                     return enc_stop.load() || !enc_queue.empty();
                 });
 
@@ -419,20 +419,20 @@ int main(int argc, char** argv)
                     continue;
                 }
 
-                item = std::move(enc_queue.front());
-                enc_queue.pop();
+                item = std::move(enc_queue.front()); // 移动资源避免复制整个数据
+                enc_queue.pop();  //从队列中取出一帧
             }
 
-            auto t0 = std::chrono::steady_clock::now();
+            auto t0 = std::chrono::steady_clock::now();  //编码开始
 
             int64_t exp23_encode_start_us = exp23_now_us();
             int64_t exp23_queue_delay_us = item.enqueue_ts_us >= 0 ? (exp23_encode_start_us - item.enqueue_ts_us) : -1;
 
-            mpp_encoder.set_next_pts_us(item.pts_us);
+            mpp_encoder.set_next_pts_us(item.pts_us);  // 一帧的PTS设置给编码器，然后编码数据
             bool ok = mpp_encoder.encode(item.nv12.data(), nv12_size, local_packet);
             int64_t exp23_encode_end_us = exp23_now_us();
 
-            int64_t exp23_mpp_packet_pts_us = mpp_encoder.last_packet_pts_us();
+            int64_t exp23_mpp_packet_pts_us = mpp_encoder.last_packet_pts_us(); // 编码器中取回packet验证PTS\DTS是否是intra
             int64_t exp23_mpp_packet_dts_us = mpp_encoder.last_packet_dts_us();
             bool exp23_is_intra = mpp_encoder.last_packet_is_intra();
 
@@ -443,7 +443,7 @@ int main(int argc, char** argv)
                 printf("[ENC] encode failed at frame=%d\n", item.frame_id);
                 continue;
             }
-
+            //编码成功之后编码之后的包写入输出文件或者FIFO
             size_t written = 0;
             if (!local_packet.empty()) {
                 written = fwrite(local_packet.data(), 1, local_packet.size(), fout);
@@ -457,7 +457,7 @@ int main(int argc, char** argv)
                        item.frame_id, written, local_packet.size());
                 continue;
             }
-
+            //计算全部编码耗时，写文件
             double enc_ms = diff_ms(t0, t1);
             double wr_ms = diff_ms(t1, t2);
             double total_ms = diff_ms(t0, t2);
@@ -478,7 +478,7 @@ int main(int argc, char** argv)
             async_encode_us += (long long)(enc_ms * 1000.0);
             async_write_us += (long long)(wr_ms * 1000.0);
             async_total_us += (long long)(total_ms * 1000.0);
-
+            //编码成功帧数加一
             int cnt = ++async_encoded_frames;
             if (cnt == 1 || cnt % 30 == 0) {
                 printf("[ENC] encoded=%d src_frame=%d packet=%zu input_pts=%lld pkt_pts=%lld pkt_dts=%lld intra=%d qdelay=%.3f encode=%.3f\n",
@@ -491,7 +491,7 @@ int main(int argc, char** argv)
                        exp23_is_intra ? 1 : 0,
                        exp23_queue_delay_us >= 0 ? exp23_queue_delay_us / 1000.0 : -1.0,
                        enc_ms);
-                fflush(stdout);
+                fflush(stdout);  // 强制刷新标准输出，避免缓存不显示
             }
         }
 
@@ -525,15 +525,15 @@ int main(int argc, char** argv)
                 << "fps,"
                 << "detect_count"
                 << std::endl;
-
+    //  申请两个图像buffer  ；
     std::vector<unsigned char> rgb_buf(rgb_size);
     std::vector<unsigned char> out_nv12_buf(nv12_size);
-
+    //创建RKNN模型上下文结构体清零
     int ret = 0;
     rknn_app_context_t rknn_app_ctx;
     memset(&rknn_app_ctx, 0, sizeof(rknn_app_ctx));
 
-    init_post_process();
+    init_post_process();  // 初始化后处理
     //创建模型结构体然后将内容送到NPU中
     ret = init_yolo11_model(model_path, &rknn_app_ctx);
     if (ret != 0) {
@@ -571,7 +571,7 @@ int main(int argc, char** argv)
     //成功处理的帧数计数器
     int actual_frames = 0;
 
-    for (int frame_id = 0; frame_id < frames; ++frame_id) {
+    for (int frame_id = 0; frame_id < frames; ++frame_id) { //每一帧的推理主循环
         auto t_total0 = std::chrono::steady_clock::now(); //记录此帧开始的时间
         //设置select监听
         fd_set fds;  //文件描述集合
@@ -596,7 +596,7 @@ int main(int argc, char** argv)
             break;
         }
 
-        v4l2_buffer buf;
+        v4l2_buffer buf;  //准备v4l2 buffer  和v4l2_plane 
         v4l2_plane planes[1];
 
         memset(&buf, 0, sizeof(buf));
@@ -610,14 +610,14 @@ int main(int argc, char** argv)
         auto t_dq0 = std::chrono::steady_clock::now();
         if (xioctl(fd, VIDIOC_DQBUF, &buf) < 0) {           //VIDIOC_DQBUF从驱动中取出已经填充的buffer
             if (errno == EAGAIN) {
-                --frame_id;
+                --frame_id;            // 非阻塞模式下没有帧，于是继续处理同一帧
                 continue;
             }
             perror("VIDIOC_DQBUF failed");
             break;
         }
         auto t_dq1 = std::chrono::steady_clock::now();
-
+        //驱动返回的buf.index就是对应的mmap地址，就是当前的NV12数据的起始指针
         unsigned char* nv12_in = (unsigned char*)buffers[buf.index].start;  //获取NV12原始数据的指针，通过buffer.index就可以找到对应的虚拟地址，指向摄像头输出的NV12帧数据
 
         auto t_rga_in0 = std::chrono::steady_clock::now();
