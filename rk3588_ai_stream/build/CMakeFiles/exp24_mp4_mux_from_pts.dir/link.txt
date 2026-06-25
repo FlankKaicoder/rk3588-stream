@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/exp24_mp4_mux_from_pts.dir/src/main_exp24_mp4_mux_from_pts.cpp.o -o exp24_mp4_mux_from_pts  -lavformat -lavcodec -lavutil 

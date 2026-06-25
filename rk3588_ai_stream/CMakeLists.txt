@@ -594,3 +594,27 @@ set_target_properties(exp21_detect_mpp_encode_async PROPERTIES
     BUILD_RPATH "$ORIGIN/lib;$ORIGIN/../lib"
 )
 # ================= EXP21_4_ASYNC_DETECT_MPP_ENCODE_END =================
+
+# ===== exp24: MP4 mux from H264 + PTS CSV =====
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(FFMPEG24 REQUIRED libavformat libavcodec libavutil)
+
+add_executable(exp24_mp4_mux_from_pts
+    src/main_exp24_mp4_mux_from_pts.cpp
+)
+
+target_include_directories(exp24_mp4_mux_from_pts PRIVATE
+    ${FFMPEG24_INCLUDE_DIRS}
+)
+
+target_compile_options(exp24_mp4_mux_from_pts PRIVATE
+    -O3
+    -DNDEBUG
+    ${FFMPEG24_CFLAGS_OTHER}
+)
+
+target_link_libraries(exp24_mp4_mux_from_pts PRIVATE
+    ${FFMPEG24_LIBRARIES}
+)
+
+target_compile_features(exp24_mp4_mux_from_pts PRIVATE cxx_std_17)

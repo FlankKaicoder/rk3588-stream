@@ -2,6 +2,7 @@
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/list_install_components.dir
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/rebuild_cache.dir
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/edit_cache.dir
+/home/cat/projects/rk3588_ai_stream/build/CMakeFiles/exp24_mp4_mux_from_pts.dir
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/exp21_detect_mpp_encode_async.dir
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/exp21_detect_mpp_encode.dir
 /home/cat/projects/rk3588_ai_stream/build/CMakeFiles/exp21_v4l2_mpp_encode.dir

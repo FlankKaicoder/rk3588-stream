@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/cat/projects/rk3588_ai_stream/src/main_exp24_mp4_mux_from_pts.cpp
+algorithm
+-
+cstdint
+-
+cstdio
+-
+cstdlib
+-
+cstring
+-
+fstream
+-
+iostream
+-
+map
+-
+sstream
+-
+string
+-
+vector
+-
+libavformat/avformat.h
+-
+libavcodec/packet.h
+-
+libavutil/pixfmt.h
+-
+libavutil/error.h
+-
+
