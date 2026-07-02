@@ -176,6 +176,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named exp24_mp4_mux_from_pts
+
+# Build rule for target.
+exp24_mp4_mux_from_pts: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 exp24_mp4_mux_from_pts
+.PHONY : exp24_mp4_mux_from_pts
+
+# fast build rule for target.
+exp24_mp4_mux_from_pts/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp24_mp4_mux_from_pts.dir/build.make CMakeFiles/exp24_mp4_mux_from_pts.dir/build
+.PHONY : exp24_mp4_mux_from_pts/fast
+
+#=============================================================================
 # Target rules for targets named exp21_detect_mpp_encode_async
 
 # Build rule for target.
@@ -811,6 +824,33 @@ src/main_exp21_v4l2_mpp_encode.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_v4l2_mpp_encode.dir/build.make CMakeFiles/exp21_v4l2_mpp_encode.dir/src/main_exp21_v4l2_mpp_encode.cpp.s
 .PHONY : src/main_exp21_v4l2_mpp_encode.cpp.s
 
+src/main_exp24_mp4_mux_from_pts.o: src/main_exp24_mp4_mux_from_pts.cpp.o
+
+.PHONY : src/main_exp24_mp4_mux_from_pts.o
+
+# target to build an object file
+src/main_exp24_mp4_mux_from_pts.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp24_mp4_mux_from_pts.dir/build.make CMakeFiles/exp24_mp4_mux_from_pts.dir/src/main_exp24_mp4_mux_from_pts.cpp.o
+.PHONY : src/main_exp24_mp4_mux_from_pts.cpp.o
+
+src/main_exp24_mp4_mux_from_pts.i: src/main_exp24_mp4_mux_from_pts.cpp.i
+
+.PHONY : src/main_exp24_mp4_mux_from_pts.i
+
+# target to preprocess a source file
+src/main_exp24_mp4_mux_from_pts.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp24_mp4_mux_from_pts.dir/build.make CMakeFiles/exp24_mp4_mux_from_pts.dir/src/main_exp24_mp4_mux_from_pts.cpp.i
+.PHONY : src/main_exp24_mp4_mux_from_pts.cpp.i
+
+src/main_exp24_mp4_mux_from_pts.s: src/main_exp24_mp4_mux_from_pts.cpp.s
+
+.PHONY : src/main_exp24_mp4_mux_from_pts.s
+
+# target to generate assembly for a file
+src/main_exp24_mp4_mux_from_pts.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp24_mp4_mux_from_pts.dir/build.make CMakeFiles/exp24_mp4_mux_from_pts.dir/src/main_exp24_mp4_mux_from_pts.cpp.s
+.PHONY : src/main_exp24_mp4_mux_from_pts.cpp.s
+
 src/main_image.o: src/main_image.cpp.o
 
 .PHONY : src/main_image.o
@@ -1260,6 +1300,7 @@ help:
 	@echo "... exp21_detect_mpp_encode_async"
 	@echo "... exp21_mpp_file_encode"
 	@echo "... exp21_v4l2_mpp_encode"
+	@echo "... exp24_mp4_mux_from_pts"
 	@echo "... fileutils"
 	@echo "... image_detect"
 	@echo "... imagedrawing"
@@ -1306,6 +1347,9 @@ help:
 	@echo "... src/main_exp21_v4l2_mpp_encode.o"
 	@echo "... src/main_exp21_v4l2_mpp_encode.i"
 	@echo "... src/main_exp21_v4l2_mpp_encode.s"
+	@echo "... src/main_exp24_mp4_mux_from_pts.o"
+	@echo "... src/main_exp24_mp4_mux_from_pts.i"
+	@echo "... src/main_exp24_mp4_mux_from_pts.s"
 	@echo "... src/main_image.o"
 	@echo "... src/main_image.i"
 	@echo "... src/main_image.s"

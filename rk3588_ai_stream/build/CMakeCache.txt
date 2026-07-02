@@ -228,6 +228,15 @@ RGA_LIBRARY:FILEPATH=/usr/lib/aarch64-linux-gnu/librga.so
 TARGET_SOC:STRING=rk3588
 
 //Path to a library.
+pkgcfg_lib_FFMPEG24_avcodec:FILEPATH=/usr/lib/aarch64-linux-gnu/libavcodec.so
+
+//Path to a library.
+pkgcfg_lib_FFMPEG24_avformat:FILEPATH=/usr/lib/aarch64-linux-gnu/libavformat.so
+
+//Path to a library.
+pkgcfg_lib_FFMPEG24_avutil:FILEPATH=/usr/lib/aarch64-linux-gnu/libavutil.so
+
+//Path to a library.
 pkgcfg_lib_LIBRGA_rga:FILEPATH=/usr/lib/aarch64-linux-gnu/librga.so
 
 //Value Computed by CMake
@@ -396,6 +405,52 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+FFMPEG24_CFLAGS:INTERNAL=-I/usr/include/aarch64-linux-gnu
+FFMPEG24_CFLAGS_I:INTERNAL=
+FFMPEG24_CFLAGS_OTHER:INTERNAL=
+FFMPEG24_FOUND:INTERNAL=1
+FFMPEG24_INCLUDEDIR:INTERNAL=
+FFMPEG24_INCLUDE_DIRS:INTERNAL=/usr/include/aarch64-linux-gnu
+FFMPEG24_LDFLAGS:INTERNAL=-lavformat;-lavcodec;-lavutil
+FFMPEG24_LDFLAGS_OTHER:INTERNAL=
+FFMPEG24_LIBDIR:INTERNAL=
+FFMPEG24_LIBRARIES:INTERNAL=avformat;avcodec;avutil
+FFMPEG24_LIBRARY_DIRS:INTERNAL=
+FFMPEG24_LIBS:INTERNAL=
+FFMPEG24_LIBS_L:INTERNAL=
+FFMPEG24_LIBS_OTHER:INTERNAL=
+FFMPEG24_LIBS_PATHS:INTERNAL=
+FFMPEG24_MODULE_NAME:INTERNAL=
+FFMPEG24_PREFIX:INTERNAL=
+FFMPEG24_STATIC_CFLAGS:INTERNAL=-I/usr/include/aarch64-linux-gnu
+FFMPEG24_STATIC_CFLAGS_I:INTERNAL=
+FFMPEG24_STATIC_CFLAGS_OTHER:INTERNAL=
+FFMPEG24_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include/aarch64-linux-gnu
+FFMPEG24_STATIC_LDFLAGS:INTERNAL=-lavformat;-lm;-lxml2;-lbz2;-lgme;-lopenmpt;-lstdc++;-lchromaprint;-lbluray;-lz;-lgnutls;-lrabbitmq;-lsrt-gnutls;-lssh;-lzmq;-lavcodec;-lvpx;-lm;-lvpx;-lm;-lvpx;-lm;-lvpx;-lm;-lwebpmux;-lwebp;-lm;-llzma;-ldav1d;-lrsvg-2;-lm;-lgio-2.0;-lgdk_pixbuf-2.0;-lgobject-2.0;-lglib-2.0;-lcairo;-lzvbi;-lm;-lpthread;-lm;-lpng;-lz;-lsnappy;-lstdc++;-lz;-laom;-lm;-lpthread;-lcodec2;-lgsm;-lmp3lame;-lm;-lopenjp2;-lopus;-lm;-lshine;-lspeex;-ltheoraenc;-ltheoradec;-logg;-ltwolame;-lvorbis;-lvorbisenc;-lwavpack;-lwebp;-lx264;-lx265;-lxvidcore;-ldl;-pthread;-lva;-lswresample;-lm;-lsoxr;-lavutil;-pthread;-lva-drm;-lva;-lva-x11;-lva;-lvdpau;-lX11;-lm;-ldrm;-lOpenCL;-lva;-lXv;-lX11;-lXext
+FFMPEG24_STATIC_LDFLAGS_OTHER:INTERNAL=-pthread
+FFMPEG24_STATIC_LIBDIR:INTERNAL=
+FFMPEG24_STATIC_LIBRARIES:INTERNAL=avformat;m;xml2;bz2;gme;openmpt;stdc++;chromaprint;bluray;z;gnutls;rabbitmq;srt-gnutls;ssh;zmq;avcodec;vpx;m;vpx;m;vpx;m;vpx;m;webpmux;webp;m;lzma;dav1d;rsvg-2;m;gio-2.0;gdk_pixbuf-2.0;gobject-2.0;glib-2.0;cairo;zvbi;m;pthread;m;png;z;snappy;stdc++;z;aom;m;pthread;codec2;gsm;mp3lame;m;openjp2;opus;m;shine;speex;theoraenc;theoradec;ogg;twolame;vorbis;vorbisenc;wavpack;webp;x264;x265;xvidcore;dl;va;swresample;m;soxr;avutil;va-drm;va;va-x11;va;vdpau;X11;m;drm;OpenCL;va;Xv;X11;Xext
+FFMPEG24_STATIC_LIBRARY_DIRS:INTERNAL=
+FFMPEG24_STATIC_LIBS:INTERNAL=
+FFMPEG24_STATIC_LIBS_L:INTERNAL=
+FFMPEG24_STATIC_LIBS_OTHER:INTERNAL=
+FFMPEG24_STATIC_LIBS_PATHS:INTERNAL=
+FFMPEG24_VERSION:INTERNAL=
+FFMPEG24_libavcodec_INCLUDEDIR:INTERNAL=/usr/include/aarch64-linux-gnu
+FFMPEG24_libavcodec_LIBDIR:INTERNAL=/usr/lib/aarch64-linux-gnu
+FFMPEG24_libavcodec_MODULE_NAME:INTERNAL=libavcodec
+FFMPEG24_libavcodec_PREFIX:INTERNAL=/usr
+FFMPEG24_libavcodec_VERSION:INTERNAL=58.91.100
+FFMPEG24_libavformat_INCLUDEDIR:INTERNAL=/usr/include/aarch64-linux-gnu
+FFMPEG24_libavformat_LIBDIR:INTERNAL=/usr/lib/aarch64-linux-gnu
+FFMPEG24_libavformat_MODULE_NAME:INTERNAL=libavformat
+FFMPEG24_libavformat_PREFIX:INTERNAL=/usr
+FFMPEG24_libavformat_VERSION:INTERNAL=58.45.100
+FFMPEG24_libavutil_INCLUDEDIR:INTERNAL=/usr/include/aarch64-linux-gnu
+FFMPEG24_libavutil_LIBDIR:INTERNAL=/usr/lib/aarch64-linux-gnu
+FFMPEG24_libavutil_MODULE_NAME:INTERNAL=libavutil
+FFMPEG24_libavutil_PREFIX:INTERNAL=/usr
+FFMPEG24_libavutil_VERSION:INTERNAL=56.51.100
 //Details about finding OpenCV
 FIND_PACKAGE_MESSAGE_DETAILS_OpenCV:INTERNAL=[/usr][v4.5.1()]
 //Details about finding PkgConfig
@@ -437,8 +492,16 @@ LIBRGA_librga_PREFIX:INTERNAL=
 LIBRGA_librga_VERSION:INTERNAL=
 //ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
 PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
+__pkg_config_arguments_FFMPEG24:INTERNAL=REQUIRED;libavformat;libavcodec;libavutil
 __pkg_config_arguments_LIBRGA:INTERNAL=REQUIRED;IMPORTED_TARGET;librga
+__pkg_config_checked_FFMPEG24:INTERNAL=1
 __pkg_config_checked_LIBRGA:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_FFMPEG24_avcodec
+pkgcfg_lib_FFMPEG24_avcodec-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_FFMPEG24_avformat
+pkgcfg_lib_FFMPEG24_avformat-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_FFMPEG24_avutil
+pkgcfg_lib_FFMPEG24_avutil-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib_LIBRGA_rga
 pkgcfg_lib_LIBRGA_rga-ADVANCED:INTERNAL=1
 prefix_result:INTERNAL=/usr/lib/aarch64-linux-gnu

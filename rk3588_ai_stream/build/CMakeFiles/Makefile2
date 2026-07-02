@@ -72,6 +72,7 @@ CMAKE_BINARY_DIR = /home/cat/projects/rk3588_ai_stream/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/exp24_mp4_mux_from_pts.dir/all
 all: CMakeFiles/exp21_detect_mpp_encode_async.dir/all
 all: CMakeFiles/exp21_detect_mpp_encode.dir/all
 all: CMakeFiles/exp21_v4l2_mpp_encode.dir/all
@@ -104,6 +105,7 @@ preinstall: utils.out/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/exp24_mp4_mux_from_pts.dir/clean
 clean: CMakeFiles/exp21_detect_mpp_encode_async.dir/clean
 clean: CMakeFiles/exp21_detect_mpp_encode.dir/clean
 clean: CMakeFiles/exp21_v4l2_mpp_encode.dir/clean
@@ -170,6 +172,33 @@ utils.out/clean: utils.out/CMakeFiles/imagedrawing.dir/clean
 utils.out/clean: utils.out/CMakeFiles/fileutils.dir/clean
 
 .PHONY : utils.out/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/exp24_mp4_mux_from_pts.dir
+
+# All Build rule for target.
+CMakeFiles/exp24_mp4_mux_from_pts.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp24_mp4_mux_from_pts.dir/build.make CMakeFiles/exp24_mp4_mux_from_pts.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp24_mp4_mux_from_pts.dir/build.make CMakeFiles/exp24_mp4_mux_from_pts.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=41,42 "Built target exp24_mp4_mux_from_pts"
+.PHONY : CMakeFiles/exp24_mp4_mux_from_pts.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/exp24_mp4_mux_from_pts.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cat/projects/rk3588_ai_stream/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/exp24_mp4_mux_from_pts.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cat/projects/rk3588_ai_stream/build/CMakeFiles 0
+.PHONY : CMakeFiles/exp24_mp4_mux_from_pts.dir/rule
+
+# Convenience name for target.
+exp24_mp4_mux_from_pts: CMakeFiles/exp24_mp4_mux_from_pts.dir/rule
+
+.PHONY : exp24_mp4_mux_from_pts
+
+# clean rule for target.
+CMakeFiles/exp24_mp4_mux_from_pts.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp24_mp4_mux_from_pts.dir/build.make CMakeFiles/exp24_mp4_mux_from_pts.dir/clean
+.PHONY : CMakeFiles/exp24_mp4_mux_from_pts.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/exp21_detect_mpp_encode_async.dir
@@ -291,7 +320,7 @@ CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/all: utils.out/CMakeFiles/imag
 CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/all: utils.out/CMakeFiles/fileutils.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=71,72,73,74 "Built target v4l2_rga_rknn_detect_to_nv12_clean"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=73,74,75,76 "Built target v4l2_rga_rknn_detect_to_nv12_clean"
 .PHONY : CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/all
 
 # Build rule for subdir invocation for target.
@@ -319,7 +348,7 @@ CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/all: utils.out/CMakeFiles/imageutils
 CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/all: utils.out/CMakeFiles/fileutils.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=67,68,69,70 "Built target v4l2_rga_rknn_detect_to_nv12"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=69,70,71,72 "Built target v4l2_rga_rknn_detect_to_nv12"
 .PHONY : CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/all
 
 # Build rule for subdir invocation for target.
@@ -348,7 +377,7 @@ CMakeFiles/image_detect.dir/all: utils.out/CMakeFiles/imagedrawing.dir/all
 CMakeFiles/image_detect.dir/all: utils.out/CMakeFiles/fileutils.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=43,44,45,46 "Built target image_detect"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=45,46,47,48 "Built target image_detect"
 .PHONY : CMakeFiles/image_detect.dir/all
 
 # Build rule for subdir invocation for target.
@@ -377,7 +406,7 @@ CMakeFiles/v4l2_rga_rknn_detect.dir/all: utils.out/CMakeFiles/imagedrawing.dir/a
 CMakeFiles/v4l2_rga_rknn_detect.dir/all: utils.out/CMakeFiles/fileutils.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=59,60,61,62 "Built target v4l2_rga_rknn_detect"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=61,62,63,64 "Built target v4l2_rga_rknn_detect"
 .PHONY : CMakeFiles/v4l2_rga_rknn_detect.dir/all
 
 # Build rule for subdir invocation for target.
@@ -488,7 +517,7 @@ CMakeFiles/camera_detect.dir/clean:
 CMakeFiles/v4l2_capture_profile.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_capture_profile.dir/build.make CMakeFiles/v4l2_capture_profile.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_capture_profile.dir/build.make CMakeFiles/v4l2_capture_profile.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=53,54 "Built target v4l2_capture_profile"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=55,56 "Built target v4l2_capture_profile"
 .PHONY : CMakeFiles/v4l2_capture_profile.dir/all
 
 # Build rule for subdir invocation for target.
@@ -516,7 +545,7 @@ CMakeFiles/rga_nv12_to_rgb.dir/all: utils.out/CMakeFiles/imageutils.dir/all
 CMakeFiles/rga_nv12_to_rgb.dir/all: utils.out/CMakeFiles/fileutils.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rga_nv12_to_rgb.dir/build.make CMakeFiles/rga_nv12_to_rgb.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rga_nv12_to_rgb.dir/build.make CMakeFiles/rga_nv12_to_rgb.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=51,52 "Built target rga_nv12_to_rgb"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=53,54 "Built target rga_nv12_to_rgb"
 .PHONY : CMakeFiles/rga_nv12_to_rgb.dir/all
 
 # Build rule for subdir invocation for target.
@@ -571,7 +600,7 @@ CMakeFiles/video_detect.dir/all: utils.out/CMakeFiles/imageutils.dir/all
 CMakeFiles/video_detect.dir/all: utils.out/CMakeFiles/fileutils.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/video_detect.dir/build.make CMakeFiles/video_detect.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/video_detect.dir/build.make CMakeFiles/video_detect.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=75,76,77,78 "Built target video_detect"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=77,78,79,80 "Built target video_detect"
 .PHONY : CMakeFiles/video_detect.dir/all
 
 # Build rule for subdir invocation for target.
@@ -626,7 +655,7 @@ CMakeFiles/camera_profile_setcap.dir/clean:
 CMakeFiles/v4l2_dump_nv12.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_dump_nv12.dir/build.make CMakeFiles/v4l2_dump_nv12.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_dump_nv12.dir/build.make CMakeFiles/v4l2_dump_nv12.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=55,56 "Built target v4l2_dump_nv12"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=57,58 "Built target v4l2_dump_nv12"
 .PHONY : CMakeFiles/v4l2_dump_nv12.dir/all
 
 # Build rule for subdir invocation for target.
@@ -681,7 +710,7 @@ CMakeFiles/camera_profile_setcap_nowrite.dir/clean:
 CMakeFiles/v4l2_rga_realtime_preprocess.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_realtime_preprocess.dir/build.make CMakeFiles/v4l2_rga_realtime_preprocess.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_realtime_preprocess.dir/build.make CMakeFiles/v4l2_rga_realtime_preprocess.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=57,58 "Built target v4l2_rga_realtime_preprocess"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=59,60 "Built target v4l2_rga_realtime_preprocess"
 .PHONY : CMakeFiles/v4l2_rga_realtime_preprocess.dir/all
 
 # Build rule for subdir invocation for target.
@@ -710,7 +739,7 @@ CMakeFiles/v4l2_rga_rknn_detect_profile.dir/all: utils.out/CMakeFiles/imagedrawi
 CMakeFiles/v4l2_rga_rknn_detect_profile.dir/all: utils.out/CMakeFiles/fileutils.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_profile.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_profile.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_profile.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_profile.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=63,64,65,66 "Built target v4l2_rga_rknn_detect_profile"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=65,66,67,68 "Built target v4l2_rga_rknn_detect_profile"
 .PHONY : CMakeFiles/v4l2_rga_rknn_detect_profile.dir/all
 
 # Build rule for subdir invocation for target.
@@ -764,7 +793,7 @@ utils.out/CMakeFiles/audioutils.dir/clean:
 utils.out/CMakeFiles/imageutils.dir/all:
 	$(MAKE) $(MAKESILENT) -f utils.out/CMakeFiles/imageutils.dir/build.make utils.out/CMakeFiles/imageutils.dir/depend
 	$(MAKE) $(MAKESILENT) -f utils.out/CMakeFiles/imageutils.dir/build.make utils.out/CMakeFiles/imageutils.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=49,50 "Built target imageutils"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=51,52 "Built target imageutils"
 .PHONY : utils.out/CMakeFiles/imageutils.dir/all
 
 # Build rule for subdir invocation for target.
@@ -791,7 +820,7 @@ utils.out/CMakeFiles/imageutils.dir/clean:
 utils.out/CMakeFiles/imagedrawing.dir/all:
 	$(MAKE) $(MAKESILENT) -f utils.out/CMakeFiles/imagedrawing.dir/build.make utils.out/CMakeFiles/imagedrawing.dir/depend
 	$(MAKE) $(MAKESILENT) -f utils.out/CMakeFiles/imagedrawing.dir/build.make utils.out/CMakeFiles/imagedrawing.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=47,48 "Built target imagedrawing"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=49,50 "Built target imagedrawing"
 .PHONY : utils.out/CMakeFiles/imagedrawing.dir/all
 
 # Build rule for subdir invocation for target.
@@ -818,7 +847,7 @@ utils.out/CMakeFiles/imagedrawing.dir/clean:
 utils.out/CMakeFiles/fileutils.dir/all:
 	$(MAKE) $(MAKESILENT) -f utils.out/CMakeFiles/fileutils.dir/build.make utils.out/CMakeFiles/fileutils.dir/depend
 	$(MAKE) $(MAKESILENT) -f utils.out/CMakeFiles/fileutils.dir/build.make utils.out/CMakeFiles/fileutils.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=41,42 "Built target fileutils"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/cat/projects/rk3588_ai_stream/build/CMakeFiles --progress-num=43,44 "Built target fileutils"
 .PHONY : utils.out/CMakeFiles/fileutils.dir/all
 
 # Build rule for subdir invocation for target.
