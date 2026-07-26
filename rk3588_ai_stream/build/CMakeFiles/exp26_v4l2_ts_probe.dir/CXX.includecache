@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/cat/projects/rk3588_ai_stream/src/main_exp26_v4l2_ts_probe.cpp
+linux/videodev2.h
+-
+sys/ioctl.h
+-
+sys/mman.h
+-
+sys/select.h
+-
+sys/time.h
+-
+fcntl.h
+-
+unistd.h
+-
+cerrno
+-
+cstdint
+-
+cstring
+-
+fstream
+-
+iomanip
+-
+iostream
+-
+string
+-
+vector
+-
+time.h
+-
+

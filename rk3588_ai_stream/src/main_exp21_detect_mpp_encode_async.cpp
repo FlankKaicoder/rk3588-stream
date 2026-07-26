@@ -381,7 +381,7 @@ int main(int argc, char** argv)  // argc:命令行参数个数；argv：命令�
         fclose(fout);
         return -1;
     }
-
+    //写H.264的头:编码参数NALU例如：（sps\pps）
     std::vector<uint8_t> h264_header;
     if (mpp_encoder.get_header(h264_header) && !h264_header.empty()) {
         fwrite(h264_header.data(), 1, h264_header.size(), fout);
@@ -427,7 +427,7 @@ int main(int argc, char** argv)  // argc:命令行参数个数；argv：命令�
         while (true) {
             Exp21EncFrame item;
 
-            {
+            {   //等待并获取帧
                 std::unique_lock<std::mutex> lk(enc_mutex);  // 队列为空没停止就开始等待，有push新帧就通知开始编码
                 enc_cv.wait(lk, [&]() {        
                     return enc_stop.load() || !enc_queue.empty();

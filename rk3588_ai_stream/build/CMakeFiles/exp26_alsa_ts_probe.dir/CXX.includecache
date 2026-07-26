@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/cat/projects/rk3588_ai_stream/src/main_exp26_alsa_ts_probe.cpp
+alsa/asoundlib.h
+-
+cerrno
+-
+cmath
+-
+cstdint
+-
+cstring
+-
+fstream
+-
+iomanip
+-
+iostream
+-
+string
+-
+vector
+-
+time.h
+-
+
