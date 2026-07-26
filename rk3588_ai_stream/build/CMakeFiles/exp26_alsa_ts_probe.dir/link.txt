@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/exp26_alsa_ts_probe.dir/src/main_exp26_alsa_ts_probe.cpp.o -o exp26_alsa_ts_probe  -lasound -lpthread 

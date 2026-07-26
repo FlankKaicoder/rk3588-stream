@@ -75,49 +75,17 @@ CMAKE_BINARY_DIR = /home/cat/projects/rk3588_ai_stream/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
 
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
-
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
 
 # Special rule for the target install/strip
 install/strip: preinstall
@@ -131,17 +99,49 @@ install/strip/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
 
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -176,251 +176,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named exp24_mp4_mux_from_pts
+# Target rules for targets named v4l2_rga_rknn_detect_profile
 
 # Build rule for target.
-exp24_mp4_mux_from_pts: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 exp24_mp4_mux_from_pts
-.PHONY : exp24_mp4_mux_from_pts
+v4l2_rga_rknn_detect_profile: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 v4l2_rga_rknn_detect_profile
+.PHONY : v4l2_rga_rknn_detect_profile
 
 # fast build rule for target.
-exp24_mp4_mux_from_pts/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp24_mp4_mux_from_pts.dir/build.make CMakeFiles/exp24_mp4_mux_from_pts.dir/build
-.PHONY : exp24_mp4_mux_from_pts/fast
-
-#=============================================================================
-# Target rules for targets named exp21_detect_mpp_encode_async
-
-# Build rule for target.
-exp21_detect_mpp_encode_async: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 exp21_detect_mpp_encode_async
-.PHONY : exp21_detect_mpp_encode_async
-
-# fast build rule for target.
-exp21_detect_mpp_encode_async/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode_async.dir/build.make CMakeFiles/exp21_detect_mpp_encode_async.dir/build
-.PHONY : exp21_detect_mpp_encode_async/fast
-
-#=============================================================================
-# Target rules for targets named exp21_detect_mpp_encode
-
-# Build rule for target.
-exp21_detect_mpp_encode: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 exp21_detect_mpp_encode
-.PHONY : exp21_detect_mpp_encode
-
-# fast build rule for target.
-exp21_detect_mpp_encode/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode.dir/build.make CMakeFiles/exp21_detect_mpp_encode.dir/build
-.PHONY : exp21_detect_mpp_encode/fast
-
-#=============================================================================
-# Target rules for targets named exp21_v4l2_mpp_encode
-
-# Build rule for target.
-exp21_v4l2_mpp_encode: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 exp21_v4l2_mpp_encode
-.PHONY : exp21_v4l2_mpp_encode
-
-# fast build rule for target.
-exp21_v4l2_mpp_encode/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_v4l2_mpp_encode.dir/build.make CMakeFiles/exp21_v4l2_mpp_encode.dir/build
-.PHONY : exp21_v4l2_mpp_encode/fast
-
-#=============================================================================
-# Target rules for targets named exp21_mpp_file_encode
-
-# Build rule for target.
-exp21_mpp_file_encode: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 exp21_mpp_file_encode
-.PHONY : exp21_mpp_file_encode
-
-# fast build rule for target.
-exp21_mpp_file_encode/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_mpp_file_encode.dir/build.make CMakeFiles/exp21_mpp_file_encode.dir/build
-.PHONY : exp21_mpp_file_encode/fast
-
-#=============================================================================
-# Target rules for targets named v4l2_rga_rknn_detect_to_nv12_clean
-
-# Build rule for target.
-v4l2_rga_rknn_detect_to_nv12_clean: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 v4l2_rga_rknn_detect_to_nv12_clean
-.PHONY : v4l2_rga_rknn_detect_to_nv12_clean
-
-# fast build rule for target.
-v4l2_rga_rknn_detect_to_nv12_clean/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/build
-.PHONY : v4l2_rga_rknn_detect_to_nv12_clean/fast
-
-#=============================================================================
-# Target rules for targets named v4l2_rga_rknn_detect_to_nv12
-
-# Build rule for target.
-v4l2_rga_rknn_detect_to_nv12: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 v4l2_rga_rknn_detect_to_nv12
-.PHONY : v4l2_rga_rknn_detect_to_nv12
-
-# fast build rule for target.
-v4l2_rga_rknn_detect_to_nv12/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/build
-.PHONY : v4l2_rga_rknn_detect_to_nv12/fast
-
-#=============================================================================
-# Target rules for targets named image_detect
-
-# Build rule for target.
-image_detect: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 image_detect
-.PHONY : image_detect
-
-# fast build rule for target.
-image_detect/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/build
-.PHONY : image_detect/fast
-
-#=============================================================================
-# Target rules for targets named v4l2_rga_rknn_detect
-
-# Build rule for target.
-v4l2_rga_rknn_detect: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 v4l2_rga_rknn_detect
-.PHONY : v4l2_rga_rknn_detect
-
-# fast build rule for target.
-v4l2_rga_rknn_detect/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/build
-.PHONY : v4l2_rga_rknn_detect/fast
-
-#=============================================================================
-# Target rules for targets named camera_profile
-
-# Build rule for target.
-camera_profile: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 camera_profile
-.PHONY : camera_profile
-
-# fast build rule for target.
-camera_profile/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/build
-.PHONY : camera_profile/fast
-
-#=============================================================================
-# Target rules for targets named camera_profile_nowrite
-
-# Build rule for target.
-camera_profile_nowrite: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 camera_profile_nowrite
-.PHONY : camera_profile_nowrite
-
-# fast build rule for target.
-camera_profile_nowrite/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_nowrite.dir/build.make CMakeFiles/camera_profile_nowrite.dir/build
-.PHONY : camera_profile_nowrite/fast
-
-#=============================================================================
-# Target rules for targets named camera_detect
-
-# Build rule for target.
-camera_detect: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 camera_detect
-.PHONY : camera_detect
-
-# fast build rule for target.
-camera_detect/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_detect.dir/build.make CMakeFiles/camera_detect.dir/build
-.PHONY : camera_detect/fast
-
-#=============================================================================
-# Target rules for targets named v4l2_capture_profile
-
-# Build rule for target.
-v4l2_capture_profile: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 v4l2_capture_profile
-.PHONY : v4l2_capture_profile
-
-# fast build rule for target.
-v4l2_capture_profile/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_capture_profile.dir/build.make CMakeFiles/v4l2_capture_profile.dir/build
-.PHONY : v4l2_capture_profile/fast
-
-#=============================================================================
-# Target rules for targets named rga_nv12_to_rgb
-
-# Build rule for target.
-rga_nv12_to_rgb: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 rga_nv12_to_rgb
-.PHONY : rga_nv12_to_rgb
-
-# fast build rule for target.
-rga_nv12_to_rgb/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rga_nv12_to_rgb.dir/build.make CMakeFiles/rga_nv12_to_rgb.dir/build
-.PHONY : rga_nv12_to_rgb/fast
-
-#=============================================================================
-# Target rules for targets named camera_capture_profile
-
-# Build rule for target.
-camera_capture_profile: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 camera_capture_profile
-.PHONY : camera_capture_profile
-
-# fast build rule for target.
-camera_capture_profile/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_capture_profile.dir/build.make CMakeFiles/camera_capture_profile.dir/build
-.PHONY : camera_capture_profile/fast
-
-#=============================================================================
-# Target rules for targets named video_detect
-
-# Build rule for target.
-video_detect: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 video_detect
-.PHONY : video_detect
-
-# fast build rule for target.
-video_detect/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/video_detect.dir/build.make CMakeFiles/video_detect.dir/build
-.PHONY : video_detect/fast
-
-#=============================================================================
-# Target rules for targets named camera_profile_setcap
-
-# Build rule for target.
-camera_profile_setcap: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 camera_profile_setcap
-.PHONY : camera_profile_setcap
-
-# fast build rule for target.
-camera_profile_setcap/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap.dir/build.make CMakeFiles/camera_profile_setcap.dir/build
-.PHONY : camera_profile_setcap/fast
-
-#=============================================================================
-# Target rules for targets named v4l2_dump_nv12
-
-# Build rule for target.
-v4l2_dump_nv12: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 v4l2_dump_nv12
-.PHONY : v4l2_dump_nv12
-
-# fast build rule for target.
-v4l2_dump_nv12/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_dump_nv12.dir/build.make CMakeFiles/v4l2_dump_nv12.dir/build
-.PHONY : v4l2_dump_nv12/fast
-
-#=============================================================================
-# Target rules for targets named camera_profile_setcap_nowrite
-
-# Build rule for target.
-camera_profile_setcap_nowrite: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 camera_profile_setcap_nowrite
-.PHONY : camera_profile_setcap_nowrite
-
-# fast build rule for target.
-camera_profile_setcap_nowrite/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap_nowrite.dir/build.make CMakeFiles/camera_profile_setcap_nowrite.dir/build
-.PHONY : camera_profile_setcap_nowrite/fast
+v4l2_rga_rknn_detect_profile/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_profile.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_profile.dir/build
+.PHONY : v4l2_rga_rknn_detect_profile/fast
 
 #=============================================================================
 # Target rules for targets named v4l2_rga_realtime_preprocess
@@ -436,17 +202,290 @@ v4l2_rga_realtime_preprocess/fast:
 .PHONY : v4l2_rga_realtime_preprocess/fast
 
 #=============================================================================
-# Target rules for targets named v4l2_rga_rknn_detect_profile
+# Target rules for targets named v4l2_dump_nv12
 
 # Build rule for target.
-v4l2_rga_rknn_detect_profile: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 v4l2_rga_rknn_detect_profile
-.PHONY : v4l2_rga_rknn_detect_profile
+v4l2_dump_nv12: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 v4l2_dump_nv12
+.PHONY : v4l2_dump_nv12
 
 # fast build rule for target.
-v4l2_rga_rknn_detect_profile/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_profile.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_profile.dir/build
-.PHONY : v4l2_rga_rknn_detect_profile/fast
+v4l2_dump_nv12/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_dump_nv12.dir/build.make CMakeFiles/v4l2_dump_nv12.dir/build
+.PHONY : v4l2_dump_nv12/fast
+
+#=============================================================================
+# Target rules for targets named camera_capture_profile
+
+# Build rule for target.
+camera_capture_profile: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 camera_capture_profile
+.PHONY : camera_capture_profile
+
+# fast build rule for target.
+camera_capture_profile/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_capture_profile.dir/build.make CMakeFiles/camera_capture_profile.dir/build
+.PHONY : camera_capture_profile/fast
+
+#=============================================================================
+# Target rules for targets named rga_nv12_to_rgb
+
+# Build rule for target.
+rga_nv12_to_rgb: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 rga_nv12_to_rgb
+.PHONY : rga_nv12_to_rgb
+
+# fast build rule for target.
+rga_nv12_to_rgb/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rga_nv12_to_rgb.dir/build.make CMakeFiles/rga_nv12_to_rgb.dir/build
+.PHONY : rga_nv12_to_rgb/fast
+
+#=============================================================================
+# Target rules for targets named v4l2_capture_profile
+
+# Build rule for target.
+v4l2_capture_profile: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 v4l2_capture_profile
+.PHONY : v4l2_capture_profile
+
+# fast build rule for target.
+v4l2_capture_profile/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_capture_profile.dir/build.make CMakeFiles/v4l2_capture_profile.dir/build
+.PHONY : v4l2_capture_profile/fast
+
+#=============================================================================
+# Target rules for targets named camera_detect
+
+# Build rule for target.
+camera_detect: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 camera_detect
+.PHONY : camera_detect
+
+# fast build rule for target.
+camera_detect/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_detect.dir/build.make CMakeFiles/camera_detect.dir/build
+.PHONY : camera_detect/fast
+
+#=============================================================================
+# Target rules for targets named video_detect
+
+# Build rule for target.
+video_detect: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 video_detect
+.PHONY : video_detect
+
+# fast build rule for target.
+video_detect/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/video_detect.dir/build.make CMakeFiles/video_detect.dir/build
+.PHONY : video_detect/fast
+
+#=============================================================================
+# Target rules for targets named camera_profile
+
+# Build rule for target.
+camera_profile: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 camera_profile
+.PHONY : camera_profile
+
+# fast build rule for target.
+camera_profile/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/build
+.PHONY : camera_profile/fast
+
+#=============================================================================
+# Target rules for targets named camera_profile_setcap_nowrite
+
+# Build rule for target.
+camera_profile_setcap_nowrite: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 camera_profile_setcap_nowrite
+.PHONY : camera_profile_setcap_nowrite
+
+# fast build rule for target.
+camera_profile_setcap_nowrite/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap_nowrite.dir/build.make CMakeFiles/camera_profile_setcap_nowrite.dir/build
+.PHONY : camera_profile_setcap_nowrite/fast
+
+#=============================================================================
+# Target rules for targets named v4l2_rga_rknn_detect
+
+# Build rule for target.
+v4l2_rga_rknn_detect: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 v4l2_rga_rknn_detect
+.PHONY : v4l2_rga_rknn_detect
+
+# fast build rule for target.
+v4l2_rga_rknn_detect/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/build
+.PHONY : v4l2_rga_rknn_detect/fast
+
+#=============================================================================
+# Target rules for targets named image_detect
+
+# Build rule for target.
+image_detect: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 image_detect
+.PHONY : image_detect
+
+# fast build rule for target.
+image_detect/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/build
+.PHONY : image_detect/fast
+
+#=============================================================================
+# Target rules for targets named v4l2_rga_rknn_detect_to_nv12
+
+# Build rule for target.
+v4l2_rga_rknn_detect_to_nv12: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 v4l2_rga_rknn_detect_to_nv12
+.PHONY : v4l2_rga_rknn_detect_to_nv12
+
+# fast build rule for target.
+v4l2_rga_rknn_detect_to_nv12/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/build
+.PHONY : v4l2_rga_rknn_detect_to_nv12/fast
+
+#=============================================================================
+# Target rules for targets named camera_profile_nowrite
+
+# Build rule for target.
+camera_profile_nowrite: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 camera_profile_nowrite
+.PHONY : camera_profile_nowrite
+
+# fast build rule for target.
+camera_profile_nowrite/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_nowrite.dir/build.make CMakeFiles/camera_profile_nowrite.dir/build
+.PHONY : camera_profile_nowrite/fast
+
+#=============================================================================
+# Target rules for targets named exp26_alsa_ts_probe
+
+# Build rule for target.
+exp26_alsa_ts_probe: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 exp26_alsa_ts_probe
+.PHONY : exp26_alsa_ts_probe
+
+# fast build rule for target.
+exp26_alsa_ts_probe/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp26_alsa_ts_probe.dir/build.make CMakeFiles/exp26_alsa_ts_probe.dir/build
+.PHONY : exp26_alsa_ts_probe/fast
+
+#=============================================================================
+# Target rules for targets named exp26_alsa_pcm_capture_ts
+
+# Build rule for target.
+exp26_alsa_pcm_capture_ts: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 exp26_alsa_pcm_capture_ts
+.PHONY : exp26_alsa_pcm_capture_ts
+
+# fast build rule for target.
+exp26_alsa_pcm_capture_ts/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp26_alsa_pcm_capture_ts.dir/build.make CMakeFiles/exp26_alsa_pcm_capture_ts.dir/build
+.PHONY : exp26_alsa_pcm_capture_ts/fast
+
+#=============================================================================
+# Target rules for targets named v4l2_rga_rknn_detect_to_nv12_clean
+
+# Build rule for target.
+v4l2_rga_rknn_detect_to_nv12_clean: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 v4l2_rga_rknn_detect_to_nv12_clean
+.PHONY : v4l2_rga_rknn_detect_to_nv12_clean
+
+# fast build rule for target.
+v4l2_rga_rknn_detect_to_nv12_clean/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/build
+.PHONY : v4l2_rga_rknn_detect_to_nv12_clean/fast
+
+#=============================================================================
+# Target rules for targets named exp21_detect_mpp_encode
+
+# Build rule for target.
+exp21_detect_mpp_encode: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 exp21_detect_mpp_encode
+.PHONY : exp21_detect_mpp_encode
+
+# fast build rule for target.
+exp21_detect_mpp_encode/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode.dir/build.make CMakeFiles/exp21_detect_mpp_encode.dir/build
+.PHONY : exp21_detect_mpp_encode/fast
+
+#=============================================================================
+# Target rules for targets named exp21_detect_mpp_encode_async
+
+# Build rule for target.
+exp21_detect_mpp_encode_async: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 exp21_detect_mpp_encode_async
+.PHONY : exp21_detect_mpp_encode_async
+
+# fast build rule for target.
+exp21_detect_mpp_encode_async/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode_async.dir/build.make CMakeFiles/exp21_detect_mpp_encode_async.dir/build
+.PHONY : exp21_detect_mpp_encode_async/fast
+
+#=============================================================================
+# Target rules for targets named exp26_v4l2_ts_probe
+
+# Build rule for target.
+exp26_v4l2_ts_probe: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 exp26_v4l2_ts_probe
+.PHONY : exp26_v4l2_ts_probe
+
+# fast build rule for target.
+exp26_v4l2_ts_probe/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp26_v4l2_ts_probe.dir/build.make CMakeFiles/exp26_v4l2_ts_probe.dir/build
+.PHONY : exp26_v4l2_ts_probe/fast
+
+#=============================================================================
+# Target rules for targets named exp21_mpp_file_encode
+
+# Build rule for target.
+exp21_mpp_file_encode: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 exp21_mpp_file_encode
+.PHONY : exp21_mpp_file_encode
+
+# fast build rule for target.
+exp21_mpp_file_encode/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_mpp_file_encode.dir/build.make CMakeFiles/exp21_mpp_file_encode.dir/build
+.PHONY : exp21_mpp_file_encode/fast
+
+#=============================================================================
+# Target rules for targets named exp24_mp4_mux_from_pts
+
+# Build rule for target.
+exp24_mp4_mux_from_pts: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 exp24_mp4_mux_from_pts
+.PHONY : exp24_mp4_mux_from_pts
+
+# fast build rule for target.
+exp24_mp4_mux_from_pts/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp24_mp4_mux_from_pts.dir/build.make CMakeFiles/exp24_mp4_mux_from_pts.dir/build
+.PHONY : exp24_mp4_mux_from_pts/fast
+
+#=============================================================================
+# Target rules for targets named camera_profile_setcap
+
+# Build rule for target.
+camera_profile_setcap: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 camera_profile_setcap
+.PHONY : camera_profile_setcap
+
+# fast build rule for target.
+camera_profile_setcap/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap.dir/build.make CMakeFiles/camera_profile_setcap.dir/build
+.PHONY : camera_profile_setcap/fast
+
+#=============================================================================
+# Target rules for targets named exp21_v4l2_mpp_encode
+
+# Build rule for target.
+exp21_v4l2_mpp_encode: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 exp21_v4l2_mpp_encode
+.PHONY : exp21_v4l2_mpp_encode
+
+# fast build rule for target.
+exp21_v4l2_mpp_encode/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_v4l2_mpp_encode.dir/build.make CMakeFiles/exp21_v4l2_mpp_encode.dir/build
+.PHONY : exp21_v4l2_mpp_encode/fast
 
 #=============================================================================
 # Target rules for targets named audioutils
@@ -506,16 +545,16 @@ home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.o: home/cat/lu
 
 # target to build an object file
 home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_nowrite.dir/build.make CMakeFiles/camera_profile_nowrite.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_detect.dir/build.make CMakeFiles/camera_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/video_detect.dir/build.make CMakeFiles/video_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap.dir/build.make CMakeFiles/camera_profile_setcap.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap_nowrite.dir/build.make CMakeFiles/camera_profile_setcap_nowrite.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_nowrite.dir/build.make CMakeFiles/camera_profile_nowrite.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap.dir/build.make CMakeFiles/camera_profile_setcap.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
 .PHONY : home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.o
 
 home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.i: home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
@@ -524,16 +563,16 @@ home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.i: home/cat/lu
 
 # target to preprocess a source file
 home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_nowrite.dir/build.make CMakeFiles/camera_profile_nowrite.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_detect.dir/build.make CMakeFiles/camera_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/video_detect.dir/build.make CMakeFiles/video_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap.dir/build.make CMakeFiles/camera_profile_setcap.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap_nowrite.dir/build.make CMakeFiles/camera_profile_setcap_nowrite.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_nowrite.dir/build.make CMakeFiles/camera_profile_nowrite.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap.dir/build.make CMakeFiles/camera_profile_setcap.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
 .PHONY : home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.i
 
 home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.s: home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
@@ -542,16 +581,16 @@ home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.s: home/cat/lu
 
 # target to generate assembly for a file
 home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_nowrite.dir/build.make CMakeFiles/camera_profile_nowrite.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_detect.dir/build.make CMakeFiles/camera_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/video_detect.dir/build.make CMakeFiles/video_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap.dir/build.make CMakeFiles/camera_profile_setcap.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap_nowrite.dir/build.make CMakeFiles/camera_profile_setcap_nowrite.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_nowrite.dir/build.make CMakeFiles/camera_profile_nowrite.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap.dir/build.make CMakeFiles/camera_profile_setcap.dir/home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
 .PHONY : home/cat/lubancat_ai_manual_code/example/yolo11/cpp/rknpu2/yolo11.cc.s
 
 src/main_camera.o: src/main_camera.cpp.o
@@ -851,6 +890,87 @@ src/main_exp24_mp4_mux_from_pts.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp24_mp4_mux_from_pts.dir/build.make CMakeFiles/exp24_mp4_mux_from_pts.dir/src/main_exp24_mp4_mux_from_pts.cpp.s
 .PHONY : src/main_exp24_mp4_mux_from_pts.cpp.s
 
+src/main_exp26_alsa_pcm_capture_ts.o: src/main_exp26_alsa_pcm_capture_ts.cpp.o
+
+.PHONY : src/main_exp26_alsa_pcm_capture_ts.o
+
+# target to build an object file
+src/main_exp26_alsa_pcm_capture_ts.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp26_alsa_pcm_capture_ts.dir/build.make CMakeFiles/exp26_alsa_pcm_capture_ts.dir/src/main_exp26_alsa_pcm_capture_ts.cpp.o
+.PHONY : src/main_exp26_alsa_pcm_capture_ts.cpp.o
+
+src/main_exp26_alsa_pcm_capture_ts.i: src/main_exp26_alsa_pcm_capture_ts.cpp.i
+
+.PHONY : src/main_exp26_alsa_pcm_capture_ts.i
+
+# target to preprocess a source file
+src/main_exp26_alsa_pcm_capture_ts.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp26_alsa_pcm_capture_ts.dir/build.make CMakeFiles/exp26_alsa_pcm_capture_ts.dir/src/main_exp26_alsa_pcm_capture_ts.cpp.i
+.PHONY : src/main_exp26_alsa_pcm_capture_ts.cpp.i
+
+src/main_exp26_alsa_pcm_capture_ts.s: src/main_exp26_alsa_pcm_capture_ts.cpp.s
+
+.PHONY : src/main_exp26_alsa_pcm_capture_ts.s
+
+# target to generate assembly for a file
+src/main_exp26_alsa_pcm_capture_ts.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp26_alsa_pcm_capture_ts.dir/build.make CMakeFiles/exp26_alsa_pcm_capture_ts.dir/src/main_exp26_alsa_pcm_capture_ts.cpp.s
+.PHONY : src/main_exp26_alsa_pcm_capture_ts.cpp.s
+
+src/main_exp26_alsa_ts_probe.o: src/main_exp26_alsa_ts_probe.cpp.o
+
+.PHONY : src/main_exp26_alsa_ts_probe.o
+
+# target to build an object file
+src/main_exp26_alsa_ts_probe.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp26_alsa_ts_probe.dir/build.make CMakeFiles/exp26_alsa_ts_probe.dir/src/main_exp26_alsa_ts_probe.cpp.o
+.PHONY : src/main_exp26_alsa_ts_probe.cpp.o
+
+src/main_exp26_alsa_ts_probe.i: src/main_exp26_alsa_ts_probe.cpp.i
+
+.PHONY : src/main_exp26_alsa_ts_probe.i
+
+# target to preprocess a source file
+src/main_exp26_alsa_ts_probe.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp26_alsa_ts_probe.dir/build.make CMakeFiles/exp26_alsa_ts_probe.dir/src/main_exp26_alsa_ts_probe.cpp.i
+.PHONY : src/main_exp26_alsa_ts_probe.cpp.i
+
+src/main_exp26_alsa_ts_probe.s: src/main_exp26_alsa_ts_probe.cpp.s
+
+.PHONY : src/main_exp26_alsa_ts_probe.s
+
+# target to generate assembly for a file
+src/main_exp26_alsa_ts_probe.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp26_alsa_ts_probe.dir/build.make CMakeFiles/exp26_alsa_ts_probe.dir/src/main_exp26_alsa_ts_probe.cpp.s
+.PHONY : src/main_exp26_alsa_ts_probe.cpp.s
+
+src/main_exp26_v4l2_ts_probe.o: src/main_exp26_v4l2_ts_probe.cpp.o
+
+.PHONY : src/main_exp26_v4l2_ts_probe.o
+
+# target to build an object file
+src/main_exp26_v4l2_ts_probe.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp26_v4l2_ts_probe.dir/build.make CMakeFiles/exp26_v4l2_ts_probe.dir/src/main_exp26_v4l2_ts_probe.cpp.o
+.PHONY : src/main_exp26_v4l2_ts_probe.cpp.o
+
+src/main_exp26_v4l2_ts_probe.i: src/main_exp26_v4l2_ts_probe.cpp.i
+
+.PHONY : src/main_exp26_v4l2_ts_probe.i
+
+# target to preprocess a source file
+src/main_exp26_v4l2_ts_probe.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp26_v4l2_ts_probe.dir/build.make CMakeFiles/exp26_v4l2_ts_probe.dir/src/main_exp26_v4l2_ts_probe.cpp.i
+.PHONY : src/main_exp26_v4l2_ts_probe.cpp.i
+
+src/main_exp26_v4l2_ts_probe.s: src/main_exp26_v4l2_ts_probe.cpp.s
+
+.PHONY : src/main_exp26_v4l2_ts_probe.s
+
+# target to generate assembly for a file
+src/main_exp26_v4l2_ts_probe.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp26_v4l2_ts_probe.dir/build.make CMakeFiles/exp26_v4l2_ts_probe.dir/src/main_exp26_v4l2_ts_probe.cpp.s
+.PHONY : src/main_exp26_v4l2_ts_probe.cpp.s
+
 src/main_image.o: src/main_image.cpp.o
 
 .PHONY : src/main_image.o
@@ -992,8 +1112,8 @@ src/main_v4l2_rga_rknn_detect.o: src/main_v4l2_rga_rknn_detect.cpp.o
 
 # target to build an object file
 src/main_v4l2_rga_rknn_detect.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/src/main_v4l2_rga_rknn_detect.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_profile.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_profile.dir/src/main_v4l2_rga_rknn_detect.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/src/main_v4l2_rga_rknn_detect.cpp.o
 .PHONY : src/main_v4l2_rga_rknn_detect.cpp.o
 
 src/main_v4l2_rga_rknn_detect.i: src/main_v4l2_rga_rknn_detect.cpp.i
@@ -1002,8 +1122,8 @@ src/main_v4l2_rga_rknn_detect.i: src/main_v4l2_rga_rknn_detect.cpp.i
 
 # target to preprocess a source file
 src/main_v4l2_rga_rknn_detect.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/src/main_v4l2_rga_rknn_detect.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_profile.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_profile.dir/src/main_v4l2_rga_rknn_detect.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/src/main_v4l2_rga_rknn_detect.cpp.i
 .PHONY : src/main_v4l2_rga_rknn_detect.cpp.i
 
 src/main_v4l2_rga_rknn_detect.s: src/main_v4l2_rga_rknn_detect.cpp.s
@@ -1012,8 +1132,8 @@ src/main_v4l2_rga_rknn_detect.s: src/main_v4l2_rga_rknn_detect.cpp.s
 
 # target to generate assembly for a file
 src/main_v4l2_rga_rknn_detect.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/src/main_v4l2_rga_rknn_detect.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_profile.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_profile.dir/src/main_v4l2_rga_rknn_detect.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/src/main_v4l2_rga_rknn_detect.cpp.s
 .PHONY : src/main_v4l2_rga_rknn_detect.cpp.s
 
 src/main_v4l2_rga_rknn_detect_to_nv12.o: src/main_v4l2_rga_rknn_detect_to_nv12.cpp.o
@@ -1103,10 +1223,10 @@ src/mpp_h264_encoder.o: src/mpp_h264_encoder.cpp.o
 
 # target to build an object file
 src/mpp_h264_encoder.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode_async.dir/build.make CMakeFiles/exp21_detect_mpp_encode_async.dir/src/mpp_h264_encoder.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode.dir/build.make CMakeFiles/exp21_detect_mpp_encode.dir/src/mpp_h264_encoder.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_v4l2_mpp_encode.dir/build.make CMakeFiles/exp21_v4l2_mpp_encode.dir/src/mpp_h264_encoder.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode_async.dir/build.make CMakeFiles/exp21_detect_mpp_encode_async.dir/src/mpp_h264_encoder.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_mpp_file_encode.dir/build.make CMakeFiles/exp21_mpp_file_encode.dir/src/mpp_h264_encoder.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_v4l2_mpp_encode.dir/build.make CMakeFiles/exp21_v4l2_mpp_encode.dir/src/mpp_h264_encoder.cpp.o
 .PHONY : src/mpp_h264_encoder.cpp.o
 
 src/mpp_h264_encoder.i: src/mpp_h264_encoder.cpp.i
@@ -1115,10 +1235,10 @@ src/mpp_h264_encoder.i: src/mpp_h264_encoder.cpp.i
 
 # target to preprocess a source file
 src/mpp_h264_encoder.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode_async.dir/build.make CMakeFiles/exp21_detect_mpp_encode_async.dir/src/mpp_h264_encoder.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode.dir/build.make CMakeFiles/exp21_detect_mpp_encode.dir/src/mpp_h264_encoder.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_v4l2_mpp_encode.dir/build.make CMakeFiles/exp21_v4l2_mpp_encode.dir/src/mpp_h264_encoder.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode_async.dir/build.make CMakeFiles/exp21_detect_mpp_encode_async.dir/src/mpp_h264_encoder.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_mpp_file_encode.dir/build.make CMakeFiles/exp21_mpp_file_encode.dir/src/mpp_h264_encoder.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_v4l2_mpp_encode.dir/build.make CMakeFiles/exp21_v4l2_mpp_encode.dir/src/mpp_h264_encoder.cpp.i
 .PHONY : src/mpp_h264_encoder.cpp.i
 
 src/mpp_h264_encoder.s: src/mpp_h264_encoder.cpp.s
@@ -1127,10 +1247,10 @@ src/mpp_h264_encoder.s: src/mpp_h264_encoder.cpp.s
 
 # target to generate assembly for a file
 src/mpp_h264_encoder.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode_async.dir/build.make CMakeFiles/exp21_detect_mpp_encode_async.dir/src/mpp_h264_encoder.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode.dir/build.make CMakeFiles/exp21_detect_mpp_encode.dir/src/mpp_h264_encoder.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_v4l2_mpp_encode.dir/build.make CMakeFiles/exp21_v4l2_mpp_encode.dir/src/mpp_h264_encoder.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode_async.dir/build.make CMakeFiles/exp21_detect_mpp_encode_async.dir/src/mpp_h264_encoder.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_mpp_file_encode.dir/build.make CMakeFiles/exp21_mpp_file_encode.dir/src/mpp_h264_encoder.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_v4l2_mpp_encode.dir/build.make CMakeFiles/exp21_v4l2_mpp_encode.dir/src/mpp_h264_encoder.cpp.s
 .PHONY : src/mpp_h264_encoder.cpp.s
 
 src/postprocess_profile.o: src/postprocess_profile.cc.o
@@ -1166,8 +1286,8 @@ src/yolo11_clean_silent.o: src/yolo11_clean_silent.cc.o
 
 # target to build an object file
 src/yolo11_clean_silent.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode_async.dir/build.make CMakeFiles/exp21_detect_mpp_encode_async.dir/src/yolo11_clean_silent.cc.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode.dir/build.make CMakeFiles/exp21_detect_mpp_encode.dir/src/yolo11_clean_silent.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode_async.dir/build.make CMakeFiles/exp21_detect_mpp_encode_async.dir/src/yolo11_clean_silent.cc.o
 .PHONY : src/yolo11_clean_silent.cc.o
 
 src/yolo11_clean_silent.i: src/yolo11_clean_silent.cc.i
@@ -1176,8 +1296,8 @@ src/yolo11_clean_silent.i: src/yolo11_clean_silent.cc.i
 
 # target to preprocess a source file
 src/yolo11_clean_silent.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode_async.dir/build.make CMakeFiles/exp21_detect_mpp_encode_async.dir/src/yolo11_clean_silent.cc.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode.dir/build.make CMakeFiles/exp21_detect_mpp_encode.dir/src/yolo11_clean_silent.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode_async.dir/build.make CMakeFiles/exp21_detect_mpp_encode_async.dir/src/yolo11_clean_silent.cc.i
 .PHONY : src/yolo11_clean_silent.cc.i
 
 src/yolo11_clean_silent.s: src/yolo11_clean_silent.cc.s
@@ -1186,8 +1306,8 @@ src/yolo11_clean_silent.s: src/yolo11_clean_silent.cc.s
 
 # target to generate assembly for a file
 src/yolo11_clean_silent.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode_async.dir/build.make CMakeFiles/exp21_detect_mpp_encode_async.dir/src/yolo11_clean_silent.cc.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode.dir/build.make CMakeFiles/exp21_detect_mpp_encode.dir/src/yolo11_clean_silent.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode_async.dir/build.make CMakeFiles/exp21_detect_mpp_encode_async.dir/src/yolo11_clean_silent.cc.s
 .PHONY : src/yolo11_clean_silent.cc.s
 
 src/yolo11_profile.o: src/yolo11_profile.cc.o
@@ -1223,18 +1343,18 @@ third_party/lubancat_yolo11_ref/postprocess.o: third_party/lubancat_yolo11_ref/p
 
 # target to build an object file
 third_party/lubancat_yolo11_ref/postprocess.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode_async.dir/build.make CMakeFiles/exp21_detect_mpp_encode_async.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode.dir/build.make CMakeFiles/exp21_detect_mpp_encode.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_nowrite.dir/build.make CMakeFiles/camera_profile_nowrite.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_detect.dir/build.make CMakeFiles/camera_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/video_detect.dir/build.make CMakeFiles/video_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap.dir/build.make CMakeFiles/camera_profile_setcap.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap_nowrite.dir/build.make CMakeFiles/camera_profile_setcap_nowrite.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_nowrite.dir/build.make CMakeFiles/camera_profile_nowrite.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode.dir/build.make CMakeFiles/exp21_detect_mpp_encode.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode_async.dir/build.make CMakeFiles/exp21_detect_mpp_encode_async.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap.dir/build.make CMakeFiles/camera_profile_setcap.dir/third_party/lubancat_yolo11_ref/postprocess.cc.o
 .PHONY : third_party/lubancat_yolo11_ref/postprocess.cc.o
 
 third_party/lubancat_yolo11_ref/postprocess.i: third_party/lubancat_yolo11_ref/postprocess.cc.i
@@ -1243,18 +1363,18 @@ third_party/lubancat_yolo11_ref/postprocess.i: third_party/lubancat_yolo11_ref/p
 
 # target to preprocess a source file
 third_party/lubancat_yolo11_ref/postprocess.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode_async.dir/build.make CMakeFiles/exp21_detect_mpp_encode_async.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode.dir/build.make CMakeFiles/exp21_detect_mpp_encode.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_nowrite.dir/build.make CMakeFiles/camera_profile_nowrite.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_detect.dir/build.make CMakeFiles/camera_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/video_detect.dir/build.make CMakeFiles/video_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap.dir/build.make CMakeFiles/camera_profile_setcap.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap_nowrite.dir/build.make CMakeFiles/camera_profile_setcap_nowrite.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_nowrite.dir/build.make CMakeFiles/camera_profile_nowrite.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode.dir/build.make CMakeFiles/exp21_detect_mpp_encode.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode_async.dir/build.make CMakeFiles/exp21_detect_mpp_encode_async.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap.dir/build.make CMakeFiles/camera_profile_setcap.dir/third_party/lubancat_yolo11_ref/postprocess.cc.i
 .PHONY : third_party/lubancat_yolo11_ref/postprocess.cc.i
 
 third_party/lubancat_yolo11_ref/postprocess.s: third_party/lubancat_yolo11_ref/postprocess.cc.s
@@ -1263,18 +1383,18 @@ third_party/lubancat_yolo11_ref/postprocess.s: third_party/lubancat_yolo11_ref/p
 
 # target to generate assembly for a file
 third_party/lubancat_yolo11_ref/postprocess.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode_async.dir/build.make CMakeFiles/exp21_detect_mpp_encode_async.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode.dir/build.make CMakeFiles/exp21_detect_mpp_encode.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_nowrite.dir/build.make CMakeFiles/camera_profile_nowrite.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_detect.dir/build.make CMakeFiles/camera_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/video_detect.dir/build.make CMakeFiles/video_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap.dir/build.make CMakeFiles/camera_profile_setcap.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile.dir/build.make CMakeFiles/camera_profile.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap_nowrite.dir/build.make CMakeFiles/camera_profile_setcap_nowrite.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect.dir/build.make CMakeFiles/v4l2_rga_rknn_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_detect.dir/build.make CMakeFiles/image_detect.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_nowrite.dir/build.make CMakeFiles/camera_profile_nowrite.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/build.make CMakeFiles/v4l2_rga_rknn_detect_to_nv12_clean.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode.dir/build.make CMakeFiles/exp21_detect_mpp_encode.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exp21_detect_mpp_encode_async.dir/build.make CMakeFiles/exp21_detect_mpp_encode_async.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_profile_setcap.dir/build.make CMakeFiles/camera_profile_setcap.dir/third_party/lubancat_yolo11_ref/postprocess.cc.s
 .PHONY : third_party/lubancat_yolo11_ref/postprocess.cc.s
 
 # Help Target
@@ -1301,6 +1421,9 @@ help:
 	@echo "... exp21_mpp_file_encode"
 	@echo "... exp21_v4l2_mpp_encode"
 	@echo "... exp24_mp4_mux_from_pts"
+	@echo "... exp26_alsa_pcm_capture_ts"
+	@echo "... exp26_alsa_ts_probe"
+	@echo "... exp26_v4l2_ts_probe"
 	@echo "... fileutils"
 	@echo "... image_detect"
 	@echo "... imagedrawing"
@@ -1350,6 +1473,15 @@ help:
 	@echo "... src/main_exp24_mp4_mux_from_pts.o"
 	@echo "... src/main_exp24_mp4_mux_from_pts.i"
 	@echo "... src/main_exp24_mp4_mux_from_pts.s"
+	@echo "... src/main_exp26_alsa_pcm_capture_ts.o"
+	@echo "... src/main_exp26_alsa_pcm_capture_ts.i"
+	@echo "... src/main_exp26_alsa_pcm_capture_ts.s"
+	@echo "... src/main_exp26_alsa_ts_probe.o"
+	@echo "... src/main_exp26_alsa_ts_probe.i"
+	@echo "... src/main_exp26_alsa_ts_probe.s"
+	@echo "... src/main_exp26_v4l2_ts_probe.o"
+	@echo "... src/main_exp26_v4l2_ts_probe.i"
+	@echo "... src/main_exp26_v4l2_ts_probe.s"
 	@echo "... src/main_image.o"
 	@echo "... src/main_image.i"
 	@echo "... src/main_image.s"

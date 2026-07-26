@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/exp26_alsa_pcm_capture_ts.dir/src/main_exp26_alsa_pcm_capture_ts.cpp.o -o exp26_alsa_pcm_capture_ts  -lasound -lpthread 

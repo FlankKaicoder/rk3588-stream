@@ -46,6 +46,10 @@ struct Buffer {
     size_t length = 0;
 };
 //封装原生的ioctl函数，避免系统软中断打断系统调用（ioctl控制摄像头被系统软终端打断）
+static int64_t exp26_timeval_to_ns(const struct timeval& tv)
+{
+    return (int64_t)tv.tv_sec * 1000000000LL + (int64_t)tv.tv_usec * 1000LL;
+}
 static int xioctl(int fd, unsigned long request, void* arg)
 {
     int r;
@@ -186,8 +190,15 @@ struct Exp21EncFrame   //异步编码帧结构体
 {
     int frame_id = 0;
     int64_t pts_us = -1;
+
+    // Experiment 26 sync metadata
+    int64_t v4l2_ts_ns = -1;
+    int64_t video_sync_pts_us = -1;
+    uint32_t v4l2_sequence = 0;
+    uint32_t v4l2_flags = 0;
+
     int64_t enqueue_ts_us = -1;
-    std::vector<unsigned char> nv12; //拷贝一份数据给编码线程
+    std::vector<uint8_t> nv12;
 };
 
 int main(int argc, char** argv)  // argc:命令行参数个数；argv：命令行参数组数
@@ -399,6 +410,16 @@ int main(int argc, char** argv)  // argc:命令行参数个数；argv：命令�
     std::ofstream enc_pts_csv(enc_pts_csv_path);
     enc_pts_csv << "frame_id,input_pts_us,mpp_packet_pts_us,mpp_packet_dts_us,"
                    "pts_match,is_intra,queue_delay_ms,encode_wall_ms,packet_size\n";
+    std::string sync_meta_csv_path = std::string(out_path) + ".sync_meta.csv";
+    std::ofstream sync_meta_csv(sync_meta_csv_path);
+    sync_meta_csv << "frame_id,"
+                  << "v4l2_sequence,"
+                  << "v4l2_ts_ns,"
+                  << "first_video_v4l2_ts_ns,"
+                  << "video_sync_pts_us,"
+                  << "encoder_pts_us,"
+                  << "encoder_pts_minus_sync_pts_us,"
+                  << "v4l2_flags\n";
 
     std::thread encoder_thread([&]() {     // 创建新线程，线程函数可以引用外部变量
         std::vector<uint8_t> local_packet;  // 编码内部使用输出buffer
@@ -566,6 +587,7 @@ int main(int argc, char** argv)  // argc:命令行参数个数；argv：命令�
     double sum_write_ms = 0.0;
     double sum_qbuf_ms = 0.0;
     double sum_total_ms = 0.0;
+    int64_t first_video_v4l2_ts_ns = -1;
     //记录整个采集循环的墙钟开始时间，计算总运行时间和帧率
     auto wall_start = std::chrono::steady_clock::now();
     //成功处理的帧数计数器
@@ -617,6 +639,12 @@ int main(int argc, char** argv)  // argc:命令行参数个数；argv：命令�
             break;
         }
         auto t_dq1 = std::chrono::steady_clock::now();
+        int64_t exp26_v4l2_ts_ns = exp26_timeval_to_ns(buf.timestamp);
+        if (first_video_v4l2_ts_ns < 0) {
+            first_video_v4l2_ts_ns = exp26_v4l2_ts_ns;
+        }
+        int64_t exp26_video_sync_pts_us =
+            (exp26_v4l2_ts_ns - first_video_v4l2_ts_ns) / 1000LL;
         //驱动返回的buf.index就是对应的mmap地址，就是当前的NV12数据的起始指针
         unsigned char* nv12_in = (unsigned char*)buffers[buf.index].start;  //获取NV12原始数据的指针，通过buffer.index就可以找到对应的虚拟地址，指向摄像头输出的NV12帧数据
 
@@ -712,9 +740,27 @@ int main(int argc, char** argv)  // argc:命令行参数个数；argv：命令�
         auto t_write0 = std::chrono::steady_clock::now();
         Exp21EncFrame enc_frame;
         enc_frame.frame_id = frame_id;
-        enc_frame.pts_us = (int64_t)frame_id * 1000000LL / (int64_t)mpp_fps;
+        // Experiment 26-2c:
+        // Use real V4L2 capture timestamp as encoder PTS.
+        // This avoids compressing the MP4 timeline when the detection loop runs below 30FPS
+        // and V4L2 sequence numbers skip frames.
+        enc_frame.pts_us = exp26_video_sync_pts_us;
+        enc_frame.v4l2_ts_ns = exp26_v4l2_ts_ns;
+        enc_frame.video_sync_pts_us = exp26_video_sync_pts_us;
+        enc_frame.v4l2_sequence = buf.sequence;
+        enc_frame.v4l2_flags = buf.flags;
         enc_frame.enqueue_ts_us = exp23_now_us();
         enc_frame.nv12.assign(out_nv12_buf.begin(), out_nv12_buf.end());
+        if (sync_meta_csv.is_open()) {
+            sync_meta_csv << enc_frame.frame_id << ","
+                          << enc_frame.v4l2_sequence << ","
+                          << enc_frame.v4l2_ts_ns << ","
+                          << first_video_v4l2_ts_ns << ","
+                          << enc_frame.video_sync_pts_us << ","
+                          << enc_frame.pts_us << ","
+                          << (enc_frame.pts_us - enc_frame.video_sync_pts_us) << ","
+                          << enc_frame.v4l2_flags << "\n";
+        }
 
         {
             std::lock_guard<std::mutex> lk(enc_mutex);
@@ -821,6 +867,7 @@ int main(int argc, char** argv)  // argc:命令行参数个数；argv：命令�
     printf("async_drop_frames    : %d\n", async_drop_frames.load());
     printf("async_avg_encode_ms  : %.3f\n", async_avg_encode_ms);
     printf("enc pts csv saved   : %s\n", enc_pts_csv_path.c_str());
+    printf("sync meta csv saved  : %s\n", sync_meta_csv_path.c_str());
     printf("async_avg_write_ms   : %.3f\n", async_avg_write_ms);
     printf("async_avg_total_ms   : %.3f\n", async_avg_total_ms);
 

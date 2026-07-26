@@ -618,3 +618,28 @@ target_link_libraries(exp24_mp4_mux_from_pts PRIVATE
 )
 
 target_compile_features(exp24_mp4_mux_from_pts PRIVATE cxx_std_17)
+
+
+# ===== Experiment 26: AV sync timestamp probes =====
+add_executable(exp26_v4l2_ts_probe
+    src/main_exp26_v4l2_ts_probe.cpp
+)
+target_compile_options(exp26_v4l2_ts_probe PRIVATE -O3 -DNDEBUG)
+target_link_libraries(exp26_v4l2_ts_probe pthread)
+
+add_executable(exp26_alsa_ts_probe
+    src/main_exp26_alsa_ts_probe.cpp
+)
+target_compile_options(exp26_alsa_ts_probe PRIVATE -O3 -DNDEBUG)
+target_link_libraries(exp26_alsa_ts_probe asound pthread)
+# ===== End Experiment 26 =====
+
+
+# ===== Experiment 26-3: ALSA timestamped PCM capture =====
+add_executable(exp26_alsa_pcm_capture_ts
+    src/main_exp26_alsa_pcm_capture_ts.cpp
+)
+target_compile_options(exp26_alsa_pcm_capture_ts PRIVATE -O3 -DNDEBUG)
+target_link_libraries(exp26_alsa_pcm_capture_ts asound pthread)
+# ===== End Experiment 26-3 =====
+
